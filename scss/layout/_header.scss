@@ -1,8 +1,4 @@
 .header__main{
-    background-image: url(../../components/img/bg-pattern-header.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 10%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
@@ -10,6 +6,12 @@
     //left right top bottom
     @include padding(2.4rem, 2.4rem, 3.2rem, 7.2rem);
     position: relative;
+}
+.header-bg-img{
+    background-image: url(../../assets/img/bg-pattern-header.svg);
+    background-repeat: no-repeat;
+    // object-fit: cover;
+    background-position-x: center;
 }
 
 .logo{
@@ -26,3 +28,4 @@
     display: flex;
     justify-content: center;
 }
+
