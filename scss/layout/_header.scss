@@ -1,0 +1,28 @@
+.header__main{
+    background-image: url(../../components/img/bg-pattern-header.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 10%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 10rem;
+    //left right top bottom
+    @include padding(2.4rem, 2.4rem, 3.2rem, 7.2rem);
+    position: relative;
+}
+
+.logo{
+    width: 11.5rem;
+    height: 3.2rem;
+}
+
+.logo-switchmode{
+    width: 2rem;
+    height: 2rem;
+}
+
+.header__switchmode{
+    display: flex;
+    justify-content: center;
+}
