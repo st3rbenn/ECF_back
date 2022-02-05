@@ -1,0 +1,72 @@
+//import font
+@font-face {
+    font-family: 'kumbh';
+    font-style: none;
+    font-display: swap;
+    font-weight: 700;
+    src: local(''),
+    url('../../components/fonts/kumbh-sans-v10-latin-700.woff') format('woff'),
+    url('../../components/fonts/kumbh-sans-v10-latin-700.woff2') format('woff2');
+    ;
+}
+@font-face {
+    font-family: 'kumbh';
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400;
+    src: local(''),
+    url('../../components/fonts/kumbh-sans-v10-latin-regular.woff') format('woff'),
+    url('../../components/fonts/kumbh-sans-v10-latin-regular.woff2') format('woff2');
+}
+
+:root{
+    //Primary Colors
+    --violet: #5964E0;
+    --l-violet: #939BF4;
+    --d-blue: #19202D;
+    --dark: #121721;
+
+    //Secondary Colors
+    --white: #FFFFFF;
+    --l-grey: #F4F6F8;
+    --grey: #9DAEC2;
+    --d-grey: #6E8098;
+}
+
+
+h1,
+h2,
+h3,
+h4{
+    color: var(--d-blue);
+    font-family: kumbh, sans-serif;
+    font-weight: 700;
+}
+h1{
+    line-height: 3.4rem;
+    font-size: 2.8rem;
+}
+h2{
+    line-height: 2.9rem;
+}
+h3{
+    line-height: 2.4rem;
+}
+h4{
+    line-height: 1.7rem;
+}
+
+body{
+    font-family: kumbh, sans-serif;
+    font-weight: 400;
+    line-height: 2.6rem;
+    font-size: 1.6rem;
+    color: var(--d-blue);
+}
+button{
+    font-family: kumbh;
+    font-weight: 700;
+    line-height: 2rem;
+    font-size: 1.6rem;
+    color: var(--white);
+}

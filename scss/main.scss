@@ -1,2 +1,18 @@
-@import 'helpers';
-@import 'reset';
+//Abstract files
+@import 'abstracts/mixins';
+
+//core
+@import 'core/helpers';
+@import 'core/reset';
+@import 'core/typography';
+
+
+// Components
+@import "components/buttons";
+
+//layout
+@import "layout/header";
+@import "layout/footer";
+
+//section
+@import "section/hero";
