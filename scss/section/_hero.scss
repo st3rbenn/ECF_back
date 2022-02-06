@@ -3,12 +3,25 @@
 }
 
 
-.filter__item{
+.filter__container{
     min-width: 32.7rem;
     min-height: 8rem;
-    background-color: var(--grey);
+    background-color: var(--white);
     position: absolute;
     left: 2.4rem;
     right: 2.4rem;
-    bottom: 50%;
+    bottom: -4rem;
+    border-radius: 0.6rem 0.6rem 0.6rem 0.6rem;
+    display: grid;
+    align-content: center;
+}
+
+.filter__search__container{
+
+}
+
+.filter__search{
+    border: none;
+    color: var(--d-blue);
+    padding-left: 2.4rem;
 }
