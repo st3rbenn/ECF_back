@@ -1,31 +1,61 @@
+// .header__main  > .container {
+//     // display: grid;
+//     // grid-template-columns: repeat(2, 1fr);
+//     align-items: center;
+//     gap: 10rem;
+//     //left right top bottom
+//     // @include margin(2.4rem, 2.4rem, 3.2rem, 7.2rem);
+//     position: relative;
+// }
+
+
+
+// .header-item{
+//     background-image: url(../../assets/img/bg-pattern-header.svg);
+//     background-repeat: no-repeat;
+//     object-fit: cover;
+//     background-clip: border-box;
+//     display: block;
+// }
+
+// .logo{
+//     width: 11.5rem;
+//     height: 3.2rem;
+// }
+
+// .logo-switchmode{
+//     width: 2rem;
+//     height: 2rem;
+// }
+
+// .header__switchmode{
+//     display: flex;
+//     justify-content: center;
+//     color: var(--dark);
+// }
+
+
+
 .header__main{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    align-items: center;
-    gap: 10rem;
-    //left right top bottom
-    @include padding(2.4rem, 2.4rem, 3.2rem, 7.2rem);
-    position: relative;
+    
 }
-.header-bg-img{
-    background-image: url(../../assets/img/bg-pattern-header.svg);
+
+.header__main > .container{
+    display: block;
+    background-image: url(/assets/img/Triangle.svg);
+    object-fit: cover;
     background-repeat: no-repeat;
-    // object-fit: cover;
-    background-position-x: center;
+    background-size: cover;
+    border-radius: none;
+}
+.header__item{
+    display: flex;
+    justify-content: space-between;
+}
+.header__switchmode{
 }
 
 .logo{
     width: 11.5rem;
     height: 3.2rem;
 }
-
-.logo-switchmode{
-    width: 2rem;
-    height: 2rem;
-}
-
-.header__switchmode{
-    display: flex;
-    justify-content: center;
-}
-
