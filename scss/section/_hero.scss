@@ -1,5 +1,14 @@
-.test{
-
+.filter > .container{
+    position: relative;
 }
 
-.text{}
+
+.filter__item{
+    min-width: 32.7rem;
+    min-height: 8rem;
+    background-color: var(--grey);
+    position: absolute;
+    left: 2.4rem;
+    right: 2.4rem;
+    bottom: 50%;
+}

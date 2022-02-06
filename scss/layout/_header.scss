@@ -36,9 +36,6 @@
 
 
 
-.header__main{
-    
-}
 
 .header__main > .container{
     display: block;
@@ -51,11 +48,27 @@
 .header__item{
     display: flex;
     justify-content: space-between;
+    @include padding(2.4rem, 2.4rem, 3.2rem, 7.2rem);
+    align-items: center;
 }
 .header__switchmode{
+    display: flex;
+    align-items: center;
+    // @include margin(1.6rem, 1.6rem, 0, 0)
 }
 
 .logo{
     width: 11.5rem;
     height: 3.2rem;
+}
+
+.logo-switchmode{
+    width: 2rem;
+    height: 2rem;
+    margin-right: 1.6rem;
+    &lune{
+        width: 1.2rem;
+        height: 1.2rem;
+        margin-left: 1.6rem;
+    }
 }
