@@ -51,20 +51,39 @@
                                         </figure>
                                 </div>
                         </div>
+
+                        <div class="filter" id="filter">
+                                        <div class="filter__container">
+                                                <div class="filter__search__container">
+                                                        <input type="text" id="filter__search" aria-hidden="true" class="filter__search" placeholder="Filter by title...">
+                                                </div>
+                                                <div class="filter__logo__container">
+                                                        <img src="assets/img/icon-filter.svg" alt="Bouton de filtrage" class="filter__logo">
+                                                </div>
+                                                <div class="filter__button__container">
+                                                        <button type="submit" id="filterResult" class="filter__button">
+                                                        <img src="assets/img/icon-search.svg" alt="" class="filter__button__logo">
+                                                </div>    
+                                        </div>
+                            </div>
                 </div>  
         </header>
 
-        <main class="main__page">
-            <div class="filter" id="filter">
-                <div class="container">
-                        <div class="filter__container">
-                                <div class="filter__search__container">
-                                        <input type="text" id="filter__search" aria-hidden="true" class="filter__search" placeholder="Filter by title...">
+        <main class="main__page">           
+                <!-- <template> -->
+                        <div class="jobs" id="jobs">
+                                <div class="container">
+                                        <div class="jobs__container first">
+                                                <img src="/assets/img/scoot.svg" alt="" class="jobs__container__logo">
+                                                <div class="jobs__container__items">
+                                                        <p>5h ago</p>
+                                                        <span class="dot"></span>
+                                                        <p>Full Time</p>
+                                                </div>
+                                        </div>
                                 </div>
-                                <div class="filter__logo"></div>    
                         </div>
-                </div>
-            </div>
+                <!-- </template> -->
         </main>
         <script src="/js/switch.js"></script>
 </body>
