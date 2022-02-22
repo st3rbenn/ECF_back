@@ -62,3 +62,18 @@ button{
         box-shadow: 0px 0px 0px 1px var(--d-blue);
       }
 }
+
+
+//======================================================
+//Jobs Submit button
+//======================================================
+
+.jobs__submit{
+  background-color: var(--violet);
+  font-weight: 700;
+  border: none;
+  color: var(--white);
+  border-radius: .5rem;
+  @include padding(3rem, 3rem, 1rem, 1rem);
+  @include margin(11.7rem, 11.7rem, 3.2rem, 6.2rem)
+}

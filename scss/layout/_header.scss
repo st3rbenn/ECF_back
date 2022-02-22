@@ -1,3 +1,7 @@
+.header__main{
+    margin-bottom: 9.7rem;
+}
+
 .header__main > .container{
     display: block;
     background-image: url(/assets/img/Triangle.svg);
@@ -50,11 +54,12 @@
     min-height: 8rem;
     background-color: var(--white);
     position: absolute;
-    right: 2.4rem;
+    right: 1.8rem;
     top: 9.5rem;
     border-radius: 0.6rem 0.6rem 0.6rem 0.6rem;
     display: flex;
     align-items: center;
+
 }
 
 .filter__search{
@@ -65,6 +70,11 @@
 .filter__logo {
     width: 2rem;
     height: 2rem;
+}
+.filter__input{
+  background-image: url("assets/img/icon-filter.svg");
+  width: 2rem;
+  height: 2rem;
 }
 
 .filter__button__container{
@@ -81,8 +91,14 @@
     background-color: var(--violet);
     width: 4.8rem;
     height: 4.8rem;
+    margin-right: 1.6rem;
     border-radius: .5rem;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.filter__logo__container{
+    background: none;
+    border: none;
 }
