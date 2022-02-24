@@ -4,7 +4,12 @@
 
 .jobs > .container{
   display: grid;
-
+  @media screen and (min-width: 48em){
+    grid-template-columns: repeat(2, 1fr)
+  }
+  @include pc {
+    grid-template-columns: repeat(3, 1fr)
+  }
 }
 
 
