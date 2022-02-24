@@ -11,3 +11,15 @@
     margin-top: $m-t;
     margin-bottom: $m-b;
 }
+
+
+@mixin tablet {
+  @media (min-width: 36em) { 
+    @content; 
+  }
+}@mixin pc {
+
+  @media (min-width: 68em) { 
+    @content; 
+  }
+}

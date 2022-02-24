@@ -23,6 +23,7 @@
     //Primary Colors
     --violet: #5964E0;
     --l-violet: #939BF4;
+    --midnight: #121721;
     --d-blue: #19202D;
     --dark: #121721;
 
@@ -42,7 +43,8 @@
     --switch-button-color: #5964E0;
 }
 [data-theme="dark"]{
-    --color-bg: #19202D;
+    --color-bg: var(--midnight);
+    --white: var(--d-blue);
     --switch-button-color: #939BF4;
 }
 
@@ -50,7 +52,9 @@
 h1,
 h2,
 h3,
-h4{
+h4,
+label,
+input{
     font-weight: 700;
 }
 h1{
@@ -78,6 +82,8 @@ body{
     font-size: 1.6rem;
     background-color: var(--color-bg);
     color: var(--d-blue);
+    position: relative;
+    z-index: 1;
 }
 
 
@@ -86,4 +92,12 @@ body{
     margin-right: auto;
     max-width: 111rem;
     width: 100%;
+}
+
+.hidden__body{
+  pointer-events: none;
+}
+
+.dn{
+  display: none;
 }
