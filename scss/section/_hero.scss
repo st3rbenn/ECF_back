@@ -87,14 +87,13 @@
   color: var(--white);
   border-radius: .5rem;
   border: none;
-  margin-top: 3.2rem;
   @include tablet{
     grid-area: 7 / 1 / 7 / 3;
-    margin-top: 0;
   }
   @include pc{
     grid-area: 5 / 1 / 5 / 4;
     margin-bottom: 10.4rem;
+    justify-self: none;
   }
 }
 
