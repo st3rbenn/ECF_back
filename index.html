@@ -56,21 +56,25 @@
                   <div class="filter__container__search">
                       <img src="/assets/img/icon-search.svg" alt="" class="filter__search__logo__search">
                       <input type="text" id="filter__container__logo" aria-hidden="true" class="filter__search__title" placeholder="Filter by title...">
+                      <input type="text" id="filter__container__logo" aria-hidden="true" class="filter__search__title__pc" placeholder="Filter by title, companies, expertise…">
                   </div>
-                  <div class="filter__container__search">
+                  <div class="line"></div>
+                  <div class="filter__container__location">
                     <img src="/assets/img/icon-location.svg" alt="" class="filter__search__logo__location">
                     <input type="text" id="filter__location" placeholder="Filter by location..." class="filter__search__location">
                   </div>
-                  
+                  <div class="line"></div>
                     <div class="filter__right">
                         <div class="filter__fullTime">  
                             <input type="checkbox" id="filter__checkBox" >
                             <label for="filter__checkBox" class="label">Full Time</label>
                             <label for="filter__checkBox" class="label2">Full Time Only</label>
                         </div>
-                          <img src="assets/img/icon-filter.svg" class="filter__logo" id="filterBtn">
+                        <button class="filter__logo__btn" id="filterBtn">
+                          <img src="assets/img/icon-filter.svg" class="filter__logo__logo">
+                        </button>
                           <input type="submit" id="filter__search__submit" value="Search" class="filter__search__submit">
-                          <button type="submit" id="filterResult" class="filter__button">
+                          <button id="filterResult" class="filter__button">
                             <img src="assets/img/icon-search-white.svg" alt="" class="filter__button__logo">
                           </button>
                     </div>
@@ -91,8 +95,8 @@
                           <span class="dot"></span>
                           <p>Full Time</p>
                       </div>
-                      <div class="name-Enterprise">
-                          <h3>Senior Software Engineer</h3>
+                      <div class="jobs__container__info">
+                          <h3 class="jobs__container__info__name">Senior Software Engineer</h3>
                           <p>Scoot</p>
                       </div>
                       <p class="city" id="city">United Kingdom</p>
@@ -106,8 +110,8 @@
                           <span class="dot"></span>
                           <p>Full Time</p>
                       </div>
-                      <div class="name-Enterprise">
-                          <h3>Senior Software Engineer</h3>
+                      <div class="jobs__container__info">
+                          <h3 class="jobs__container__info__name">Senior Software Engineer</h3>
                           <p>Scoot</p>
                       </div>
                       <p class="city" id="city">United Kingdom</p>
@@ -121,8 +125,8 @@
                           <span class="dot"></span>
                           <p>Full Time</p>
                       </div>
-                      <div class="name-Enterprise">
-                          <h3>Senior Software Engineer</h3>
+                      <div class="jobs__container__info">
+                          <h3 class="jobs__container__info__name">Senior Software Engineer</h3>
                           <p>Scoot</p>
                       </div>
                       <p class="city" id="city">United Kingdom</p>
@@ -136,8 +140,8 @@
                           <span class="dot"></span>
                           <p>Full Time</p>
                       </div>
-                      <div class="name-Enterprise">
-                          <h3>Senior Software Engineer</h3>
+                      <div class="jobs__container__info">
+                          <h3 class="jobs__container__info__name">Senior Software Engineer</h3>
                           <p>Scoot</p>
                       </div>
                       <p class="city" id="city">United Kingdom</p>
@@ -151,8 +155,8 @@
                           <span class="dot"></span>
                           <p>Full Time</p>
                       </div>
-                      <div class="name-Enterprise">
-                          <h3>Senior Software Engineer</h3>
+                      <div class="jobs__container__info">
+                          <h3 class="jobs__container__info__name">Senior Software Engineer</h3>
                           <p>Scoot</p>
                       </div>
                       <p class="city" id="city">United Kingdom</p>
@@ -166,8 +170,8 @@
                           <span class="dot"></span>
                           <p>Full Time</p>
                       </div>
-                      <div class="name-Enterprise">
-                          <h3>Senior Software Engineer</h3>
+                      <div class="jobs__container__info">
+                          <h3 class="jobs__container__info__name">Senior Software Engineer</h3>
                           <p>Scoot</p>
                       </div>
                       <p class="city" id="city">United Kingdom</p>
@@ -181,8 +185,8 @@
                           <span class="dot"></span>
                           <p>Full Time</p>
                       </div>
-                      <div class="name-Enterprise">
-                          <h3>Senior Software Engineer</h3>
+                      <div class="jobs__container__info">
+                          <h3 class="jobs__container__info__name">Senior Software Engineer</h3>
                           <p>Scoot</p>
                       </div>
                       <p class="city" id="city">United Kingdom</p>
@@ -196,8 +200,8 @@
                           <span class="dot"></span>
                           <p>Full Time</p>
                       </div>
-                      <div class="name-Enterprise">
-                          <h3>Senior Software Engineer</h3>
+                      <div class="jobs__container__info">
+                          <h3 class="jobs__container__info__name">Senior Software Engineer</h3>
                           <p>Scoot</p>
                       </div>
                       <p class="city" id="city">United Kingdom</p>
@@ -211,58 +215,59 @@
                           <span class="dot"></span>
                           <p>Full Time</p>
                       </div>
-                      <div class="name-Enterprise">
-                          <h3>Senior Software Engineer</h3>
+                      <div class="jobs__container__info">
+                          <h3 class="jobs__container__info__name">Senior Software Engineer</h3>
                           <p>Scoot</p>
                       </div>
                       <p class="city" id="city">United Kingdom</p>
                     </div>
                   </div>
-                    <div class="jobs__container ">
-                      <img src="/assets/img/scoot.svg" alt="" class="jobs__container__logo">
-                      <div class="jobs__container__items">        
-                        <div class="time" id="time">
-                            <p>5h ago</p>
-                            <span class="dot"></span>
-                            <p>Full Time</p>
-                        </div>
-                        <div class="name-Enterprise">
-                            <h3>Senior Software Engineer</h3>
-                            <p>Scoot</p>
-                        </div>
-                        <p class="city" id="city">United Kingdom</p>
+                  <div class="jobs__container ">
+                    <img src="/assets/img/scoot.svg" alt="" class="jobs__container__logo">
+                    <div class="jobs__container__items">        
+                      <div class="time" id="time">
+                          <p>5h ago</p>
+                          <span class="dot"></span>
+                          <p>Full Time</p>
                       </div>
-                    </div>
-                    <div class="jobs__container">
-                        <img src="/assets/img/scoot.svg" alt="" class="jobs__container__logo">
-                        <div class="jobs__container__items">        
-                            <div class="time" id="time">
-                                <p>5h ago</p>
-                                <span class="dot"></span>
-                                <p>Full Time</p>
-                            </div>
-                            <div class="name-Enterprise">
-                                <h3>Senior Software Engineer</h3>
-                                <p>Scoot</p>
-                            </div>
-                            <p class="city" id="city">United Kingdom</p>
-                        </div>
-                    </div>
-                    <div class="jobs__container">
-                      <img src="/assets/img/scoot.svg" alt="" class="jobs__container__logo">
-                      <div class="jobs__container__items">        
-                          <div class="time" id="time">
-                              <p>5h ago</p>
-                              <span class="dot"></span>
-                              <p>Full Time</p>
-                          </div>
-                          <div class="name-Enterprise">
-                              <h3>Senior Software Engineer</h3>
-                              <p>Scoot</p>
-                          </div>
-                          <p class="city" id="city">United Kingdom</p>
+                      <div class="jobs__container__info">
+                          <h3 class="jobs__container__info__name">Senior Software Engineer</h3>
+                          <p>Scoot</p>
                       </div>
+                      <p class="city" id="city">United Kingdom</p>
+                    </div>
                   </div>
+                  <div class="jobs__container ">
+                    <img src="/assets/img/scoot.svg" alt="" class="jobs__container__logo">
+                    <div class="jobs__container__items">        
+                      <div class="time" id="time">
+                          <p>5h ago</p>
+                          <span class="dot"></span>
+                          <p>Full Time</p>
+                      </div>
+                      <div class="jobs__container__info">
+                          <h3 class="jobs__container__info__name">Senior Software Engineer</h3>
+                          <p>Scoot</p>
+                      </div>
+                      <p class="city" id="city">United Kingdom</p>
+                    </div>
+                  </div>
+                  <div class="jobs__container ">
+                    <img src="/assets/img/scoot.svg" alt="" class="jobs__container__logo">
+                    <div class="jobs__container__items">        
+                      <div class="time" id="time">
+                          <p>5h ago</p>
+                          <span class="dot"></span>
+                          <p>Full Time</p>
+                      </div>
+                      <div class="jobs__container__info">
+                          <h3 class="jobs__container__info__name">Senior Software Engineer</h3>
+                          <p>Scoot</p>
+                      </div>
+                      <p class="city" id="city">United Kingdom</p>
+                    </div>
+                  </div>
+                  <input type="submit" value="Load More" class="loadmore">
                 </div>
               </div>
               
@@ -282,6 +287,7 @@
           <input type="submit" class="filter__modal__searchbtn" value="Search">
         </div>
     </div>
+    <script src="/js/script.js"></script>
   <script src="/js/modal.js"></script>
   <script src="/js/switch.js"></script>
 </body>

@@ -4,41 +4,61 @@
 
 .jobs > .container{
   display: grid;
+  gap: 1rem;
+  @include padding(2.4rem, 2.4rem, 0, 6.2rem);
   @media screen and (min-width: 48em){
     grid-template-columns: repeat(2, 1fr)
   }
   @include pc {
-    grid-template-columns: repeat(3, 1fr)
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    max-width: 111rem;
+    max-height: 113.2rem;
+    @include padding(2.4rem, 0, 0, 6.2rem);
   }
 }
 
 
 .jobs__container{
-    @include margin(2.4rem, 2.4rem, 0, 4.9rem);
+    @include margin(0, 0, 0, 4.9rem);
     min-width: 32.7rem;
     min-height: 22.8rem;
-    background-color: var(--white);
+    background-color: var(--color-container);
     border-radius: .6rem;
     position: relative;
-}
-.jobs__container__logo{
-    position: absolute;
-    top: -2.5rem;
-    left: 3.2rem;
-    background-color: #E99210;
-    width: 5rem;
-    height: 5rem;
-    border-radius: 1.5rem;
-    padding: .5rem .5rem;
-}
-.jobs__container__items{
-    width: 28.6rem;
-    height: 14.6rem;
-    padding-top: 5rem;
-    padding-left: 3.2rem;
+    @include pc{
+      max-width: 35rem;
+    }
+    
+    
+    &__logo{
+      position: absolute;
+      top: -2.5rem;
+      left: 3.2rem;
+      background-color: #E99210;
+      width: 5rem;
+      height: 5rem;
+      border-radius: 1.5rem;
+      padding: .5rem .5rem;
+  }
+  &__items{
+      width: 28.6rem;
+      height: 14.6rem;
+      padding-top: 5rem;
+      padding-left: 3.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+  }
+  &__info{
     display: flex;
     flex-direction: column;
-    gap: 1.1rem;
+    gap: 1rem;
+    margin-bottom: 1.7rem;
+    &__name{
+      color: var(--name);
+    }
+}
 }
 
 .dot{
@@ -54,13 +74,27 @@
     display: flex;
 }
 
-.name-Enterprise{
-    margin-bottom: 3rem;
-}
-
 .city{
     font-weight: 700;
-    color: var(--violet)
+    color: var(--violet);
+    font-size: 1.4rem;
 }
 
+.loadmore{
+  justify-self: center;
+  @include padding(3.05rem, 3.05rem, 1.4rem, 1.1rem);
+  background-color: var(--violet);
+  color: var(--white);
+  border-radius: .5rem;
+  border: none;
+  margin-top: 3.2rem;
+  @include tablet{
+    grid-area: 7 / 1 / 7 / 3;
+    margin-top: 0;
+  }
+  @include pc{
+    grid-area: 5 / 1 / 5 / 4;
+    margin-bottom: 10.4rem;
+  }
+}
 

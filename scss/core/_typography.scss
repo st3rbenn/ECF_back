@@ -32,20 +32,31 @@
     --l-grey: #F4F6F8;
     --grey: #9DAEC2;
     --d-grey: #6E8098;
+
     //color background
     --color-bg: #F4F6F8;
+    --color-container: #FFFFFF;
+
+    //svg
+    --color-svg: invert(54%) sepia(10%) saturate(920%) hue-rotate(175deg) brightness(90%) contrast(86%);
+
+    //typoColor
+    --name: var(--d-blue);
 
     //switch dark mode
     --switch-padding: 0.3rem;
     --switch-height: 2.4rem;
-    --switch-width: 4.8rem;
+    --switch-width: 5rem;
     --switch-animation-duration: 0.2s;
-    --switch-button-color: #5964E0;
+    --switch-button-color: var(--violet);
+    --form-text: var(--d-blue);
 }
 [data-theme="dark"]{
     --color-bg: var(--midnight);
-    --white: var(--d-blue);
-    --switch-button-color: #939BF4;
+    --color-container: var(--d-blue);
+    --form-text: var(--white);
+    --color-svg: invert(100%) sepia(100%) saturate(2%) hue-rotate(263deg) brightness(103%) contrast(101%);
+    --name: var(--white);
 }
 
 

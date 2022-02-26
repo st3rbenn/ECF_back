@@ -48,25 +48,31 @@
 // =======
 
 .filter__container{
-    width: clamp(29rem, 94%, 110rem);
-    background-color: var(--white);
+    width: clamp(29rem, 87%, 111rem);
+    background-color: var(--color-container);
     position: absolute;
-    right: 1rem;
+    left: 2.5rem;
     top: 9.5rem;
     border-radius: 0.6rem 0.6rem 0.6rem 0.6rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 2rem;
-    @media screen and (min-width: 36em){
-      right: 2.5rem;
-      // gap: 2rem;
-      // display: flex;
-  }
+    @include tablet{
+      width: clamp(29rem, 94%, 111rem);
+    }
+    @include pc{
+      width: clamp(29rem, 98%, 111rem);
+    }
+    
     &__search{
       display: flex;
       gap: 1rem;
-      @include margin(3.2rem, 0, 2.8rem, 2.8rem)
+      @include margin(0, 5.1rem, 0, 0)
+    }
+    &__location{
+      display: flex;
+      gap: 1rem;
+      @include margin(0, 1rem, 0, 0)
     }
 
 }
@@ -86,20 +92,48 @@
   }
 
   &__search__title{
+    display: block;
     border: none;
-    color: var(--d-blue);
+    color: var(--form-text);
     opacity: 0.5;
     background-color: var(--bg-color);
     width: 11rem;
     height: 2rem;
+    margin-left: 2.4rem;
+    outline: none;
+    font-weight: 400;
+    @include tablet {
+      margin-left: 0;
+    }
+    @include pc {
+      display: none;
+    }
+  }
+
+  &__search__title__pc{
+    display: none;
+    @include pc{
+      display: block;
+      border: none;
+      color: var(--form-text);
+      opacity: 0.5;
+      background-color: var(--bg-color);
+      width: 26.8rem;
+      height: 2rem;
+      margin-left: 0;
+      outline: none;
+      font-weight: 400;
+    }
   }
   &__search__location{
+    font-weight: 400;
     border: none;
-    color: var(--d-blue);
+    color: var(--form-text);
     opacity: 0.5;
     background-color: var(--bg-color);
-    width: 13.3rem;
+    width: 15rem;
     height: 2rem;
+    outline: none;
   }
   
   &__search__logo__location{
@@ -108,18 +142,33 @@
       display: block;
       width: 1.6rem;
       height: 2.3rem;
+      margin-left: 2.4rem;
     }
   }
-  &__logo {
+
+  &__search__logo__search{
+    display: none;
+    @include tablet{
+      display: block;
+      width: 2.4rem;
+      height: 2.4rem;
+      margin-left: 2.4rem;
+    }
+  }
+
+  &__logo__btn {
     align-self: center;
-    display: block;
-    width: 2rem;
-    height: 2rem;
+    border: none;
+    background: none;
     @include tablet{
       display: none;
     }
   }
-
+  &__logo__logo{
+    width: 2rem;
+    height: 2rem;
+    filter: var(--color-svg);
+  }
   &__input{
     background-image: url("assets/img/icon-filter.svg");
     width: 2rem;
@@ -137,12 +186,16 @@
     display: none;
     @include tablet {
       display: block;
-      @include padding(3.55rem, 3.55rem, 1.7rem, 1.1rem);
-      @include margin(3.2rem, 1.6rem, 1.6rem, 1.6rem);
+      @include padding(1.6rem, 1.6rem, 1.4rem, 1.4rem);
+      @include margin(0, 1.6rem, 0, 0);
       border: none;
       border-radius: .5rem;
       background-color: var(--violet);
       color: var(--white);
+      align-self: center
+    }
+    @include pc{
+      @include padding(3.55rem, 3.55rem, 1.7rem, 1.1rem);
     }
   }
 
@@ -162,6 +215,8 @@
     height: 4.8rem;
     margin-right: 1.6rem;
     border-radius: .5rem;
+    margin-top: 1.6rem;
+    margin-bottom: 1.6rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -171,8 +226,8 @@
 
 
   &__logo{
-    width: 2rem;
-    height: 2rem;
+    width: 2.3rem;
+    height: 2.3rem;
   }
 
   &__container{
@@ -185,13 +240,14 @@
       // =======
       &__modal{
       display: none;
+      position: fixed;
       width: 32.7rem;
       height: 21.7rem;
       background-color: var(--white);
       border-radius: .6rem;
       position: absolute;
       top: 22.5rem;
-      left: 2.4rem;
+      left: 2.5rem;
       @include padding(2.4rem, 0, 2.4rem, 0);
       z-index: 500;
 
@@ -246,14 +302,18 @@
   width: 2rem;
   height: 2rem;
   margin-right: 1.6rem;
+  appearance: none;
+  background-color: var(--l-grey);
 }
 .label2 {
   display: none;
+  color: var(--name);
   @include pc{
     display: block;
   }
 }
 .label{
+  color: var(--name);
   display: block;
   @include pc{
     display: none;
@@ -272,5 +332,15 @@
   z-index: 1050;
   width: 100vw;
   height: 100vh;
-  background-color: #000;
+  // background-color: #000;
+}
+
+.line{
+  display: none;
+  @include tablet{
+    display: block;
+    height: 8rem;
+    border: 1px solid var(--grey);
+    opacity: 0.5;
+  }
 }
