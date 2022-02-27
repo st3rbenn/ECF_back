@@ -1,0 +1,121 @@
+.about{
+  &__jobs__container__items{
+    margin-bottom: 3.2rem;
+  }
+  &__section{
+    @include margin(2.4rem, 2.4rem, 21.4rem, 6.4rem);
+    @include padding(2.4rem, 2.3rem, 4.1rem, 4.6rem);
+    background-color: var(--color-container);
+    border-radius: .6rem;
+  }
+  &__btn__applynow{
+    @include padding(5.45rem, 5.45rem, 1.6rem, 1.2rem);
+    color: var(--white);
+    background-color: var(--violet);
+    border-radius: .5rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-align: center;
+  }
+  &__card{
+    &__header{
+      width: clamp(29rem, 87%, 111rem);
+      height: 20.5rem;
+      background-color: var(--color-container);
+      border-radius: .6rem;
+      position: absolute;
+      top: 12.1rem;
+      right: 2.4rem;
+      display: flex;
+      flex-direction: column;
+    }
+    &__img{
+      position: absolute;
+      background-color: #E99210;
+      border-radius: 1.5rem;
+      padding: .5rem .5rem;
+      top: -2.5rem;
+      right: 13.6rem;
+    }
+    &__logo{
+      width: 4rem;
+      height: 4rem;
+    }
+    &__items{
+      align-self: center;
+      text-align: center;
+      & > h3{
+        font-weight: 700;
+        margin-top: 5.1rem;
+      }
+    }
+    &__button{
+      @include padding(2.05rem, 0, 1.7rem, 1.1rem);
+      @include margin(9rem, 9rem, 2.2rem, 0);
+      background: rgba(89, 100, 224, 0.1);
+      border: none;
+      color: var(--violet);
+      border-radius: .5rem;
+      text-decoration: none;
+      font-weight: 700;
+    }
+  }
+  &__jobs__container__info {
+    margin-top: .8rem;
+    display: flex;
+    flex-direction: column;
+    & > p{
+      margin-bottom: 5rem;
+    }
+  }
+
+  &__description{
+    margin-bottom: 7.4rem;
+  }
+  &__requirements{
+    & > h3{
+      margin-bottom: 2.1rem;
+    }
+    & > p{
+      margin-bottom: 6.4rem;
+    }
+    & > ul > li{
+      list-style: none;
+      padding-bottom: 1.4rem;
+      position: relative;
+      
+      &::before{
+        content: "";
+        position: absolute;
+        top: 1.2rem;
+        left: -4rem;
+        width: .4rem;
+        height: .4rem;
+        text-align: center;
+        display: inline-block;
+        background: var(--violet);
+        color: var(--violet);
+        border-radius: 50%;
+      }
+    }
+  }
+  
+  &__whatYouWillDo{
+    & > h3{
+      margin-bottom: 2.3rem;
+    }
+    & > p {
+      margin-bottom: 3.8rem;
+    }
+    & > ol > li {
+      padding-bottom: 1.4rem;
+      position: relative;
+      list-style: decimal;
+      
+      &::before{
+        content: "";
+        position: absolute;
+      }
+    }
+  }
+}

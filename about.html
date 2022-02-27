@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang=""><!-- Mettre le code langue du site dans l'attribut lang -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECF-Front-End</title>
+    <meta name="description" content="Contrôle de conaissance et d'application des méthodes apprise au CEFIM">
+    <!-- Mettre ci-dessous les informations pour Open Graph (concerne notamment Facebook) - Voir https://ogp.me/-->
+    <meta property="og:title" content="">
+    <meta property="og:type" content="">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+
+    <!-- Le minimum pour gérer les favicon : https://css-tricks.com/how-to-favicon-in-2021/ 
+    Icônes à générer : 
+    favicon.ico : 32x32
+    icon.svg : peu importe la taille, mais privilégier un format carré
+    apple-touch-icon.png : 180x180
+    192.png : 192x192
+    512.png : 512x512
+    -->
+    <link rel="icon" href="favicon-32x32.png" sizes="any"><!-- 32×32 -->
+    <link rel="icon" href="favicon-32x32.png" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png"><!-- 180×180 -->
+    <link rel="manifest" href="/manifest.webmanifest"><!-- voir le fichier manifest.webmanifest -->
+
+    <!-- A terme : n'appeler qu'une seule feuille de style minifiée -->
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <header class="header__main">    
+          <div class="container">
+              <div class="header__item">      
+                  <figure class="logo">
+                      <img src="/assets/img/logo.svg" alt="Logo de devjobs">
+                  </figure>
+                  <div class="header__switchmode">
+                      <figure class="logo-switchmode">
+                              <img src="/assets/img/icon-sun.svg" alt="">
+                      </figure>
+                      <div class="switch">
+                              <input type="checkbox" class="switch__input" id="theme-switch">
+                              <label for="theme-switch" class="switch__label" aria-hidden="true" id="label__switch"></label>
+                              <div class="switch__marker" aria-hidden="true" id="switch__button"></div>
+                      </div>
+                      <figure class="logo-switchmodelune">
+                              <img src="/assets/img/icon-moon.svg" alt="">
+                      </figure>
+                  </div>
+              </div>
+          </div>
+
+          <div class="about__card__header">
+              <figure class="about__card__img">
+                <img src="/assets/img/scoot.svg" alt="" class="about__card__logo">
+              </figure>
+              <div class="about__card__items">
+                <h3>Scoot</h3>
+                <p>scoot.com</p>
+              </div>
+              <a href="" class="about__card__button">Company Site</a>
+          </div>
+    </header>
+
+    <main>
+      <section id="aboutJobs" class="about__section">
+        <div class="about__jobs__container__items">
+          <div class="time">
+            <p>07/11/2021</p>
+            <span class="dot"></span>
+            <p>Part Time</p>
+          </div>
+          <div class="about__jobs__container__info">
+            <h3 class="about__jobs__container__info__name">Technical Lead Engineer</h3>
+            <p class="city">United Kingdom</p>
+            <a href="" class="about__btn__applynow">Apply Now</a>
+          </div>
+        </div>
+        <div class="about__description">  
+          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti. Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.</p>
+        </div>
+        <div class="about__requirements">
+            <h3>Requirements</h3>
+            <p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu pulvinar risus, vitae facilisis libero dolor a purus. Sed vel lacus. Mauris nibh felis, adipiscing varius, adipiscing in, lacinia vel, tellus. Suspendisse ac urna. Etiam pellentesque mauris ut lectus. Nunc tellus ante, mattis eget, gravida vitae, ultricies ac, leo. Integer leo pede, ornare a, lacinia eu, vulputate vel, nisl.</p>
+                <ul>
+                    <li>Morbi interdum mollis sapien. Sed</li>
+                    <li>Phasellus lacinia magna a ullamcorper laoreet, lectus arcu pulvinar risus</li>
+                    <li>Mauris nibh felis, adipiscing varius, adipiscing in, lacinia vel, tellus. Suspendisse ac urna. Etiam pellentesque mauris ut lectus.</li>
+                    <li>Morbi interdum mollis sapien. Sed</li>
+                </ul>
+        </div>
+        <div class="about__whatYouWillDo">
+            <h3>What You Will Do</h3>
+            <p>Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.</p>
+                <ol>
+                    <li>Morbi interdum mollis sapien. Sed</li>
+                    <li>Phasellus lacinia magna a ullamcorper laoreet, lectus arcu pulvinar risus</li>
+                    <li>Mauris nibh felis, adipiscing varius, adipiscing in, lacinia vel, tellus. Suspendisse ac urna. Etiam pellentesque mauris ut lectus.</li>
+                    <li>Morbi interdum mollis sapien. Sed</li>
+                </ol>
+        </div>
+      </section>
+    </main>
+    <footer class="about__footer">
+      <a href="" class="about__footer__applynow">Apply Now</a>
+    </footer>
+
+    <script src="/js/components/switch.js"></script>
+  </body>
+</html>

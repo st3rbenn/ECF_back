@@ -51,6 +51,7 @@
     --switch-button-color: var(--violet);
     --form-text: var(--d-blue);
 }
+
 [data-theme="dark"]{
     --color-bg: var(--midnight);
     --color-container: var(--d-blue);
@@ -82,7 +83,9 @@ h4{
     line-height: 1.7rem;
 }
 
-p{
+p,
+li,
+ol{
     color: var(--d-grey);
 }
 
