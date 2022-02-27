@@ -61,13 +61,14 @@
 }
 
 .dot{
-    height: 0.4rem;
-    width: 0.4rem;
+    height: .4rem;
+    width: .4rem;
     background-color: var(--d-grey);
     border-radius: 50%;
     align-self: center;
-    margin-left: 1rem;
-    margin-right: 1rem;
+    margin-left: 1.4rem;
+    margin-right: 1.2rem;
+    margin-bottom: 0.5rem;
 }
 .time{
     display: flex;
