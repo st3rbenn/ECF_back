@@ -16,6 +16,7 @@
     max-height: 113.2rem;
     @include padding(2.4rem, 0, 0, 6.2rem);
   }
+  
 }
 
 
@@ -30,6 +31,17 @@
       max-width: 35rem;
     }
     
+    &__form__btn{
+      display: flex;
+      justify-content: center;
+      align-self: center;
+      @include tablet{
+        grid-area: 7 / 1 / 7 / 3;
+      }
+      @include pc{
+        grid-area: 5/1/5/4;
+      }
+    }
     
     &__logo{
       position: absolute;

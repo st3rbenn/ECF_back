@@ -1,5 +1,7 @@
 const container = document.querySelector('#jobs')
-
+const btnLoadMore = document.querySelector('#loadmore')
+let isPressed = true;
+let isLoaded = false;
 const URL_API = 'https://ecf-dwwm.cefim-formation.org/'
 
 function displayInfoJobs (data){
@@ -19,6 +21,7 @@ function displayInfoJobs (data){
   jobsContainer.classList.add('jobs__container')
   jobsContainer.setAttribute('data-id', `${data.id}`)
   imgJobs.classList.add('jobs__container__logo')
+  imgJobs.setAttribute('alt', `entreprise ${data.name}`)
   jobsItem.classList.add('jobs__container__items')
   timeContainer.classList.add('time')
   dot.classList.add('dot')
@@ -36,28 +39,53 @@ function displayInfoJobs (data){
   city.textContent = data.location
   imgJobs.style.backgroundColor = data.logoBackground
   
-  
-  container.prepend(jobsContainer)
-  jobsContainer.append(imgJobs, jobsItem)
-  jobsItem.append(timeContainer, jobsContainerInfo, city)
-  timeContainer.append(jobsPostedAt, dot, jobsContract)
-  jobsContainerInfo.append(jobsPosition, jobsName)
+  if (isPressed){
+    container.prepend(jobsContainer)
+    jobsContainer.prepend(imgJobs, jobsItem)
+    jobsItem.prepend(timeContainer, jobsContainerInfo, city)
+    timeContainer.prepend(jobsPostedAt, dot, jobsContract)
+    jobsContainerInfo.prepend(jobsPosition, jobsName)
+    
+  }else if (isLoaded = true){
+    container.append(jobsContainer)
+    jobsContainer.append(imgJobs, jobsItem)
+    jobsItem.append(timeContainer, jobsContainerInfo, city)
+    timeContainer.append(jobsPostedAt, dot, jobsContract)
+    jobsContainerInfo.append(jobsPosition, jobsName)
+  }
 }
 
-
+btnLoadMore.addEventListener('submit', (ev) => {
+  ev.preventDefault();
+  async function loadMore() {
+    const response = await fetch(URL_API + `/api/jobs?offset=0`)
+    try{
+      const data = await response.json()
+      const jobsInfo = data.jobs
+      console.table(jobsInfo)
+      jobsInfo.reverse()
+      for (let i = 0; i < jobsInfo.length; i++) {
+        displayInfoJobs(jobsInfo[i])
+      }
+        isLoaded = true
+        container.append(btnLoadMore)
+    }catch(err) {
+      console.error(err);
+    }
+  }loadMore();
+})
 
 async function getJobsInfo(){
-  const response = await fetch(URL_API + '/api/jobs')
+  const response = await fetch(URL_API + '/api/jobs?offset=12')
   try{
 
     const data = await response.json()
     const jobsInfo = data.jobs
-    // console.table(jobsInfo.reverse());
-    console.log(jobsInfo[0].logo);
+    console.table(jobsInfo);
     for (let i = 0; i < jobsInfo.length; i++) {
       displayInfoJobs(jobsInfo[i])  
     }
-
+    isPressed = false;
   }
   catch(err){
     console.error(err);
