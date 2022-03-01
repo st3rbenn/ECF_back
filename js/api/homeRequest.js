@@ -68,7 +68,7 @@ btnLoadMore.addEventListener('submit', (ev) => {
         displayInfoJobs(jobsInfo[i])
       }
         isLoaded = true
-        container.append(btnLoadMore)
+        container.prependc(btnLoadMore)
     }catch(err) {
       console.error(err);
     }
