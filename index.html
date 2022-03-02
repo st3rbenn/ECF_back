@@ -31,7 +31,7 @@
 
 <body>
 
-  <header class="header__main">    
+  <header class="header__main" id="blurred">    
           <div class="container">
               <div class="header__item">      
                   <figure class="logo">
@@ -83,7 +83,7 @@
           </div>  
   </header>
 
-  <main class="main__page">
+  <main class="main__page" id="blurred">
           <!-- <template> -->
             <section class="jobs">
                 <div class="container" id="jobs">
@@ -94,21 +94,22 @@
             </section>
           <!-- </template> -->
   </main>
-    <div class="modal" data-toggle="visible" role="modal" aria-hidden='true' aria-labelledby="Filtre" aria-describedby="fenêtre de Filtre" tabindex="-1">
+    <form class="modal" data-toggle="visible" role="modal" aria-hidden='true' aria-labelledby="Filtre" aria-describedby="fenêtre de Filtre" tabindex="-1">
         <div class="filter__modal" id="modal" role="document">
           <div class="filter__modal__container">
             <img src="/assets/img/icon-location.svg" alt="" class="filter__modal__location">
             <input type="text" id="filter__location__modal" placeholder="Filter by location..." class="filter__modal__search__location">
           </div>
-          <div class="filter__modal__fullTime">  
+          <span class="filter__modal__separator"></span>
+          <div class="filter__modal__fullTime">
             <input type="checkbox" id="filter__modal__checkBox">
             <label for="filter__modal__checkBox" class="modal__label">Full Time Only</label>
           </div>
           <input type="submit" class="filter__modal__searchbtn" value="Search">
         </div>
-    </div>
-    <script src="/js/api/homeRequest.js"></script>
-  <script src="/js/components/modal.js"></script>
-  <script src="/js/components/switch.js"></script>
+    </form>
+    <script type="module" src="/js/api/homeRequest.js"></script>
+    <script type="module" src="/js/components/modal.js"></script>
+    <script type="module" src="/js/components/switch.js"></script>
 </body>
 </html>

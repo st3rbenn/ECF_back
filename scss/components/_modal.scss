@@ -1,0 +1,95 @@
+// =======
+// modal
+// =======
+.filter__modal{
+  display: none;
+  position: fixed;
+  width: 32.7rem;
+  height: 21.7rem;
+  background-color: var(--color-container);
+  border-radius: .6rem;
+  position: absolute;
+  top: 22.5rem;
+  left: 2.5rem;
+  gap: 2rem;
+  z-index: 5;
+  @include padding(0, 0, 2.4rem, 0);
+
+    &__location{
+    display: block;
+    width: 1.6rem;
+    height: 2.3rem;
+    
+    }
+
+    &__container{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    @include padding(2.4rem, 0, 0, 0);
+    }
+
+    &__search__location{
+    border: none;
+    color: var(--form-text);
+    opacity: 0.5;
+    background-color: var(--bg-color);
+    width: 13.3rem;
+    height: 2rem;
+    font-weight: 400;
+    }
+
+    &__fullTime{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    @include padding(2.4rem, 0, 0, 0);
+    }
+
+    &__searchbtn{
+    width: 27.9rem;
+    height: 4.8rem;
+    background-color: var(--violet);
+    color: var(--white);
+    border: none;
+    border-radius: .5rem;
+    @include margin(2.4rem, 0, 0, 0);
+  }
+  &__separator{
+    width: 100%;
+    height: .1rem;
+    border: 1px solid rgba(110,128,152,0.1);
+  }
+}
+.modal__label{
+  color: var(--name)
+}
+
+.visible{
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+}
+
+.b{
+  filter: blur(5px);
+  z-index: 8;
+}
+
+#filter__checkBox{
+width: 2rem;
+height: 2rem;
+margin-right: 1.6rem;
+appearance: none;
+background-color: var(--l-grey);
+cursor: pointer;
+}
+
+.modalback{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+}

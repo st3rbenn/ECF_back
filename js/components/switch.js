@@ -5,6 +5,8 @@ document.querySelector('#theme-switch').addEventListener('change', function(even
     document.querySelector('#switch__button').setAttribute('data-theme', 'dark') : document.querySelector('#switch__button').removeAttribute('data-theme');
     (event.target.checked) ? 
     document.querySelector('#filter').setAttribute('data-theme', 'dark') : document.querySelector('#filter').removeAttribute('data-theme');
+    (event.target.checked) ?
+    document.querySelector('#modal').setAttribute('data-theme', 'dark') : document.querySelector('#modal').removeAttribute('data-theme');
   });
 
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {

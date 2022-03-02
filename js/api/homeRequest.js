@@ -1,8 +1,9 @@
+import {URL_API} from '/js/api/linkAPI.js';
+
 const container = document.querySelector('#jobs')
 const btnLoadMore = document.querySelector('#loadmore')
 let isPressed = true;
 let isLoaded = false;
-const URL_API = 'https://ecf-dwwm.cefim-formation.org/'
 
 function displayInfoJobs (data){
 
@@ -35,7 +36,7 @@ function displayInfoJobs (data){
   jobsContract.textContent = data.contract
   jobsPosition.textContent = data.position
   jobsName.textContent = data.company
-  imgJobs.src = `https://ecf-dwwm.cefim-formation.org/${data.logo}`
+  imgJobs.src = `${URL_API}${data.logo}`
   city.textContent = data.location
   imgJobs.style.backgroundColor = data.logoBackground
   
@@ -58,7 +59,7 @@ function displayInfoJobs (data){
 btnLoadMore.addEventListener('submit', (ev) => {
   ev.preventDefault();
   async function loadMore() {
-    const response = await fetch(URL_API + `/api/jobs?offset=0`)
+    const response = await fetch(`${URL_API}` + `/api/jobs?offset=0`)
     try{
       const data = await response.json()
       const jobsInfo = data.jobs
@@ -76,7 +77,7 @@ btnLoadMore.addEventListener('submit', (ev) => {
 })
 
 async function getJobsInfo(){
-  const response = await fetch(URL_API + '/api/jobs?offset=12')
+  const response = await fetch(`${URL_API}` + '/api/jobs?offset=12')
   try{
 
     const data = await response.json()
