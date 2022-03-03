@@ -72,12 +72,20 @@
       display: flex;
       gap: 2rem;
       align-items: center;
-      @include margin(0, 5.1rem, 0, 0)
+      @include tablet{
+        @include margin(0, 5.1rem, 0, 0);
+      }
+      @include pc{
+      @include margin(0, 11.9rem, 0, 0)
+      }
     }
     &__location{
       display: flex;
       gap: 1rem;
       align-items: center;
+      @include pc{
+      margin-right: 10rem;
+      }
     }
 
 }

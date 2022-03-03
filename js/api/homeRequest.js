@@ -41,7 +41,7 @@ function displayInfoJobs (data){
   imgJobs.style.backgroundColor = data.logoBackground
   
   if (isPressed){
-    container.prepend(jobsContainer)
+    container.append(jobsContainer)
     jobsContainer.prepend(imgJobs, jobsItem)
     jobsItem.prepend(timeContainer, jobsContainerInfo, city)
     timeContainer.prepend(jobsPostedAt, dot, jobsContract)
@@ -49,27 +49,27 @@ function displayInfoJobs (data){
     
   }else if (isLoaded = true){
     container.append(jobsContainer)
-    jobsContainer.append(imgJobs, jobsItem)
-    jobsItem.append(timeContainer, jobsContainerInfo, city)
-    timeContainer.append(jobsPostedAt, dot, jobsContract)
-    jobsContainerInfo.append(jobsPosition, jobsName)
+    jobsContainer.prepend(imgJobs, jobsItem)
+    jobsItem.prepend(timeContainer, jobsContainerInfo, city)
+    timeContainer.prepend(jobsPostedAt, dot, jobsContract)
+    jobsContainerInfo.prepend(jobsPosition, jobsName)
   }
 }
 
 btnLoadMore.addEventListener('submit', (ev) => {
   ev.preventDefault();
   async function loadMore() {
-    const response = await fetch(`${URL_API}` + `/api/jobs?offset=0`)
+    const response = await fetch(`${URL_API}` + `/api/jobs?offset=12`)
     try{
       const data = await response.json()
       const jobsInfo = data.jobs
       console.table(jobsInfo)
-      jobsInfo.reverse()
       for (let i = 0; i < jobsInfo.length; i++) {
         displayInfoJobs(jobsInfo[i])
       }
         isLoaded = true
-        container.prependc(btnLoadMore)
+        // container.prependc(btnLoadMore)
+        btnLoadMore[0].setAttribute('disabled', true)
     }catch(err) {
       console.error(err);
     }
@@ -77,7 +77,7 @@ btnLoadMore.addEventListener('submit', (ev) => {
 })
 
 async function getJobsInfo(){
-  const response = await fetch(`${URL_API}` + '/api/jobs?offset=12')
+  const response = await fetch(`${URL_API}` + '/api/jobs?offset=0')
   try{
 
     const data = await response.json()
