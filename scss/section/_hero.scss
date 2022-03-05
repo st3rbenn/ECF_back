@@ -28,6 +28,10 @@
     background-color: var(--color-container);
     border-radius: .6rem;
     position: relative;
+    cursor: pointer;
+    &:hover{
+      transform: scale3d(1.1, 1.1, 1.1);
+    }
     @include pc{
       max-width: 35rem;
     }

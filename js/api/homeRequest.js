@@ -1,12 +1,16 @@
 import {URL_API} from '/js/api/linkAPI.js';
-
+const loader = document.querySelector('#loader')
 const container = document.querySelector('#jobs')
 const btnLoadMore = document.querySelector('#loadmore')
+
 let isPressed = true;
 let isLoaded = false;
 
-function displayInfoJobs (data){
 
+
+
+
+function displayInfoJobs (data){
   const jobsContainer = document.createElement('article')
   const imgJobs = document.createElement('img')
   const jobsItem = document.createElement('div')
@@ -18,6 +22,7 @@ function displayInfoJobs (data){
   const jobsPosition = document.createElement('h3')
   const jobsName = document.createElement('p')
   const city = document.createElement('p')
+  const dataLogoId = document.querySelector('data-id')
   
   jobsContainer.classList.add('jobs__container')
   jobsContainer.setAttribute('data-id', `${data.id}`)
@@ -29,8 +34,12 @@ function displayInfoJobs (data){
   jobsContainerInfo.classList.add('jobs__container__info')
   jobsPosition.classList.add('jobs__container__info__name')
   city.classList.add('city')
-
   
+  jobsContainer.addEventListener('click', () => {
+    const id = '?id=' + jobsContainer.getAttribute('data-id')
+    location.href = `/about.html${id}`
+  })
+
 
   jobsPostedAt.textContent = new Date(data.postedAt).toLocaleDateString('fr-FR')
   jobsContract.textContent = data.contract
@@ -59,11 +68,12 @@ function displayInfoJobs (data){
 btnLoadMore.addEventListener('submit', (ev) => {
   ev.preventDefault();
   async function loadMore() {
-    const response = await fetch(`${URL_API}` + `/api/jobs?offset=12`)
+    const response = await fetch(`${URL_API}` + `/api/jobs?offset=0`)
     try{
       const data = await response.json()
       const jobsInfo = data.jobs
       console.table(jobsInfo)
+      jobsInfo.reverse()
       for (let i = 0; i < jobsInfo.length; i++) {
         displayInfoJobs(jobsInfo[i])
       }
@@ -73,34 +83,63 @@ btnLoadMore.addEventListener('submit', (ev) => {
     }catch(err) {
       console.error(err);
     }
-  }loadMore();
+  }
+  loadMore();
 })
 
-async function getJobsInfo(){
-  const response = await fetch(`${URL_API}` + '/api/jobs?offset=0')
-  try{
 
-    const data = await response.json()
-    const jobsInfo = data.jobs
-    console.table(jobsInfo);
-    for (let i = 0; i < jobsInfo.length; i++) {
-      displayInfoJobs(jobsInfo[i])  
+
+// btnLoadMore.classList.add('hidden')
+loader.classList.remove('hidden')
+
+
+setTimeout(() => {
+  async function getJobsInfo(){
+    const response = await fetch(`${URL_API}` + '/api/jobs?offset=12')
+    try{
+  
+      const data = await response.json()
+      const jobsInfo = data.jobs
+      console.table(jobsInfo);
+      jobsInfo.reverse()
+      for (let i = 0; i < jobsInfo.length; i++) {
+        displayInfoJobs(jobsInfo[i])  
+      }
+      isPressed = false;
+      loader.classList.add('hidden')
+      btnLoadMore.setAttribute('disabled', false)
     }
-    isPressed = false;
+    catch(err){
+      console.error(err);
+    }
+  }getJobsInfo()
+}, 2500)
+
+
+document.addEventListener("scroll", handleScroll);
+// get a reference to the button
+const scrollTop = document.querySelector('#scrollTop')
+
+function handleScroll() {
+  const scrollableHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const GOLDEN_RATIO = 0.2;
+
+  if ((document.documentElement.scrollTop / scrollableHeight ) > GOLDEN_RATIO) {
+    //show button
+    scrollTop.classList.remove('hidden');
+  } else {
+    //hide button
+    scrollTop.classList.add('hidden');
   }
-  catch(err){
-    console.error(err);
-  }
-}getJobsInfo();
+}
 
 
-////For aria Label///
+scrollTop.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+})
 
-// function nonAltImages() {
-//   const images = document.querySelectorAll('img');
-//   for (let i = 0; i < images.length; i++) {
-//     if (!images[i].hasAttribute('alt')) {
-//       images[i].style.border = '1px solid red';
-//     }
-//   }
-// }
+
+

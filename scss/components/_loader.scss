@@ -1,0 +1,66 @@
+.loader{
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.hidden{
+  display: none;
+}
+
+
+.circle{
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: var(--violet);
+  margin-bottom: 2rem;
+  &:nth-child(1){
+    margin-left: 0;
+    left: 47%;
+    position: absolute;
+    animation: bounced 2s ease-in-out ;
+  }
+  &:nth-child(2){
+    left: 49%;
+    position: absolute;
+    animation: bounced 1s ease-in-out infinite;
+  }
+  &:nth-child(3){
+    left: 51%;
+    position: absolute;
+    animation: bounced 2s ease-in-out infinite;
+  }
+}
+
+
+@keyframes bounced{
+  from {
+    top: 0;
+  }
+  50%{
+    top: -2rem;
+  }
+  to{
+    top: 0;
+  }
+}
+
+
+
+.scrollTop{
+  display: visible;
+  position: absolute;
+  padding: 1.5rem;
+  border: none;
+  background-color: var(--violet);
+  border-radius: 1rem;
+  top: 32rem;
+  left: 15rem;
+  cursor: pointer;
+}
+
+.Sticky{
+  position: fixed;
+  
+}
