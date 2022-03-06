@@ -84,6 +84,10 @@ margin-right: 1.6rem;
 appearance: none;
 background-color: var(--l-grey);
 cursor: pointer;
+  &:checked{
+    appearance: auto;
+    color: var(--violet);
+  }
 }
 
 .modalback{

@@ -1,11 +1,12 @@
 .about{
   &__section{
-    @include margin(3.9rem, 3.9rem, 21.4rem, 6.4rem);
+    @include margin(2.4rem, 2.4rem, 11rem, 6.4rem);
     @include padding(2.4rem, 2.3rem, 4.1rem, 4.6rem);
     background-color: var(--color-container);
     border-radius: .6rem;
     @include tablet{
-    @include margin(3.9rem, 3.9rem, 13.2rem, 6.4rem);
+    @include margin(3.9rem, 3.9rem, 3.2rem, 6.4rem);
+    max-width: 111rem;
     }
   }
   &__btn__applynow{
@@ -16,30 +17,39 @@
     font-weight: 700;
     text-decoration: none;
     text-align: center;
+    display: block;
+    @include tablet{
+      width: fit-content;
+      height: fit-content;
+    }
   }
   &__card{
     &__header{
-      width: clamp(29rem, 79%, 111rem);
+      width: clamp(29rem, 86%, 111rem);
       height: 20.5rem;
       background-color: var(--color-container);
       border-radius: .6rem;
       position: absolute;
       top: 12.1rem;
-      right: 4rem;
+      right: 2.5rem;
       display: flex;
       flex-direction: column;
+      gap: 2rem;
 
       @include tablet{
-        display: inline-flex;
+        display: flex;
         flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: flex-start;
-        align-items: flex-start;
-        align-content: normal;
+        justify-content: space-between;
         height: 14rem;
         top: 10rem;
-        width: clamp(29rem, 90%, 111rem);
+        right: 4rem;
+        width: clamp(29rem,86%,111rem);
       }
+
+      @include pc{
+        width: clamp(29rem,93%,111rem);
+      }
+      
     }
     &__img{
       position: absolute;
@@ -47,7 +57,7 @@
       border-radius: 1.5rem;
       padding: .5rem .5rem;
       top: -2.5rem;
-      right: 12rem;
+      right: 1.2rem;
       @include tablet{
         position: initial;
         grid-area: 1 / 1 / 2 / 2;
@@ -69,8 +79,16 @@
       }
     }
     &__items{
+      position: relative;
       align-self: center;
       text-align: center;
+    @include tablet{
+      display: flex;
+    }
+    & > div{
+      @include tablet{
+        align-self: center;
+      }
       & > h3{
         font-weight: 700;
         margin-top: 5.1rem;
@@ -79,10 +97,10 @@
           margin-top: 0;
         }
       }
+    }
       @include tablet{
         text-align: left;
         grid-area: 1 / 2 / 2 / 3;
-        margin-right: 24.7rem;
       }
     }
     &__button{
@@ -92,12 +110,12 @@
       text-decoration: none;
       text-align: center;
       font-weight: 700;
-      @include padding(0, 0, 1.7rem, 1.1rem);
-      @include margin(8.5rem, 9rem, 2.2rem, 0);
+      @include padding(2rem, 2rem, 1.7rem, 1.1rem);
+      width: fit-content;
+      align-self: center;
       @include tablet{
-        @include margin(0, 4rem, 4.6rem, 4.6rem);
+        margin-right: 4rem;
         @include padding(2.05rem, 2.05rem, 1.7rem, 1.1rem);
-        color: var(--white);
         grid-area: 1 / 2 / 2 / 3;
       }
     }
@@ -106,11 +124,11 @@
   &__jobs__container__items{
     margin-bottom: 3.2rem;
     @include tablet{
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: 0.5fr; 
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-item: center;
     }
-
     & > .time{
       grid-area: 1 / 1 / 2 / 2;
     }
@@ -121,14 +139,22 @@
     margin-top: .8rem;
     display: flex;
     flex-direction: column;
+    margin-bottom: 2rem;
+    @include tablet {
+      align-self: center;
+    }
     & > h1{
       color: var(--name);
     }
     & > p{
-      margin-bottom: 5rem;
+      margin-bottom: 3rem;
+    }
+    &__name{
+      font-size: 2rem;
+      font-size: clamp(2rem, 1.2366412213740459rem + 2.035623409669211vw, 2.8rem);
     }
   }
-
+  
   &__description{
     margin-bottom: 7.4rem;
   }
@@ -189,9 +215,12 @@
   }
 
   &__footer{
-    display: flex;
-    flex-direction: column;
+    
     background-color: var(--color-container);
+    
+    &__info{
+      margin-left: 3.9rem;
+    }
 
     &__applynow{
       @include padding(6.4rem, 6.4rem, 1.6rem, 1.2rem);
@@ -201,8 +230,39 @@
       border-radius: .5rem;
       text-decoration: none;
       text-align: center;
-      text-align: center;
       font-weight: 700;
+      width: 100%;
+      @include tablet{
+        align-self: center;
+        display: block;
+        width: auto;
+        @include padding(2.8rem, 2.8rem, 1.6rem, 1.2rem);
+      }
     }
   }
+}
+
+#main{
+  display: flex;
+  justify-content: center;
+  align-content: flex-start;
+  align-items: start;
+}
+
+.dnone {
+  display: none;
+  @include tablet{
+    display: block;
+  }
+}
+
+
+.container__footer{
+  max-width: 111rem;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
 }
