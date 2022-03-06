@@ -32,10 +32,10 @@
 <body>
     <header class="header__main">    
           <div class="container">
-              <div class="header__item">      
-                  <figure class="logo">
-                      <img src="/assets/img/logo.svg" alt="Logo de devjobs">
-                  </figure>
+              <div class="header__item">
+                <a href="/index.html" class="logo">
+                  <img src="/assets/img/logo.svg" alt="Logo de devjobs" >
+                </a>
                   <div class="header__switchmode">
                       <figure class="logo-switchmode">
                               <img src="/assets/img/icon-sun.svg" alt="">
@@ -52,22 +52,22 @@
               </div>
               <div class="about__card__header">
                 <div class="about__card__items">
-                  <figure class="about__card__img">
-                    <img src="/assets/img/scoot.svg" alt="" class="about__card__logo">
+                  <figure class="about__card__img" id="logoBg">
+                    <img src="" alt="" class="about__card__logo" id="logo">
                   </figure>
                   <div>
-                    <h3>Scoot</h3>
-                    <p>scoot.com</p>
+                    <h3 id="headerTitle"></h3>
+                    <p id="headerWebsite"></p>
                   </div>  
                 </div>
-                <a href="" class="about__card__button">Company Site</a>
+                <a href="" id="linkBtn" class="about__card__button">Company Site</a>
             </div>
           </div>
     </header>
 
     <main id="main" class="container">
       <section id="aboutJobs" class="about__section">
-        <div class="about__jobs__container__items">
+        <!-- <div class="about__jobs__container__items">
           <div>
             <div class="time">
               <p>07/11/2021</p>
@@ -103,20 +103,21 @@
                     <li>Mauris nibh felis, adipiscing varius, adipiscing in, lacinia vel, tellus. Suspendisse ac urna. Etiam pellentesque mauris ut lectus.</li>
                     <li>Morbi interdum mollis sapien. Sed</li>
                 </ol>
-        </div>
+        </div> -->
       </section>
     </main>
     <footer class="about__footer">
       <div class="container__footer">
-        <div class="about__footer__info dnone">
-          <h4>Senior Software Engineer</h4>
-          <p>Scoot</p>
+        <div class="about__footer__info dnone" id="about__footer">
+          <h4></h4>
+          <p></p>
         </div>
-        <a href="" class="about__footer__applynow">Apply Now</a>
+        <a href="" id="linkBtn" class="about__footer__applynow">Apply Now</a>
       </div>
     </footer>
 
-    <script src="js/api/aboutRequest.js"></script>
+    <script type="module" src="js/api/linkAPI.js"></script>
+    <script type="module" src="js/api/aboutRequest.js"></script>
     <script src="/js/components/switch.js"></script>
   </body>
 </html>

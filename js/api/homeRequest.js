@@ -40,7 +40,6 @@ function displayInfoJobs (data){
     location.href = `/about.html${id}`
   })
 
-
   jobsPostedAt.textContent = new Date(data.postedAt).toLocaleDateString('fr-FR')
   jobsContract.textContent = data.contract
   jobsPosition.textContent = data.position
@@ -68,7 +67,7 @@ function displayInfoJobs (data){
 btnLoadMore.addEventListener('submit', (ev) => {
   ev.preventDefault();
   async function loadMore() {
-    const response = await fetch(`${URL_API}` + `/api/jobs?offset=0`)
+    const response = await fetch(`${URL_API}/api/jobs?offset=0`)
     try{
       const data = await response.json()
       const jobsInfo = data.jobs
@@ -95,7 +94,7 @@ loader.classList.remove('hidden')
 
 setTimeout(() => {
   async function getJobsInfo(){
-    const response = await fetch(`${URL_API}` + '/api/jobs?offset=12')
+    const response = await fetch(`${URL_API}/api/jobs?offset=12`)
     try{
   
       const data = await response.json()
