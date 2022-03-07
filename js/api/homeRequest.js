@@ -2,12 +2,12 @@ import {URL_API} from '/js/api/linkAPI.js';
 const loader = document.querySelector('#loader')
 const container = document.querySelector('#jobs')
 const btnLoadMore = document.querySelector('#loadmore')
-
+const searchForm = document.querySelector('#filter')
+const inputAPIText = document.querySelectorAll('#filter__container__logo')
+const locationFilter = document.querySelector('#filterLocation')
+const checkBox = document.querySelector('#checkBox')
 let isPressed = true;
 let isLoaded = false;
-
-
-
 
 
 function displayInfoJobs (data){
@@ -22,7 +22,7 @@ function displayInfoJobs (data){
   const jobsPosition = document.createElement('h3')
   const jobsName = document.createElement('p')
   const city = document.createElement('p')
-  const dataLogoId = document.querySelector('data-id')
+  
   
   jobsContainer.classList.add('jobs__container')
   jobsContainer.setAttribute('data-id', `${data.id}`)
@@ -36,7 +36,7 @@ function displayInfoJobs (data){
   city.classList.add('city')
   
   jobsContainer.addEventListener('click', () => {
-    const id = '?id=' + jobsContainer.getAttribute('data-id')
+    const id = `?id=${data.id}`
     location.href = `/about.html${id}`
   })
 
@@ -76,9 +76,9 @@ btnLoadMore.addEventListener('submit', (ev) => {
       for (let i = 0; i < jobsInfo.length; i++) {
         displayInfoJobs(jobsInfo[i])
       }
-        isLoaded = true
-        // container.prependc(btnLoadMore)
-        btnLoadMore[0].setAttribute('disabled', true)
+      isLoaded = true
+      // container.prependc(btnLoadMore)
+      btnLoadMore[0].setAttribute('disabled', true)
     }catch(err) {
       console.error(err);
     }
@@ -93,10 +93,11 @@ loader.classList.remove('hidden')
 
 
 setTimeout(() => {
+  btnLoadMore.classList.remove('dnone')
   async function getJobsInfo(){
     const response = await fetch(`${URL_API}/api/jobs?offset=12`)
     try{
-  
+      
       const data = await response.json()
       const jobsInfo = data.jobs
       console.table(jobsInfo);
@@ -112,7 +113,7 @@ setTimeout(() => {
       console.error(err);
     }
   }getJobsInfo()
-}, 2500)
+}, 3000)
 
 
 document.addEventListener("scroll", handleScroll);
@@ -121,9 +122,9 @@ const scrollTop = document.querySelector('#scrollTop')
 
 function handleScroll() {
   const scrollableHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  const GOLDEN_RATIO = 0.2;
-
-  if ((document.documentElement.scrollTop / scrollableHeight ) > GOLDEN_RATIO) {
+  const ratio = 0.2;
+  
+  if ((document.documentElement.scrollTop / scrollableHeight ) > ratio) {
     //show button
     scrollTop.classList.remove('hidden');
   } else {
@@ -139,6 +140,83 @@ scrollTop.addEventListener('click', () => {
     behavior: "smooth"
   });
 })
+
+
+
+
+function deleteAll(){
+  while (container.firstChild) {
+    container.removeChild(container.lastChild)
+  }
+}
+
+
+for (let i = 0; i < inputAPIText.length; i++) {
+  inputAPIText[i].value = ''
+}
+
+searchForm.addEventListener('submit', (ev) =>{
+  ev.preventDefault();
+
+  if (inputAPIText[0] && inputAPIText[0].value && locationFilter && locationFilter.value)
+  {
+      getSearchResult(inputAPIText[0].value, locationFilter.value)
+      inputAPIText[0].value = ''
+      locationFilter.value = ''
+  }
+  else if(inputAPIText[1] && inputAPIText[1].value && locationFilter && locationFilter.value)
+  {
+    getSearchResult(inputAPIText[1].value, locationFilter.value)
+    inputAPIText[1].value = ''
+    locationFilter.value = ''
+  }
+  else if (inputAPIText[0] && inputAPIText[0].value)
+  {
+      getSearchResult(inputAPIText[0].value, '')
+      inputAPIText[0].value = ''
+      locationFilter.value = ''
+  }
+  else if(inputAPIText[1] && inputAPIText[1].value)
+  {
+    getSearchResult(inputAPIText[1].value, '')
+    inputAPIText[1].value = ''
+    locationFilter.value = ''
+  }
+  else if(locationFilter && locationFilter.value){
+    getSearchResult('', locationFilter.value)
+    locationFilter.value = ''
+  }
+  else
+  {
+    console.log('not valued ?')
+  }
+
+
+  async function getSearchResult(text, location){
+    const URL_PARAM = `?text=${text}&location=${location}`
+    encodeURIComponent(URL_PARAM)
+    const response = await fetch(`${URL_API}api/jobs/search${URL_PARAM}`)
+    try{
+      const data = await response.json()
+      // for (let i = 0; i < data.length; i++) {
+      //   const element = array[i];
+        
+      // }
+      if (response.statusCode == 400){
+        console.error(data.error)
+      }else{
+        console.log(data.jobs);
+      }
+  
+    }catch(err){
+      console.error(err);
+    }
+  
+  }
+})
+
+console.log(checkBox);
+
 
 
 

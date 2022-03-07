@@ -25,7 +25,7 @@
   }
   &__card{
     &__header{
-      width: clamp(29rem, 86%, 111rem);
+      width: clamp(29rem, 87%, 111rem);
       height: 20.5rem;
       background-color: var(--color-container);
       border-radius: .6rem;
@@ -43,7 +43,7 @@
         height: 14rem;
         top: 10rem;
         right: 4rem;
-        width: clamp(29rem,86%,111rem);
+        width: clamp(29rem,90%,111rem);
       }
 
       @include pc{
@@ -57,7 +57,10 @@
       border-radius: 1.5rem;
       padding: .5rem .5rem;
       top: -2.5rem;
-      right: 6.5rem;
+      right: 50%;
+      transform: translateX(50%);
+      margin-left: auto;
+      margin-right: auto;
       @include tablet{
         position: initial;
         grid-area: 1 / 1 / 2 / 2;
@@ -68,6 +71,7 @@
         align-items: center;
         justify-content: center;
         margin-right: 4rem;
+        transform: none;
       }
     }
     &__logo{
@@ -140,23 +144,25 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 2rem;
+    & > p{
+      margin-bottom: 3rem;
+      @include tablet{
+        margin-bottom: 0;
+      }
+    }
     @include tablet {
       align-self: center;
     }
-    & > h1{
-      color: var(--name);
-    }
-    & > p{
-      margin-bottom: 3rem;
-    }
+    
     &__name{
       font-size: 2rem;
       font-size: clamp(2rem, 1.2366412213740459rem + 2.035623409669211vw, 2.8rem);
+      color: var(--name);
     }
   }
   
   &__description{
-    margin-bottom: 7.4rem;
+    margin-bottom: 4.8rem;
   }
   &__requirements{
     & > h3{
@@ -166,23 +172,28 @@
     & > p{
       margin-bottom: 6.4rem;
     }
-    & > ul > li{
-      list-style: none;
-      padding-bottom: 1.4rem;
-      position: relative;
-      
-      &::before{
-        content: "";
-        position: absolute;
-        top: 1.2rem;
-        left: -4rem;
-        width: .4rem;
-        height: .4rem;
-        text-align: center;
-        display: inline-block;
-        background: var(--violet);
-        color: var(--violet);
-        border-radius: 50%;
+    & > ul {
+      margin-bottom: 0;
+      & > li{
+        list-style: none;
+        padding-bottom: 1.4rem;
+        position: relative;
+        &:last-child{
+          padding-bottom: 0;
+        }
+        &::before{
+          content: "";
+          position: absolute;
+          top: 1.2rem;
+          left: -4rem;
+          width: .4rem;
+          height: .4rem;
+          text-align: center;
+          display: inline-block;
+          background: var(--violet);
+          color: var(--violet);
+          border-radius: 50%;
+        }
       }
     }
   }
@@ -191,6 +202,7 @@
     & > h3{
       margin-bottom: 2.3rem;
       color: var(--name);
+      margin-top: 4.6rem;
     }
     & > p {
       margin-bottom: 3.8rem;
@@ -220,6 +232,9 @@
     
     &__info{
       margin-left: 3.9rem;
+      & > h4{
+        color: var(--name);
+      }
     }
 
     &__applynow{

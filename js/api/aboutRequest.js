@@ -7,7 +7,6 @@ const logoBg = document.querySelector('#logoBg')
 const headerTitle = document.querySelector('#headerTitle')
 const headerWebsite= document.querySelector('#headerWebsite')
 
-
 const URL = window.location.search.toString().split('=')[1]
 
 function aboutJobsInfoData(data) {
@@ -69,7 +68,7 @@ function aboutJobsInfoData(data) {
     logo.src = `${URL_API}${data.logo}`
     logoBg.style.backgroundColor = data.logoBackground
     headerTitle.textContent = data.company
-    headerWebsite.textContent = data.website.split('/').slice(2, 4).join('/')
+    headerWebsite.textContent = data.website.split('/').slice(3, 4).join('').concat('.com')
 
 
     for (let i = 0; i < data.requirements.items.length; i++) {  
@@ -83,10 +82,9 @@ function aboutJobsInfoData(data) {
       whatYWillDoList.append(whatYWillDoListItems)
     }
 
-    for (let i = 0; i < linkBtn.length; i++) {
-      console.log(linkBtn[i]);
-      console.log(i);
-    }
+    // for (let i = 0; i < linkBtn.length; i++) {
+    //   console.log(linkBtn[i]);
+    // }
 
     linkBtn[0].href = data.apply
     linkBtn[1].href = data.website
@@ -106,10 +104,9 @@ function aboutJobsInfoData(data) {
 
 
 async function getJobsInfo(){
-  const response = await fetch(`${URL_API}/api/job/${URL}`)
+  const response = await fetch(`${URL_API}api/job/${URL}`)
   try{
     const data = await response.json()
-    console.log(data);
     aboutJobsInfoData(data)
   }catch(err){
     console.error(err);

@@ -49,18 +49,24 @@
 
 
 .scrollTop{
-  display: visible;
-  position: absolute;
+  @include pc{
+  position: sticky;
   padding: 1.5rem;
   border: none;
   background-color: var(--violet);
   border-radius: 1rem;
-  top: 32rem;
-  left: 15rem;
+  margin-left: 19rem;
+  margin-top: 40rem;
   cursor: pointer;
+  }
 }
 
 .Sticky{
-  position: fixed;
+  display: none;
+  @media screen and (min-width: 100em){
+    
+    position: fixed;
+    display: inline-block;
+  } 
   
 }
