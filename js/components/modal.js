@@ -1,7 +1,7 @@
 const filterBtn = document.querySelector('#filterBtn');
 const modal = document.querySelector('#modal')
 const modalBack = document.createElement('div')
-const checkBoxModal = document.querySelector('#filter__modal__checkBox')
+const checkBoxModal = document.querySelector('#checkBox')
 const blurred = document.querySelectorAll('#blurred')
 
 function closeModal() {
@@ -47,6 +47,16 @@ document.addEventListener('keydown', (e) => {
     remove();
   }
 })})
+
+
+
+scrollTop.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+})
+
 
 
   

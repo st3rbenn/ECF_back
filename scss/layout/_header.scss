@@ -65,7 +65,8 @@
       width: clamp(29rem, 94%, 111rem);
     }
     @include pc{
-      width: clamp(29rem, 98%, 111rem);
+      width: clamp(29rem, 100%, 111rem);
+      left: 0;
     }
     
     &__search{
@@ -139,14 +140,18 @@
     }
   }
   &__search__location{
-    font-weight: 400;
-    border: none;
-    color: var(--form-text);
-    opacity: 0.5;
-    background-color: var(--bg-color);
-    width: 15rem;
-    height: 2rem;
-    outline: none;
+    display: none;
+    @include tablet{
+      display: block;
+      font-weight: 400;
+      border: none;
+      color: var(--form-text);
+      opacity: 0.5;
+      background-color: var(--bg-color);
+      width: 15rem;
+      height: 2rem;
+      outline: none;
+    }
   }
   
   &__search__logo__location{

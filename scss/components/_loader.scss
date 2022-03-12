@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   position: relative;
+  margin-bottom: 3rem;
 }
 
 .hidden{
@@ -14,22 +15,38 @@
   height: 2rem;
   border-radius: 50%;
   background-color: var(--violet);
-  margin-bottom: 2rem;
   &:nth-child(1){
-    margin-left: 0;
-    left: 47%;
+    left: 38%;
     position: absolute;
-    animation: bounced 2s ease-in-out ;
+    animation: bounced 2s ease infinite;
+    @include tablet{
+    left: 44%;
+    }
+    @include pc {
+    left: 47%;
+    }
   }
   &:nth-child(2){
-    left: 49%;
+    left: 46%;
     position: absolute;
-    animation: bounced 1s ease-in-out infinite;
+    animation: bounced 1s ease infinite;
+    @include tablet{
+      left: 48%;
+    }
+    @include pc{
+    left: 49%;
+    }
   }
   &:nth-child(3){
-    left: 51%;
+    left: 54%;
     position: absolute;
-    animation: bounced 2s ease-in-out infinite;
+    animation: bounced 2s ease infinite;
+    @include tablet{
+    left: 52%;
+    }
+    @include pc {
+    left: 51%;
+    }
   }
 }
 

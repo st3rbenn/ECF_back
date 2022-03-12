@@ -67,8 +67,8 @@
                     <div class="filter__right">
                         <div class="filter__fullTime">  
                             <input type="checkbox" id="checkBox">
-                            <label for="filter__checkBox" class="label">Full Time</label>
-                            <label for="filter__checkBox" class="label2">Full Time Only</label>
+                            <label for="checkBox" class="label">Full Time</label>
+                            <label for="checkBox" class="label2">Full Time Only</label>
                         </div>
                         <button class="filter__logo__btn" id="filterBtn">
                           <img src="assets/img/icon-filter.svg" class="filter__logo__logo" aria-label="Bouton pour afficher une petite fenêtre et rechercher par filtre">
@@ -107,16 +107,16 @@
 
 
   
-    <form class="modal" data-toggle="visible" role="modal" aria-hidden='true' aria-labelledby="Filtre" aria-describedby="fenêtre de Filtre" tabindex="-1">
+    <form class="modal" data-toggle="visible" role="modal" aria-hidden='true' aria-labelledby="Filtre" aria-describedby="fenêtre de Filtre" tabindex="-1" id="filter">
         <div class="filter__modal" id="modal" role="document">
           <div class="filter__modal__container">
             <img src="/assets/img/icon-location.svg" alt="" class="filter__modal__location">
-            <input type="text" id="filter__location__modal" placeholder="Filter by location..." class="filter__modal__search__location">
+            <input type="text" id="filterLocation" placeholder="Filter by location..." class="filter__modal__search__location">
           </div>
           <span class="filter__modal__separator"></span>
           <div class="filter__modal__fullTime">
-            <input type="checkbox" id="filter__modal__checkBox">
-            <label for="filter__modal__checkBox" class="modal__label">Full Time Only</label>
+            <input type="checkbox" id="checkBox">
+            <label for="checkBox" class="modal__label">Full Time Only</label>
           </div>
           <input type="submit" class="filter__modal__searchbtn" value="Search">
         </div>

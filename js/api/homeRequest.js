@@ -6,6 +6,9 @@ const searchForm = document.querySelector('#filter')
 const inputAPIText = document.querySelectorAll('#filter__container__logo')
 const locationFilter = document.querySelector('#filterLocation')
 const checkBox = document.querySelector('#checkBox')
+checkBox.checked = false
+checkBox.Value = '0'
+
 let isPressed = true;
 let isLoaded = false;
 
@@ -77,47 +80,42 @@ btnLoadMore.addEventListener('submit', (ev) => {
         displayInfoJobs(jobsInfo[i])
       }
       isLoaded = true
-      // container.prependc(btnLoadMore)
       btnLoadMore[0].setAttribute('disabled', true)
     }catch(err) {
       console.error(err);
     }
-  }
-  loadMore();
+  }loadMore();
 })
 
 
 
-// btnLoadMore.classList.add('hidden')
+btnLoadMore.setAttribute('disabled', true)
 loader.classList.remove('hidden')
 
 
 setTimeout(() => {
-  btnLoadMore.classList.remove('dnone')
   async function getJobsInfo(){
     const response = await fetch(`${URL_API}/api/jobs?offset=12`)
     try{
       
       const data = await response.json()
       const jobsInfo = data.jobs
-      console.table(jobsInfo);
+      // console.table(jobsInfo);
       jobsInfo.reverse()
       for (let i = 0; i < jobsInfo.length; i++) {
         displayInfoJobs(jobsInfo[i])  
       }
       isPressed = false;
       loader.classList.add('hidden')
-      btnLoadMore.setAttribute('disabled', false)
     }
     catch(err){
       console.error(err);
     }
   }getJobsInfo()
-}, 3000)
+}, 4000)
 
 
-document.addEventListener("scroll", handleScroll);
-// get a reference to the button
+
 const scrollTop = document.querySelector('#scrollTop')
 
 function handleScroll() {
@@ -133,16 +131,7 @@ function handleScroll() {
   }
 }
 
-
-scrollTop.addEventListener('click', () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-})
-
-
-
+document.addEventListener("scroll", handleScroll);
 
 function deleteAll(){
   while (container.firstChild) {
@@ -160,63 +149,97 @@ searchForm.addEventListener('submit', (ev) =>{
 
   if (inputAPIText[0] && inputAPIText[0].value && locationFilter && locationFilter.value)
   {
-      getSearchResult(inputAPIText[0].value, locationFilter.value)
+      if (checkBox.checked){
+        deleteAll()
+        getSearchResult(inputAPIText[0].value, locationFilter.value, '1')
+        btnLoadMore.classList.add('dnone')
+      }else{
+        deleteAll()
+        getSearchResult(inputAPIText[0].value, locationFilter.value, '0')
+      }
       inputAPIText[0].value = ''
       locationFilter.value = ''
   }
   else if(inputAPIText[1] && inputAPIText[1].value && locationFilter && locationFilter.value)
   {
-    getSearchResult(inputAPIText[1].value, locationFilter.value)
-    inputAPIText[1].value = ''
-    locationFilter.value = ''
+    if (checkBox.checked){
+      deleteAll()
+      getSearchResult(inputAPIText[1].value, locationFilter.value, '1')
+      load
+    }else{
+      deleteAll()
+      getSearchResult(inputAPIText[1].value, locationFilter.value, '0')
+    }
+      inputAPIText[1].value = ''
+      locationFilter.value = ''
   }
   else if (inputAPIText[0] && inputAPIText[0].value)
   {
-      getSearchResult(inputAPIText[0].value, '')
+    if (checkBox.checked){
+      deleteAll()
+      getSearchResult(inputAPIText[0].value, '', '1')
+    }else{
+      deleteAll()
+      getSearchResult(inputAPIText[0].value, '', '0')
+    }
       inputAPIText[0].value = ''
       locationFilter.value = ''
   }
   else if(inputAPIText[1] && inputAPIText[1].value)
   {
-    getSearchResult(inputAPIText[1].value, '')
-    inputAPIText[1].value = ''
-    locationFilter.value = ''
+    if (checkBox.checked){
+      deleteAll()
+      getSearchResult(inputAPIText[1].value, '', '1')
+    }else{
+      deleteAll()
+      getSearchResult(inputAPIText[1].value, '', '0')
+    }
+      inputAPIText[1].value = ''
+      locationFilter.value = ''
   }
-  else if(locationFilter && locationFilter.value){
-    getSearchResult('', locationFilter.value)
-    locationFilter.value = ''
+  else if(locationFilter && locationFilter.value)
+  {
+    if (checkBox.checked){
+      deleteAll()
+      getSearchResult('', locationFilter.value, '1')
+    }else{
+      deleteAll()
+      getSearchResult('', locationFilter.value, '0')
+    }
+      locationFilter.value = ''
+  }
+  else if (checkBox.checked)
+  {
+      deleteAll()
+      getSearchResult('', '', '1')
   }
   else
   {
-    console.log('not valued ?')
+      console.log('not valued ?')
   }
 
 
-  async function getSearchResult(text, location){
-    const URL_PARAM = `?text=${text}&location=${location}`
+  async function getSearchResult(text, location, fullTime){
+    const URL_PARAM = `?text=${text}&location=${location}&fulltime=${fullTime}`
     encodeURIComponent(URL_PARAM)
     const response = await fetch(`${URL_API}api/jobs/search${URL_PARAM}`)
     try{
+      btnLoadMore[0].value = 'Fuyez pauvre fou !'
       const data = await response.json()
-      // for (let i = 0; i < data.length; i++) {
-      //   const element = array[i];
-        
-      // }
-      if (response.statusCode == 400){
+      if (response.statusCode === 400){
         console.error(data.error)
       }else{
-        console.log(data.jobs);
+        const jobsInfo = data.jobs
+        console.table(jobsInfo)
+        jobsInfo.reverse()
+        for (let i = 0; i < jobsInfo.length; i++) {
+          displayInfoJobs(jobsInfo[i])
+        }
       }
-  
     }catch(err){
       console.error(err);
     }
   
   }
 })
-
-console.log(checkBox);
-
-
-
 

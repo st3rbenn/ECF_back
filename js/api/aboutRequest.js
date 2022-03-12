@@ -17,6 +17,7 @@ function aboutJobsInfoData(data) {
 
     const time = document.createElement('div')
     time.classList.add('time')
+    
     const date = document.createElement('p')
     const dot = document.createElement('span')
     dot.classList.add('dot')

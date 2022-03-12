@@ -152,6 +152,7 @@
     }
     @include tablet {
       align-self: center;
+      margin-bottom: 0;
     }
     
     &__name{
