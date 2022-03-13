@@ -13,6 +13,9 @@ let isPressed = true;
 let isLoaded = false;
 
 
+// =====================================================================================
+// Fonction pour afficher dynamiquement dans le dom a partir des data récup' dans l'api
+// =====================================================================================
 function displayInfoJobs (data){
   const jobsContainer = document.createElement('article')
   const imgJobs = document.createElement('img')
@@ -67,6 +70,11 @@ function displayInfoJobs (data){
   }
 }
 
+// =================================================
+// bouton pour afficher les 12 dernier jobs de l'api 
+// =================================================
+
+
 btnLoadMore.addEventListener('submit', (ev) => {
   ev.preventDefault();
   async function loadMore() {
@@ -88,33 +96,40 @@ btnLoadMore.addEventListener('submit', (ev) => {
 })
 
 
+// =====================================================================================
+// 1er appel api pour récuperer les Jobs
+// =====================================================================================
 
 btnLoadMore.setAttribute('disabled', true)
 loader.classList.remove('hidden')
 
-
-setTimeout(() => {
-  async function getJobsInfo(){
-    const response = await fetch(`${URL_API}/api/jobs?offset=12`)
-    try{
-      
-      const data = await response.json()
-      const jobsInfo = data.jobs
-      // console.table(jobsInfo);
-      jobsInfo.reverse()
-      for (let i = 0; i < jobsInfo.length; i++) {
-        displayInfoJobs(jobsInfo[i])  
-      }
-      isPressed = false;
-      loader.classList.add('hidden')
+async function getJobsInfo(){
+  const response = await fetch(`${URL_API}/api/jobs?offset=12`)
+  try{
+    
+    const data = await response.json()
+    const jobsInfo = data.jobs
+    // console.table(jobsInfo);
+    jobsInfo.reverse()
+    for (let i = 0; i < jobsInfo.length; i++) {
+      displayInfoJobs(jobsInfo[i])  
     }
-    catch(err){
-      console.error(err);
-    }
-  }getJobsInfo()
-}, 4000)
+    isPressed = false;
+    btnLoadMore[0].value = 'Load More'
+    loader.classList.add('hidden')
+  }
+  catch(err){
+    console.error(err);
+  }
+}
+
+setTimeout(() => {getJobsInfo()}, 4000);
 
 
+
+// ================================================
+// petit bouton userr-friendly pour auto scroll-top 
+// ================================================
 
 const scrollTop = document.querySelector('#scrollTop')
 
@@ -133,6 +148,12 @@ function handleScroll() {
 
 document.addEventListener("scroll", handleScroll);
 
+
+
+// =========================================
+// petite fonction pour delete tout les jobs 
+// =========================================
+
 function deleteAll(){
   while (container.firstChild) {
     container.removeChild(container.lastChild)
@@ -140,9 +161,14 @@ function deleteAll(){
 }
 
 
-for (let i = 0; i < inputAPIText.length; i++) {
-  inputAPIText[i].value = ''
-}
+
+
+// ===============================================
+// gestion des filtres ( un peut farfelu je sais )
+// ===============================================
+// ===========================================================================================================================
+// je gère chaque cas un a un CAD, imaginons checkbox checked mais input vide ça renvoie des resultats et ceux pour chaque cas 
+// ===========================================================================================================================
 
 searchForm.addEventListener('submit', (ev) =>{
   ev.preventDefault();
@@ -151,90 +177,105 @@ searchForm.addEventListener('submit', (ev) =>{
   {
       if (checkBox.checked){
         deleteAll()
-        getSearchResult(inputAPIText[0].value, locationFilter.value, '1')
+        loader.classList.remove('hidden')
+        setTimeout(() => {getSearchResult(inputAPIText[0].value, locationFilter.value, '1')}, 2500)
         btnLoadMore.classList.add('dnone')
       }else{
         deleteAll()
-        getSearchResult(inputAPIText[0].value, locationFilter.value, '0')
+        loader.classList.remove('hidden')
+        setTimeout(() => {getSearchResult(inputAPIText[0].value, locationFilter.value, '0')}, 2500)  
       }
-      inputAPIText[0].value = ''
-      locationFilter.value = ''
   }
   else if(inputAPIText[1] && inputAPIText[1].value && locationFilter && locationFilter.value)
   {
     if (checkBox.checked){
       deleteAll()
-      getSearchResult(inputAPIText[1].value, locationFilter.value, '1')
-      load
+       loader.classList.remove('hidden')
+        setTimeout(() => { getSearchResult(inputAPIText[1].value, locationFilter.value, '1')}, 2500)  
+     
     }else{
       deleteAll()
-      getSearchResult(inputAPIText[1].value, locationFilter.value, '0')
+      loader.classList.remove('hidden')
+      setTimeout(() => {getSearchResult(inputAPIText[1].value, locationFilter.value, '0')}, 2500)  
     }
-      inputAPIText[1].value = ''
-      locationFilter.value = ''
   }
   else if (inputAPIText[0] && inputAPIText[0].value)
   {
     if (checkBox.checked){
       deleteAll()
-      getSearchResult(inputAPIText[0].value, '', '1')
+      loader.classList.remove('hidden')
+      setTimeout(() => {getSearchResult(inputAPIText[0].value, '', '1')}, 2500)  
+      
     }else{
       deleteAll()
-      getSearchResult(inputAPIText[0].value, '', '0')
+      loader.classList.remove('hidden')
+      setTimeout(() => {getSearchResult(inputAPIText[0].value, '', '0')}, 2500)  
     }
-      inputAPIText[0].value = ''
-      locationFilter.value = ''
   }
   else if(inputAPIText[1] && inputAPIText[1].value)
   {
     if (checkBox.checked){
       deleteAll()
-      getSearchResult(inputAPIText[1].value, '', '1')
+      loader.classList.remove('hidden')
+      setTimeout(() => {getSearchResult(inputAPIText[1].value, '', '1')}, 2500)  
+      
     }else{
       deleteAll()
-      getSearchResult(inputAPIText[1].value, '', '0')
+      loader.classList.remove('hidden')
+      setTimeout(() => {getSearchResult(inputAPIText[1].value, '', '0')}, 2500)  
     }
-      inputAPIText[1].value = ''
-      locationFilter.value = ''
   }
   else if(locationFilter && locationFilter.value)
   {
     if (checkBox.checked){
       deleteAll()
-      getSearchResult('', locationFilter.value, '1')
+      loader.classList.remove('hidden')
+      setTimeout(() => {getSearchResult('', locationFilter.value, '1')}, 2500)  
+      
     }else{
       deleteAll()
-      getSearchResult('', locationFilter.value, '0')
+      loader.classList.remove('hidden')
+      setTimeout(() => {getSearchResult('', locationFilter.value, '0')}, 2500)  
     }
-      locationFilter.value = ''
   }
   else if (checkBox.checked)
   {
       deleteAll()
-      getSearchResult('', '', '1')
+      loader.classList.remove('hidden')
+      setTimeout(() => {getSearchResult('', '', '1')}, 2500)
   }
   else
   {
-      console.log('not valued ?')
-  }
+    deleteAll()
+    loader.classList.remove('hidden')
+    setTimeout(() => {getJobsInfo()}, 2500)
+}
 
 
-  async function getSearchResult(text, location, fullTime){
+// =================================================
+// fonction pour récuperer les resultats des filtres
+// =================================================
+async function getSearchResult(text, location, fullTime){
     const URL_PARAM = `?text=${text}&location=${location}&fulltime=${fullTime}`
     encodeURIComponent(URL_PARAM)
     const response = await fetch(`${URL_API}api/jobs/search${URL_PARAM}`)
     try{
-      btnLoadMore[0].value = 'Fuyez pauvre fou !'
       const data = await response.json()
       if (response.statusCode === 400){
         console.error(data.error)
       }else{
+        btnLoadMore[0].value = 'Fuyez pauvre fou !'
+        btnLoadMore[0].setAttribute('disabled', true)
         const jobsInfo = data.jobs
-        console.table(jobsInfo)
         jobsInfo.reverse()
         for (let i = 0; i < jobsInfo.length; i++) {
           displayInfoJobs(jobsInfo[i])
         }
+        for (let i = 0; i < inputAPIText.length; i++) {
+          inputAPIText[i].value = ''
+        }
+      locationFilter.value = ''
+      loader.classList.add('hidden')
       }
     }catch(err){
       console.error(err);
@@ -242,4 +283,3 @@ searchForm.addEventListener('submit', (ev) =>{
   
   }
 })
-

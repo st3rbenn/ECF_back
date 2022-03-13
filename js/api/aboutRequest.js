@@ -7,7 +7,7 @@ const logoBg = document.querySelector('#logoBg')
 const headerTitle = document.querySelector('#headerTitle')
 const headerWebsite= document.querySelector('#headerWebsite')
 
-const URL = window.location.search.toString().split('=')[1]
+const URL = window.location.search.split('=')[1]
 
 function aboutJobsInfoData(data) {
     const jobsItem = document.createElement('div')

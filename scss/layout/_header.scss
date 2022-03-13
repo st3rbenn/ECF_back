@@ -201,6 +201,9 @@
 
   &__search__submit{
     display: none;
+    &:hover{
+      opacity: .8;
+    }
     @include tablet {
       display: block;
       @include padding(1.6rem, 1.6rem, 1.4rem, 1.4rem);
@@ -215,7 +218,7 @@
       @include padding(3.55rem, 3.55rem, 1.7rem, 1.1rem);
     }
   }
-
+  
   &__logo__container{
     background: none;
     border: none;
@@ -240,7 +243,7 @@
     @media screen and (min-width: 36em){
       display: none;
   }
-
+  
 
   &__logo{
     width: 2.3rem;
