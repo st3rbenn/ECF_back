@@ -30,7 +30,7 @@
     position: relative;
     cursor: pointer;
     &:hover{
-      transform: scale3d(1.1, 1.1, 1.1);
+      transform: scale3d(1.1, 1.1, .5);
     }
     @include pc{
       max-width: 35rem;
@@ -106,6 +106,9 @@
   border-radius: .5rem;
   border: none;
   margin-top: 3rem;
+  &:hover{
+    opacity: .8;
+  }
   @include tablet{
     grid-area: 7 / 1 / 7 / 3;
     margin-top: 0;

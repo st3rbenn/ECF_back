@@ -78,17 +78,21 @@ function displayInfoJobs (data){
 btnLoadMore.addEventListener('submit', (ev) => {
   ev.preventDefault();
   async function loadMore() {
-    const response = await fetch(`${URL_API}/api/jobs?offset=0`)
     try{
+      const response = await fetch(`${URL_API}/api/jobs?offset=12`)
+      if (!response.ok) {
+        throw Error(`${response.status} ${response.statusText}`);
+      }
+      else{
       const data = await response.json()
       const jobsInfo = data.jobs
-      console.table(jobsInfo)
-      jobsInfo.reverse()
-      for (let i = 0; i < jobsInfo.length; i++) {
-        displayInfoJobs(jobsInfo[i])
-      }
+      console.log(jobsInfo)
+        for (let i = 0; i < jobsInfo.length; i++) {
+          displayInfoJobs(jobsInfo[i])
+        }
       isLoaded = true
       btnLoadMore[0].setAttribute('disabled', true)
+    }
     }catch(err) {
       console.error(err);
     }
@@ -104,19 +108,21 @@ btnLoadMore.setAttribute('disabled', true)
 loader.classList.remove('hidden')
 
 async function getJobsInfo(){
-  const response = await fetch(`${URL_API}/api/jobs?offset=12`)
+  const response = await fetch(`${URL_API}/api/jobs?offset=0`)
   try{
-    
-    const data = await response.json()
-    const jobsInfo = data.jobs
-    // console.table(jobsInfo);
-    jobsInfo.reverse()
-    for (let i = 0; i < jobsInfo.length; i++) {
-      displayInfoJobs(jobsInfo[i])  
+    if (!response.ok) {
+      throw Error(`${response.status} ${response.statusText}`);
+    }else {
+      const data = await response.json()
+      const jobsInfo = data.jobs
+      console.table(jobsInfo);
+      for (let i = 0; i < jobsInfo.length; i++) {
+        displayInfoJobs(jobsInfo[i])  
+      }
+      isPressed = false;
+      btnLoadMore[0].value = 'Load More'
+      loader.classList.add('hidden')
     }
-    isPressed = false;
-    btnLoadMore[0].value = 'Load More'
-    loader.classList.add('hidden')
   }
   catch(err){
     console.error(err);
@@ -204,7 +210,7 @@ searchForm.addEventListener('submit', (ev) =>{
     if (checkBox.checked){
       deleteAll()
       loader.classList.remove('hidden')
-      setTimeout(() => {getSearchResult(inputAPIText[0].value, '', '1')}, 2500)  
+      setTimeout(() => {getSearchResult(inputAPIText[0].value, '', '1')}, 2500)
       
     }else{
       deleteAll()
@@ -248,7 +254,7 @@ searchForm.addEventListener('submit', (ev) =>{
   {
     deleteAll()
     loader.classList.remove('hidden')
-    setTimeout(() => {getJobsInfo()}, 2500)
+    setTimeout(() => {getJobsInfo('', '', '0')}, 2500)
 }
 
 
@@ -261,13 +267,12 @@ async function getSearchResult(text, location, fullTime){
     const response = await fetch(`${URL_API}api/jobs/search${URL_PARAM}`)
     try{
       const data = await response.json()
-      if (response.statusCode === 400){
-        console.error(data.error)
+      if (!response.ok) {
+        throw Error(`${response.status} ${response.statusText}`);
       }else{
         btnLoadMore[0].value = 'Fuyez pauvre fou !'
         btnLoadMore[0].setAttribute('disabled', true)
         const jobsInfo = data.jobs
-        jobsInfo.reverse()
         for (let i = 0; i < jobsInfo.length; i++) {
           displayInfoJobs(jobsInfo[i])
         }
