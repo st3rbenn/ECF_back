@@ -1,4 +1,4 @@
-import {URL_API} from '/js/api/linkAPI.js';
+    import {URL_API} from './linkAPI.js';
 const container = document.querySelector('#aboutJobs')
 const footer = document.querySelector('#about__footer')
 const linkBtn = document.querySelectorAll('#linkBtn')
@@ -57,7 +57,7 @@ function aboutJobsInfoData(data) {
 
 
     btnApplyNowTop.textContent = 'Apply Now'
-    date.textContent = new Date(data.postedAt).toLocaleDateString('fr-FR')
+    date.textContent = timeToNow(data.postedAt)
     contract.textContent = data.contract
     position.textContent = data.position
     city.textContent = data.location
@@ -112,7 +112,40 @@ async function getJobsInfo(){
   }catch(err){
     console.error(err);
   }
-
-
-
 }getJobsInfo();
+
+
+function timeToNow(ts){
+    let phrase;
+    const  result = Date.now() - ts;
+    const resultSeconds = result / 1000;
+    const resultMinuts = resultSeconds / 60;
+    const resultHours = resultMinuts / 60;
+    const resultDays = resultHours / 24;
+    const resultWeeks = resultDays / 7;
+    const resultMonths = resultDays / 30;
+    const resultYears = resultMonths / 12;
+    if (resultYears > 1) {
+        phrase = "y ago";
+        return Math.floor(resultYears).toString() + phrase;
+    } else if (resultMonths > 1) {
+        phrase = "mo ago";
+        return Math.floor(resultMonths).toString() + phrase;
+    } else if(resultWeeks > 1){
+        phrase = "w ago";
+        return Math.floor(resultWeeks).toString() + phrase;
+    } else if (resultDays > 1) {
+        phrase = "d ago";
+        return Math.floor(resultDays).toString() + phrase;
+    } else if (resultHours > 1) {
+        phrase = "h ago";
+        return Math.floor(resultHours).toString() + phrase;
+    } else if (resultMinuts > 1) {
+        phrase = "m ago";
+        return Math.floor(resultMinuts).toString() + phrase;
+    }else if (resultSeconds > 1) {
+        phrase = "s ago";
+        return Math.floor(resultSeconds).toString() + phrase;
+    }
+
+}

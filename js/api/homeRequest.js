@@ -1,4 +1,5 @@
-import {URL_API} from '/js/api/linkAPI.js';
+
+const URL_API = 'https://ecf-dwwm.cefim-formation.org/'
 const loader = document.querySelector('#loader')
 const container = document.querySelector('#jobs')
 const btnLoadMore = document.querySelector('#loadmore')
@@ -6,12 +7,9 @@ const searchForm = document.querySelector('#filter')
 const inputAPIText = document.querySelectorAll('#filter__container__logo')
 const locationFilter = document.querySelector('#filterLocation')
 const checkBox = document.querySelector('#checkBox')
-checkBox.checked = false
-checkBox.Value = '0'
 
 let isPressed = true;
 let isLoaded = false;
-
 
 // =====================================================================================
 // Fonction pour afficher dynamiquement dans le dom a partir des data récup' dans l'api
@@ -46,7 +44,7 @@ function displayInfoJobs (data){
     location.href = `/about.html${id}`
   })
 
-  jobsPostedAt.textContent = new Date(data.postedAt).toLocaleDateString('fr-FR')
+  jobsPostedAt.textContent = timeToNow(data.postedAt)
   jobsContract.textContent = data.contract
   jobsPosition.textContent = data.position
   jobsName.textContent = data.company
@@ -92,6 +90,7 @@ btnLoadMore.addEventListener('submit', (ev) => {
         }
       isLoaded = true
       btnLoadMore[0].setAttribute('disabled', true)
+        btnLoadMore[0].value = 'Fuyez pauvre fou !'
     }
     }catch(err) {
       console.error(err);
@@ -104,7 +103,7 @@ btnLoadMore.addEventListener('submit', (ev) => {
 // 1er appel api pour récuperer les Jobs
 // =====================================================================================
 
-btnLoadMore.setAttribute('disabled', true)
+btnLoadMore[0].setAttribute('disabled', true)
 loader.classList.remove('hidden')
 
 async function getJobsInfo(){
@@ -119,7 +118,7 @@ async function getJobsInfo(){
       for (let i = 0; i < jobsInfo.length; i++) {
         displayInfoJobs(jobsInfo[i])  
       }
-      isPressed = false;
+      btnLoadMore[0].removeAttribute('disabled')
       btnLoadMore[0].value = 'Load More'
       loader.classList.add('hidden')
     }
@@ -175,24 +174,28 @@ function deleteAll(){
 // ===========================================================================================================================
 // je gère chaque cas un a un CAD, imaginons checkbox checked mais input vide ça renvoie des resultats et ceux pour chaque cas 
 // ===========================================================================================================================
+const firstFilterByAsValue = inputAPIText[0] && inputAPIText[0].value
+const secondFilterByAsValue = inputAPIText[1] && inputAPIText[1].value
+const locationFilterAsValue = locationFilter && locationFilter.value
+checkBox.checked = false
+
 
 searchForm.addEventListener('submit', (ev) =>{
   ev.preventDefault();
-
-  if (inputAPIText[0] && inputAPIText[0].value && locationFilter && locationFilter.value)
+  btnLoadMore[0].value = 'Load More'
+  if (firstFilterByAsValue && locationFilterAsValue)
   {
       if (checkBox.checked){
         deleteAll()
         loader.classList.remove('hidden')
         setTimeout(() => {getSearchResult(inputAPIText[0].value, locationFilter.value, '1')}, 2500)
-        btnLoadMore.classList.add('dnone')
       }else{
         deleteAll()
         loader.classList.remove('hidden')
         setTimeout(() => {getSearchResult(inputAPIText[0].value, locationFilter.value, '0')}, 2500)  
       }
   }
-  else if(inputAPIText[1] && inputAPIText[1].value && locationFilter && locationFilter.value)
+  else if(secondFilterByAsValue && locationFilterAsValue)
   {
     if (checkBox.checked){
       deleteAll()
@@ -205,7 +208,7 @@ searchForm.addEventListener('submit', (ev) =>{
       setTimeout(() => {getSearchResult(inputAPIText[1].value, locationFilter.value, '0')}, 2500)  
     }
   }
-  else if (inputAPIText[0] && inputAPIText[0].value)
+  else if (firstFilterByAsValue)
   {
     if (checkBox.checked){
       deleteAll()
@@ -218,7 +221,7 @@ searchForm.addEventListener('submit', (ev) =>{
       setTimeout(() => {getSearchResult(inputAPIText[0].value, '', '0')}, 2500)  
     }
   }
-  else if(inputAPIText[1] && inputAPIText[1].value)
+  else if(secondFilterByAsValue)
   {
     if (checkBox.checked){
       deleteAll()
@@ -231,7 +234,7 @@ searchForm.addEventListener('submit', (ev) =>{
       setTimeout(() => {getSearchResult(inputAPIText[1].value, '', '0')}, 2500)  
     }
   }
-  else if(locationFilter && locationFilter.value)
+  else if(locationFilterAsValue)
   {
     if (checkBox.checked){
       deleteAll()
@@ -255,7 +258,9 @@ searchForm.addEventListener('submit', (ev) =>{
     deleteAll()
     loader.classList.remove('hidden')
     setTimeout(() => {getJobsInfo('', '', '0')}, 2500)
-}
+    btnLoadMore[0].removeAttribute('disabled')
+
+  }
 
 
 // =================================================
@@ -288,3 +293,38 @@ async function getSearchResult(text, location, fullTime){
   
   }
 })
+
+function timeToNow(ts){
+  let phrase;
+  const result = Date.now() - ts;
+  const resultSeconds = result / 1000;
+  const resultMinuts = resultSeconds / 60;
+  const resultHours = resultMinuts / 60;
+  const resultDays = resultHours / 24;
+  const resultWeeks = resultDays / 7;
+  const resultMonths = resultDays / 30;
+  const resultYears = resultMonths / 12;
+  if (resultYears > 1) {
+    phrase = "y ago";
+    return Math.floor(resultYears).toString() + phrase;
+  } else if (resultMonths > 1) {
+    phrase = "mo ago";
+    return Math.floor(resultMonths).toString() + phrase;
+  } else if(resultWeeks > 1){
+    phrase = "w ago";
+    return Math.floor(resultWeeks).toString() + phrase;
+  } else if (resultDays > 1) {
+    phrase = "d ago";
+    return Math.floor(resultDays).toString() + phrase;
+  } else if (resultHours > 1) {
+    phrase = "h ago";
+    return Math.floor(resultHours).toString() + phrase;
+  } else if (resultMinuts > 1) {
+    phrase = "m ago";
+    return Math.floor(resultMinuts).toString() + phrase;
+  }else if (resultSeconds > 1) {
+    phrase = "s ago";
+    return Math.floor(resultSeconds).toString() + phrase;
+  }
+
+}

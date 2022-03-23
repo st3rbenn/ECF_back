@@ -1,4 +1,4 @@
-const darkStored = localStorage.getItem('darkStored')
+const darkStored = sessionStorage.getItem('darkStored')
 const themeSwitch = document.querySelector('#theme-switch')
 
 document.querySelector('#theme-switch').addEventListener('change', function(event){
@@ -19,10 +19,10 @@ document.querySelector('#theme-switch').addEventListener('change', function(even
 
 themeSwitch.addEventListener('change', event => {
   if (event.target.checked){
-    localStorage.setItem('darkStored', 'enabled')
+    sessionStorage.setItem('darkStored', 'enabled')
     console.log('enabled');
   }else if (!event.target.checked) {
-    localStorage.setItem('darkStored', 'disabled')
+    sessionStorage.setItem('darkStored', 'disabled')
     console.log('disabled');
   }
 })

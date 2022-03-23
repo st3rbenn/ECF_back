@@ -4,12 +4,12 @@ export const URL_API = 'https://ecf-dwwm.cefim-formation.org/'
 
 //For aria Label///
 
-function nonAltImages() {
-  const images = document.querySelectorAll('img');
-  for (let i = 0; i < images.length; i++) {
-    if (!images[i].hasAttribute('aria')) {
-      images[i].style.border = '1px solid red';
+function non() {
+  const balise = document.querySelectorAll('div');
+  for (let i = 0; i < balise.length; i++) {
+    if (!balise[i].hasAttribute('aria-label')) {
+      balise[i].style.border = '5px solid red';
     }
   }
 }
-// nonAltImages()
+non();
