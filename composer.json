@@ -1,0 +1,19 @@
+{
+    "name": "www/ecf",
+    "authors": [
+        {
+            "name": "Anthonin colas",
+            "email": "Anthonincolas37000@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Database\\": "src/Database/",
+            "Class\\":  "src/Classe/",
+            "Router\\": "src/Router/"
+        }
+    },
+    "require": {
+      "ext-pdo": "*"
+    }
+}

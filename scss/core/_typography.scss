@@ -1,22 +1,20 @@
 //import font
 @font-face {
     font-family: 'kumbh';
-    font-style: none;
     font-display: swap;
     font-weight: 700;
     src: local(''),
-    url('../../assets/fonts/kumbh-sans-v10-latin-700.woff') format('woff'),
-    url('../../assets/fonts/kumbh-sans-v10-latin-700.woff2') format('woff2');
+    url('../../ECF/assets/fonts/kumbh-sans-v10-latin-700.woff') format('woff'),
+    url('../../ECF/assets/fonts/kumbh-sans-v10-latin-700.woff2') format('woff2');
     ;
 }
 @font-face {
     font-family: 'kumbh';
-    font-style: none;
     font-display: swap;
     font-weight: 400;
     src: local(''),
-    url('../../assets/fonts/kumbh-sans-v10-latin-regular.woff') format('woff'),
-    url('../../assets/fonts/kumbh-sans-v10-latin-regular.woff2') format('woff2');
+    url('../../ECF/assets/fonts/kumbh-sans-v10-latin-regular.woff') format('woff'),
+    url('../../ECF/assets/fonts/kumbh-sans-v10-latin-regular.woff2') format('woff2');
 }
 
 :root{
@@ -42,6 +40,7 @@
 
     //typoColor
     --name: var(--d-blue);
+    --name-reverse: var(--white);
 
     //switch dark mode
     --switch-padding: 0.3rem;
@@ -59,12 +58,9 @@
     --form-text: var(--white);
     --color-svg: invert(100%) sepia(100%) saturate(2%) hue-rotate(263deg) brightness(103%) contrast(101%);
     --name: var(--white);
+    --name-reverse: var(--d-blue);
 }
 
-*:focus{
-  outline: 5px solid red;
-  border-radius: 2rem;
-}
 
 
 h1,
@@ -116,4 +112,11 @@ body{
 
 .hidden__body{
   pointer-events: none;
+}
+
+.containers{
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 111rem;
+    width: 100%;
 }

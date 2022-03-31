@@ -1,4 +1,4 @@
-    import {URL_API} from './linkAPI.js';
+import {URL_API} from './linkAPI.js';
 const container = document.querySelector('#aboutJobs')
 const footer = document.querySelector('#about__footer')
 const linkBtn = document.querySelectorAll('#linkBtn')
@@ -105,7 +105,7 @@ function aboutJobsInfoData(data) {
 
 
 async function getJobsInfo(){
-  const response = await fetch(`${URL_API}api/job/${URL}`)
+  const response = await fetch(`${URL_API}/api/job/${URL}`)
   try{
     const data = await response.json()
     aboutJobsInfoData(data)

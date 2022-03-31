@@ -1,5 +1,4 @@
-
-const URL_API = 'https://ecf-dwwm.cefim-formation.org/'
+import {URL_API} from './linkAPI.js';
 const loader = document.querySelector('#loader')
 const container = document.querySelector('#jobs')
 const btnLoadMore = document.querySelector('#loadmore')
@@ -41,7 +40,7 @@ function displayInfoJobs (data){
   
   jobsContainer.addEventListener('click', () => {
     const id = `?id=${data.id}`
-    location.href = `/about.html${id}`
+    location.href = `/jobs${id}`
   })
 
   jobsPostedAt.textContent = timeToNow(data.postedAt)
@@ -77,7 +76,7 @@ btnLoadMore.addEventListener('submit', (ev) => {
   ev.preventDefault();
   async function loadMore() {
     try{
-      const response = await fetch(`${URL_API}/api/jobs?offset=12`)
+      const response = await fetch(`${URL_API}api/jobs?offset=12`)
       if (!response.ok) {
         throw Error(`${response.status} ${response.statusText}`);
       }
@@ -107,7 +106,7 @@ btnLoadMore[0].setAttribute('disabled', true)
 loader.classList.remove('hidden')
 
 async function getJobsInfo(){
-  const response = await fetch(`${URL_API}/api/jobs?offset=0`)
+  const response = await fetch(`${URL_API}api/jobs?offset=0`)
   try{
     if (!response.ok) {
       throw Error(`${response.status} ${response.statusText}`);
@@ -173,18 +172,24 @@ function deleteAll(){
 // ===============================================
 // ===========================================================================================================================
 // je gère chaque cas un a un CAD, imaginons checkbox checked mais input vide ça renvoie des resultats et ceux pour chaque cas 
-// ===========================================================================================================================
-const firstFilterByAsValue = inputAPIText[0] && inputAPIText[0].value
-const secondFilterByAsValue = inputAPIText[1] && inputAPIText[1].value
-const locationFilterAsValue = locationFilter && locationFilter.value
+// // ===========================================================================================================================
+// let firstFilterByAsValue = inputAPIText[0] && inputAPIText[0].value
+// let secondFilterByAsValue = inputAPIText[1] && inputAPIText[1].value
+// let locationFilterAsValue = locationFilter && locationFilter.value
+
+
+
+
+
 checkBox.checked = false
 
 
 searchForm.addEventListener('submit', (ev) =>{
   ev.preventDefault();
   btnLoadMore[0].value = 'Load More'
-  if (firstFilterByAsValue && locationFilterAsValue)
+  if (inputAPIText[0] && inputAPIText[0].value && locationFilter && locationFilter.value)
   {
+    console.log(inputAPIText[0] && inputAPIText[0].value, locationFilter && locationFilter.value)
       if (checkBox.checked){
         deleteAll()
         loader.classList.remove('hidden')
@@ -195,8 +200,9 @@ searchForm.addEventListener('submit', (ev) =>{
         setTimeout(() => {getSearchResult(inputAPIText[0].value, locationFilter.value, '0')}, 2500)  
       }
   }
-  else if(secondFilterByAsValue && locationFilterAsValue)
+  else if(inputAPIText[1] && inputAPIText[1].value && locationFilter && locationFilter.value)
   {
+    console.log(inputAPIText[1] && inputAPIText[1].value, locationFilter && locationFilter.value)
     if (checkBox.checked){
       deleteAll()
        loader.classList.remove('hidden')
@@ -208,8 +214,9 @@ searchForm.addEventListener('submit', (ev) =>{
       setTimeout(() => {getSearchResult(inputAPIText[1].value, locationFilter.value, '0')}, 2500)  
     }
   }
-  else if (firstFilterByAsValue)
+  else if (inputAPIText[0] && inputAPIText[0].value)
   {
+    console.log(inputAPIText[0] && inputAPIText[0].value)
     if (checkBox.checked){
       deleteAll()
       loader.classList.remove('hidden')
@@ -221,8 +228,9 @@ searchForm.addEventListener('submit', (ev) =>{
       setTimeout(() => {getSearchResult(inputAPIText[0].value, '', '0')}, 2500)  
     }
   }
-  else if(secondFilterByAsValue)
+  else if(inputAPIText[1] && inputAPIText[1].value)
   {
+    console.log(inputAPIText[1] && inputAPIText[1].value)
     if (checkBox.checked){
       deleteAll()
       loader.classList.remove('hidden')
@@ -234,8 +242,9 @@ searchForm.addEventListener('submit', (ev) =>{
       setTimeout(() => {getSearchResult(inputAPIText[1].value, '', '0')}, 2500)  
     }
   }
-  else if(locationFilterAsValue)
+  else if(locationFilter && locationFilter.value)
   {
+    console.log(locationFilter && locationFilter.value)
     if (checkBox.checked){
       deleteAll()
       loader.classList.remove('hidden')
@@ -252,9 +261,7 @@ searchForm.addEventListener('submit', (ev) =>{
       deleteAll()
       loader.classList.remove('hidden')
       setTimeout(() => {getSearchResult('', '', '1')}, 2500)
-  }
-  else
-  {
+  }else{
     deleteAll()
     loader.classList.remove('hidden')
     setTimeout(() => {getJobsInfo('', '', '0')}, 2500)

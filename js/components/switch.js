@@ -9,9 +9,10 @@ document.querySelector('#theme-switch').addEventListener('change', function(even
   });
 
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+    console.log(event.matches);
   if (event.matches) {
     document.body.setAttribute('data-theme', 'dark');
-    document.querySelector('#switch__button').setAttribute('transition', 'left', 'var', '(--switch-animation-duration)');
+    document.querySelector('#switch__button').setAttribute('transition', 'left');
   } else {
     document.body.removeAttribute('data-theme')
   }
@@ -39,3 +40,19 @@ if (darkStored === 'enabled'){
   document.querySelector('#filter').removeAttribute('data-theme')
   document.querySelector('#modal').removeAttribute('data-theme')
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

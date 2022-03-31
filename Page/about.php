@@ -1,39 +1,26 @@
 <!DOCTYPE html>
-<html lang=""><!-- Mettre le code langue du site dans l'attribut lang -->
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ECF-Front-End</title>
     <meta name="description" content="Contrôle de conaissance et d'application des méthodes apprise au CEFIM">
-    <!-- Mettre ci-dessous les informations pour Open Graph (concerne notamment Facebook) - Voir https://ogp.me/-->
-    <meta property="og:title" content="">
-    <meta property="og:type" content="">
-    <meta property="og:url" content="">
-    <meta property="og:image" content="">
 
-    <!-- Le minimum pour gérer les favicon : https://css-tricks.com/how-to-favicon-in-2021/ 
-    Icônes à générer : 
-    favicon.ico : 32x32
-    icon.svg : peu importe la taille, mais privilégier un format carré
-    apple-touch-icon.png : 180x180
-    192.png : 192x192
-    512.png : 512x512
-    -->
-    <link rel="icon" href="favicon-32x32.png" sizes="any"><!-- 32×32 -->
-    <link rel="icon" href="favicon-32x32.png" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png"><!-- 180×180 -->
-    <link rel="manifest" href="/manifest.webmanifest"><!-- voir le fichier manifest.webmanifest -->
+    <link rel="icon" href="../favicon-32x32.png" sizes="any">
+    <link rel="icon" href="../favicon-32x32.png" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.webmanifest">
 
-    <!-- A terme : n'appeler qu'une seule feuille de style minifiée -->
-    <link rel="stylesheet" href="css/main.css">
+
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 
 <body>
     <header class="header__main">    
           <div class="container">
               <div class="header__item">
-                <a href="/index.html" class="logo">
+                <a href="/home" class="logo">
                   <img src="/assets/img/logo.svg" alt="Logo de devjobs" >
                 </a>
                   <div class="header__switchmode">
@@ -80,8 +67,8 @@
       </div>
     </footer>
 
-    <script type="module" src="js/api/linkAPI.js"></script>
-    <script type="module" src="js/api/aboutRequest.js"></script>
+    <script type="module" src="../js/api/linkAPI.js"></script>
+    <script type="module" src="../js/api/aboutRequest.js"></script>
     <script src="/js/components/switch.js"></script>
   </body>
 </html>

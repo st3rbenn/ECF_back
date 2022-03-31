@@ -1,21 +1,37 @@
-.header__main{
-    margin-bottom: 9.7rem;
-    display: block;
-    background-image: url(/assets/img/Triangle.svg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: none;
-    @include tablet {
-      background-image: url(/assets/img/background.svg);
-      background-repeat: no-repeat;  
+.header{
+  &__buttonLog{
+    margin-left: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+  }
+  &__inscription,
+  &__connexion{
+    background-color: var(--l-violet);
+    font-weight: 600;
+    font-size: 1.3rem;
+    border-radius: 1rem;
+    border: none;
+    padding: .5rem 1rem;
+    color: var(--name);
+    cursor: pointer;
+    text-decoration: none;
+    &:hover{
+      transform: scale(1.1);
+      color: var(--name-reverse);
     }
-    @include pc{
-      background-position: bottom;
-      margin-bottom: 14.5rem;
-    }
-}
+  }
 
-.header__item{
+  &__inscription{
+
+  }
+  &__connexion{
+
+  }
+
+
+  &__item{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -23,12 +39,36 @@
     @include pc{
       padding-right: 0;
     }
-}
-.header__switchmode{
+  }
+  &__switchmode{
     display: flex;
     align-items: center;
     gap: 1.6rem;
+  }
+
+
+
+  &__main{
+    margin-bottom: 9.7rem;
+    display: block;
+    background-image: url("../assets/img/Triangle.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    @include tablet {
+      background-image: url("../ECF/assets/img/background.svg");
+      background-repeat: no-repeat;
+    }
+    @include pc{
+      background-position: bottom;
+      margin-bottom: 14.5rem;
+    }
+
+  }
+
 }
+
+
+
 
 .logo{
     width: 11.5rem;
@@ -187,7 +227,7 @@
     filter: var(--color-svg);
   }
   &__input{
-    background-image: url("assets/img/icon-filter.svg");
+    background-image: url("../ECF/assets/img/icon-filter.svg");
     width: 2rem;
     height: 2rem;
   }
