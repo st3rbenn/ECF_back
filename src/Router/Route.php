@@ -17,11 +17,12 @@ class Route
     }
 
 
-    public function match($url)
+    public function match($url): bool
     {
         $url = trim($url, '/');
         $path = preg_replace('#:([\w]+)#', '([^/]+)', $this->path);
         $regex = "#^$path$#i";
+
         if(!preg_match($regex, $url, $matches)){
             return false;
         }

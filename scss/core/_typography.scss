@@ -4,8 +4,8 @@
     font-display: swap;
     font-weight: 700;
     src: local(''),
-    url('../../ECF/assets/fonts/kumbh-sans-v10-latin-700.woff') format('woff'),
-    url('../../ECF/assets/fonts/kumbh-sans-v10-latin-700.woff2') format('woff2');
+    url('/assets/fonts/kumbh-sans-v10-latin-700.woff') format('woff'),
+    url('/assets/fonts/kumbh-sans-v10-latin-700.woff2') format('woff2');
     ;
 }
 @font-face {
@@ -13,8 +13,8 @@
     font-display: swap;
     font-weight: 400;
     src: local(''),
-    url('../../ECF/assets/fonts/kumbh-sans-v10-latin-regular.woff') format('woff'),
-    url('../../ECF/assets/fonts/kumbh-sans-v10-latin-regular.woff2') format('woff2');
+    url('/assets/fonts/kumbh-sans-v10-latin-regular.woff') format('woff'),
+    url('/assets/fonts/kumbh-sans-v10-latin-regular.woff2') format('woff2');
 }
 
 :root{

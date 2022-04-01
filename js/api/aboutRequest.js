@@ -1,4 +1,4 @@
-import {URL_API} from './linkAPI.js';
+const URL_API = 'https://www.apiecf.colas.cefim.o2switch.site/'
 const container = document.querySelector('#aboutJobs')
 const footer = document.querySelector('#about__footer')
 const linkBtn = document.querySelectorAll('#linkBtn')
@@ -7,7 +7,8 @@ const logoBg = document.querySelector('#logoBg')
 const headerTitle = document.querySelector('#headerTitle')
 const headerWebsite= document.querySelector('#headerWebsite')
 
-const URL = window.location.search.split('=')[1]
+const URL = window.location.pathname.split('/')[2]
+console.log(URL)
 
 function aboutJobsInfoData(data) {
     const jobsItem = document.createElement('div')

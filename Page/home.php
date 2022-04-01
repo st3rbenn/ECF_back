@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr"><!-- Mettre le code langue du site dans l'attribut lang -->
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -10,7 +10,7 @@
     <link rel="icon" href="../favicon-32x32.png" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
@@ -19,7 +19,7 @@
     <div class="container">
         <div class="header__item">
             <figure class="logo">
-                <a href="/home"><img src="../assets/img/logo.svg" alt="Logo de devjobs"></a>
+                <a href="/home"><img src="assets/img/logo.svg" alt="Logo de devjobs"></a>
             </figure>
             <div class="header__switchmode">
                 <div class="header__buttonLog">
@@ -27,7 +27,7 @@
                     <a class="header__connexion" href="/login">Connexion</a>
                 </div>
                 <figure class="logo-switchmode">
-                    <img src="../assets/img/icon-sun.svg" alt="">
+                    <img src="assets/img/icon-sun.svg" alt="">
                 </figure>
                 <div class="switch">
                     <input type="checkbox" class="switch__input" id="theme-switch">
@@ -35,20 +35,20 @@
                     <div class="switch__marker" aria-hidden="true" id="switch__button"></div>
                 </div>
                 <figure class="logo-switchmodelune">
-                    <img src="../assets/img/icon-moon.svg" alt="">
+                    <img src="assets/img/icon-moon.svg" alt="">
                 </figure>
             </div>
         </div>
 
         <form class="filter__container" id="filter">
             <div class="filter__container__search">
-                <img src="../assets/img/icon-search.svg" alt="" class="filter__search__logo__search">
+                <img src="assets/img/icon-search.svg" alt="" class="filter__search__logo__search">
                 <input type="text" id="filter__container__logo" aria-hidden="true" class="filter__search__title" placeholder="Filter by title..." value="">
                 <input type="text" id="filter__container__logo" class="filter__search__title__pc" placeholder="Filter by title, companies, expertise…" value="">
             </div>
             <div class="line"></div>
             <div class="filter__container__location">
-                <img src="../assets/img/icon-location.svg" alt="" class="filter__search__logo__location">
+                <img src="assets/img/icon-location.svg" alt="" class="filter__search__logo__location">
                 <input type="text" id="filterLocation" placeholder="Filter by location..." class="filter__search__location">
             </div>
             <div class="line"></div>
@@ -59,11 +59,11 @@
                     <label for="checkBox" class="label2">Full Time Only</label>
                 </div>
                 <button class="filter__logo__btn" id="filterBtn">
-                    <img src="../assets/img/icon-filter.svg" class="filter__logo__logo" aria-label="Bouton pour afficher une petite fenêtre et rechercher par filtre">
+                    <img src="assets/img/icon-filter.svg" class="filter__logo__logo" aria-label="Bouton pour afficher une petite fenêtre et rechercher par filtre">
                 </button>
                 <input type="submit" id="filter__search__submit" value="Search" class="filter__search__submit">
                 <button id="filterResult" class="filter__button" aria-label="bouton pour lancer la recherche de filtre">
-                    <img src="../assets/img/icon-search-white.svg" alt="" class="filter__button__logo">
+                    <img src="assets/img/icon-search-white.svg" alt="" class="filter__button__logo">
                 </button>
             </div>
         </form>
@@ -92,7 +92,7 @@
 <form class="modal" data-toggle="visible" role="modal" aria-hidden='true' aria-labelledby="Filtre" aria-describedby="fenêtre de Filtre" tabindex="-1" id="filter">
     <div class="filter__modal" id="modal" role="document">
         <div class="filter__modal__container">
-            <img src="../assets/img/icon-location.svg" alt="" class="filter__modal__location">
+            <img src="assets/img/icon-location.svg" alt="" class="filter__modal__location">
             <input type="text" id="filterLocation" placeholder="Filter by location..." class="filter__modal__search__location">
         </div>
         <span class="filter__modal__separator"></span>
@@ -103,8 +103,8 @@
         <input type="submit" class="filter__modal__searchbtn" value="Search">
     </div>
 </form>
-<script type="module" src="../js/api/homeRequest.js"></script>
-<script type="module" src="../js/components/modal.js"></script>
-<script type="module" src="../js/components/switch.js"></script>
+<script type="module" src="js/api/homeRequest.js"></script>
+<script type="module" src="js/components/modal.js"></script>
+<script type="module" src="js/components/switch.js"></script>
 </body>
 </html>

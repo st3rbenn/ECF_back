@@ -10,20 +10,10 @@ const lastName = document.querySelector('#lastName')
 const email = document.querySelector('#mail')
 const mdp = document.querySelector('#MDP')
 const mdpSecond = document.querySelector('#mdpSecond')
-const alertList = document.querySelectorAll('.alert')
 
-alertList.forEach(function (alert) {
-    new bootstrap.Alert(alert)
-
-})
 
 form.addEventListener('submit', (ev ) => {
     if(firstName.value === '' || lastName.value === '' || email.value === '' || mdp.value === '' || mdpSecond.value === ''){
-        firstName.style.border = 'red solid .2rem'
-        lastName.style.border = 'red solid .2rem'
-        email.style.border = 'red solid .2rem'
-        mdp.style.border = 'red solid .2rem'
-        mdpSecond.style.border = 'red solid .2rem'
         ev.preventDefault()
     }else {
         ev.stopPropagation()

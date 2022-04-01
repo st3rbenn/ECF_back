@@ -1,3 +1,7 @@
+<?php
+$connexion = new Class\Form();
+?>
+
 <!DOCTYPE html>
 <html lang="fr"><!-- Mettre le code langue du site dans l'attribut lang -->
 
@@ -16,7 +20,7 @@
 
 <body>
 
-<header class="header__main" id="blurred">
+<header class="header__main header__main__inscription" id="blurred">
     <div class="container">
         <div class="header__item">
             <figure class="logo">
@@ -43,29 +47,14 @@
     </div>
 </header>
 
-<main class="container form">
-    <div class="loader" id="loader" style="display: flex">
-        <span class="circle"></span>
-        <span class="circle"></span>
-        <span class="circle"></span>
-    </div>
-    <form action="" method="POST" class="test" id="form" style="display: none">
+<div class="loader load__inscription" id="loader" style="display: flex">
+    <span class="circle"></span>
+    <span class="circle"></span>
+    <span class="circle"></span>
+</div>
 
-        <h1 class="title connexion__title">Connexion</h1>
-        <div class="mail connexion__mail">
-            <label for="mail" class="textForm">Mail</label>
-            <input type="text" id="mail" name="mail">
-        </div>
-        <div class="mdp connexion__mdp">
-            <label for="MDP" class="textForm">Mot de Passe</label>
-            <input type="password" id="MDP" name="mdp">
-        </div>
-        <div class="saveInfo">
-            <label for="saveInfo" class="textForm">Se souvenir de moi</label>
-            <input type="checkbox" id="saveInfo" name="mdpSecond">
-        </div>
-        <input type="submit" id="submitForm" class="submitForm connexion__submitForm" value="se connecter">
-    </form>
+<main class="container form">
+    <?= $connexion->getFormLogIn();?>
 </main>
 
 <script src="../js/components/switch.js"></script>

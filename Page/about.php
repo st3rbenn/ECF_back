@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -67,8 +67,7 @@
       </div>
     </footer>
 
-    <script type="module" src="../js/api/linkAPI.js"></script>
-    <script type="module" src="../js/api/aboutRequest.js"></script>
+    <script src="/js/api/aboutRequest.js"></script>
     <script src="/js/components/switch.js"></script>
   </body>
 </html>

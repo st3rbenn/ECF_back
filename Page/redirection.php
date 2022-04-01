@@ -1,3 +1,56 @@
+<?php
+
+$isSend = new Class\Form;
+$database = new Database\Database;
+$db = $database->getConnection();
+$data = new Class\Inscription($db);
+$url = $_SERVER['HTTP_REFERER'];
+$url = substr($url, -8);
+$redirect = '';
+if ($url == 'register') {
+    if($isSend->sendInscription()){
+        $redirect = '<meta http-equiv="Refresh" content="5; URL=/home"/>
+                <div class="form_inscription form__inscription">
+                    <h1 class="title">Bienvenue sur DevJobs<p class="name"> ' . $data->getFirstName() . ' !</p></h1>
+                    <blockquote class="blockquote textForm redirect">Redirection en cours...</blockquote>
+                    <blockquote class="blockquote textForm noRedirect">Appuye <a href="/home">ici</a> si tu n\'a pas était redirigé</blockquote>
+                </div>
+                <script type="module" src="../js/components/redirection.js"></script>';
+    }else {
+        $redirect = '<meta http-equiv="Refresh" content="5; URL=/register"/>
+                <div class="form_inscription form__inscription">
+                    <h1>Erreur</h1>
+                    <p style="color:Blue;"> l\'email ' . $data->getMail() .' est déjà pris</p>
+                </div>';
+    }
+}else {
+    $url = substr($url, -5);
+}
+var_dump($url);
+
+if($url == 'login'){
+
+
+
+    if($isSend->sendLogIn()){
+        session_start();
+        $redirect = '<meta http-equiv="Refresh" content="5; URL=/home"/>
+                <div class="form_inscription form__inscription">
+                    <h1 class="title">Ah! te revoila <p class="name"> ' . $data->getFirstName() . '  😄</p></h1>
+                    <blockquote class="blockquote textForm redirect">Redirection en cours...</blockquote>
+                    <blockquote class="blockquote textForm noRedirect">Appuye <a href="/home">ici</a> si tu n\'a pas était redirigé</blockquote>
+                </div>
+                <script type="module" src="../js/components/redirection.js"></script>';
+    }else {
+        $redirect = '<meta http-equiv="Refresh" content="5; URL=/login"/>
+                <div class="form_inscription form__inscription">
+                    <h1>Erreur</h1>
+                    <p style="color:Blue;">Email ou mot de passe incorrecte</p>
+                </div>';
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -6,12 +59,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ECF-Front-End</title>
     <meta name="description" content="Contrôle de conaissance et d'application des méthodes apprise au CEFIM">
-    <meta http-equiv="Refresh" content="5; URL=/home"/>
     <link rel="icon" href="../favicon-32x32.png" sizes="any">
     <link rel="icon" href="../favicon-32x32.png" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="manifest" href="/manifest.webmanifest">
-    <link rel="stylesheet" href="../css/bootstrap.css">
+
     <link rel="stylesheet" href="../css/main.css">
 </head>
 
@@ -43,33 +95,9 @@
         </div>
     </div>
 </header>
-<!--<div class="loader" id="loader" style="display: flex">
-    <span class="circle"></span>
-    <span class="circle"></span>
-    <span class="circle"></span>
-</div>-->
 <main class="container">
     <section class="redirection__container">
-        <?php
-
-        $database = new Database\Database();
-        $db = $database->getConnection();
-        $inscription = new Class\Inscription($db);
-        $stmt = $inscription->ckeckIfMailExist();
-
-        $isSend = new Class\Form;
-        $alert = new Class\Alert;
-
-        if($isSend->sendInfo()){
-            echo '
-                    <h1 style="color:red;">Bienvenue</h1>
-                    <script type="module" src="../js/components/redirection.js"></script>
-                 ';
-        }else {
-            header('Status: 301 Moved Permanently', false, 301);
-            header('location: /register' );
-        }
-        ?>
+        <?= $redirect?>
     </section>
 </main>
 <script src="../js/components/bootstrap.bundle.min.js"></script>

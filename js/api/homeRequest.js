@@ -1,4 +1,4 @@
-import {URL_API} from './linkAPI.js';
+const URL_API = 'https://www.apiecf.colas.cefim.o2switch.site/'
 const loader = document.querySelector('#loader')
 const container = document.querySelector('#jobs')
 const btnLoadMore = document.querySelector('#loadmore')
@@ -39,8 +39,7 @@ function displayInfoJobs (data){
   city.classList.add('city')
   
   jobsContainer.addEventListener('click', () => {
-    const id = `?id=${data.id}`
-    location.href = `/jobs${id}`
+    location.href = `jobs/${data.id}`
   })
 
   jobsPostedAt.textContent = timeToNow(data.postedAt)

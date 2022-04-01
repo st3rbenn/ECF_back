@@ -1,8 +1,19 @@
-const formulaire = document.querySelector('#form')
 const loader = document.querySelector('#loader')
-const alertNode = document.querySelector('#alert')
+const mdp = document.querySelector('#mdp')
+const email = document.querySelector('#mail')
+const form = document.querySelector('#connexion')
+
+
+
+form.addEventListener('submit', (ev ) => {
+    if(email.value === '' || mdp.value === ''){
+        ev.preventDefault()
+    }else {
+        ev.stopPropagation()
+    }
+})
 
 setTimeout(() => {
-    formulaire.style.display = 'grid'
+    form.style.display = 'grid'
     loader.style.display = 'none'
-}, 3000)
+}, 1500)

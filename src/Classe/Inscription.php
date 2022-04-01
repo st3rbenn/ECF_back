@@ -11,23 +11,20 @@ class Inscription
     private string $entreprise;
     private string $mail;
     private $mdp;
-    /**
-     * @return string
-     */
-    public function getMail(): string
-    {
-        return $this->mail;
-    }
 
     private $connexion;
     private $sql;
+
+    /**
+     * @return string
+     */
+
 
 
     public function __construct($db)
     {
         $this->connexion = $db;
     }
-
 
     public function sendForm()
     {
@@ -49,7 +46,20 @@ class Inscription
         $query->execute();
     }
 
-    public function ckeckIfMailExist()
+    public function getMail(): string
+    {
+        return htmlspecialchars(html_entity_decode($_POST['mail']));
+    }
+
+    public function getFirstName(): string
+    {
+            if(isset($_POST['firstName'])){
+                return $this->firstName = htmlspecialchars(html_entity_decode($_POST['firstName']));
+            }
+            return false;
+    }
+
+    public function checkIfAccountExist()
     {
         $this->mail = htmlspecialchars(html_entity_decode($_POST['mail']));
 
