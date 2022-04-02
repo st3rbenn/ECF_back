@@ -1,3 +1,6 @@
+<?php session_start();?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,8 +26,16 @@
             </figure>
             <div class="header__switchmode">
                 <div class="header__buttonLog">
-                    <a class="header__inscription" href="/register">Inscription</a>
-                    <a class="header__connexion" href="/login">Connexion</a>
+                    <?php if(!isset($_SESSION['firstName'])):?>
+                        <a class="header__inscription" href="/register">Inscription</a>
+                        <a class="header__connexion" href="/login">Connexion</a>
+                    <?php else:?>
+                    <?php if($_SESSION['role'] === 'admin'): ?>
+                    <a class="header__inscription">Dashboard</a>
+                    <?php endif;?>
+                    <a class="header__connexion">Mon Profile</a>
+                    <a class="header__inscription" href="/disconnect">Déconnexion</a>
+                    <?php endif;?>
                 </div>
                 <figure class="logo-switchmode">
                     <img src="assets/img/icon-sun.svg" alt="">

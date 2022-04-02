@@ -87,7 +87,7 @@ class Form
                             <input type="password" id="MDP" name="mdp">
                         </div>
                         <div class="saveInfo">
-                            <input type="checkbox" id="saveInfo" name="mdpSecond">
+                            <input type="checkbox" id="saveInfo" name="remember">
                             <label for="saveInfo" class="textForm">Se souvenir de moi</label>
                         </div>
                         <input type="submit" id="submitForm" class="submitForm connexion__submitForm" value="se connecter">
@@ -95,9 +95,9 @@ class Form
                ';
     }
 
-
     public function sendLogIn(): bool
     {
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             require 'vendor/autoload.php';
 
@@ -123,4 +123,6 @@ class Form
         }
         return true;
     }
+
+
 }

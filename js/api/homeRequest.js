@@ -70,12 +70,13 @@ function displayInfoJobs (data){
 // bouton pour afficher les 12 dernier jobs de l'api 
 // =================================================
 
-
+let offset = 0
 btnLoadMore.addEventListener('submit', (ev) => {
+  offset += 12;
   ev.preventDefault();
   async function loadMore() {
     try{
-      const response = await fetch(`${URL_API}api/jobs?offset=12`)
+      const response = await fetch(`${URL_API}api/jobs?offset=${offset}`)
       if (!response.ok) {
         throw Error(`${response.status} ${response.statusText}`);
       }
@@ -83,12 +84,13 @@ btnLoadMore.addEventListener('submit', (ev) => {
       const data = await response.json()
       const jobsInfo = data.jobs
       console.log(jobsInfo)
-        for (let i = 0; i < jobsInfo.length; i++) {
-          displayInfoJobs(jobsInfo[i])
-        }
+        jobsInfo.reverse().forEach(job => {
+          displayInfoJobs(job)
+        })
       isLoaded = true
-      btnLoadMore[0].setAttribute('disabled', true)
-        btnLoadMore[0].value = 'Fuyez pauvre fou !'
+      if({offset} === jobsInfo.length){
+        btnLoadMore.style.display = 'none'
+      }
     }
     }catch(err) {
       console.error(err);
@@ -105,7 +107,7 @@ btnLoadMore[0].setAttribute('disabled', true)
 loader.classList.remove('hidden')
 
 async function getJobsInfo(){
-  const response = await fetch(`${URL_API}api/jobs?offset=0`)
+  const response = await fetch(`${URL_API}api/jobs`)
   try{
     if (!response.ok) {
       throw Error(`${response.status} ${response.statusText}`);
@@ -113,9 +115,10 @@ async function getJobsInfo(){
       const data = await response.json()
       const jobsInfo = data.jobs
       console.table(jobsInfo);
-      for (let i = 0; i < jobsInfo.length; i++) {
-        displayInfoJobs(jobsInfo[i])  
-      }
+      jobsInfo.reverse().forEach(job => {
+        displayInfoJobs(job)
+      })
+
       btnLoadMore[0].removeAttribute('disabled')
       btnLoadMore[0].value = 'Load More'
       loader.classList.add('hidden')
@@ -149,9 +152,8 @@ function handleScroll() {
   }
 }
 
+
 document.addEventListener("scroll", handleScroll);
-
-
 
 // =========================================
 // petite fonction pour delete tout les jobs 
