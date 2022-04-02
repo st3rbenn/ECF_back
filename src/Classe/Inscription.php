@@ -5,7 +5,6 @@ namespace Class;
 
 class Inscription
 {
-
     private string $firstName;
     private string $lastName;
     private string $entreprise;
@@ -28,7 +27,7 @@ class Inscription
         $this->mail = htmlspecialchars(html_entity_decode($_POST['mail']));
         $this->mdp = htmlspecialchars(html_entity_decode(password_hash($_POST['mdp'], PASSWORD_BCRYPT)));
         if (empty($_POST['entreprise'])){
-            $this->role = '';
+            $this->role = 'user';
             $this->entreprise = 'undefined';
         }
         else {
@@ -37,7 +36,7 @@ class Inscription
         }
 
         $this->sql = "INSERT INTO user (firstname, lastname, company, mail, password, role) 
-                      VALUES (:firstname, :lastname, :entreprise, :mail, :mdp, $this->role)";
+                      VALUES (:firstname, :lastname, :entreprise, :mail, :mdp, '$this->role')";
 
         $query = $this->connexion->prepare($this->sql);
         $query->bindParam(':firstname', $this->firstName);

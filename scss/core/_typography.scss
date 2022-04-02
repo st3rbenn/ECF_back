@@ -59,6 +59,7 @@
     --color-svg: invert(100%) sepia(100%) saturate(2%) hue-rotate(263deg) brightness(103%) contrast(101%);
     --name: var(--white);
     --name-reverse: var(--d-blue);
+    --transition: calc(100% - var(--switch-pos));
 }
 
 

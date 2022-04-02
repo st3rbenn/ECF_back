@@ -50,7 +50,7 @@ if($url == 'login'){
         }
 
 
-        $redirect = '<meta http-equiv="Refresh" content="5; URL=/"/>
+        $redirect = '<meta http-equiv="Refresh" content="5; URL=/home"/>
                         
                 <div class="form_inscription form__inscription">
                     <h1 class="title">Bonjour <p class="name"> ' . $name . '  😄</p></h1>
@@ -66,10 +66,11 @@ if($url == 'login'){
                 </div>';
     }
 }else {
-    $url = substr($url, -1);
+    $url = substr($url, -5);
 }
-if($url == '/'){
-    $redirect = '<meta http-equiv="Refresh" content="5; URL=/"/>
+
+if($url == '/home'){
+    $redirect = '<meta http-equiv="Refresh" content="5; URL=/home"/>
 
                 <div class="form_inscription form__inscription">
                     <h1 class="title">On espère te revoir bientôt 😉</h1>
@@ -106,10 +107,6 @@ if($url == '/'){
                 <a href="/home"><img src="/assets/img/logo.svg" alt="Logo de devjobs"></a>
             </figure>
             <div class="header__switchmode">
-                <div class="header__buttonLog">
-                    <a class="header__inscription" href="/register">Inscription</a>
-                    <a class="header__connexion" href="/login">Connexion</a>
-                </div>
                 <figure class="logo-switchmode">
                     <img src="/assets/img/icon-sun.svg" alt="">
                 </figure>

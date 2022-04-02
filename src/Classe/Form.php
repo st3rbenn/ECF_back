@@ -73,7 +73,6 @@ class Form
     }
 
 
-
     public function getFormLogIn(): string
     {
         return '<form action="/redirect" method="POST" class="form_inscription form__inscription" id="connexion" style="display: none">

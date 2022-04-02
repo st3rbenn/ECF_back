@@ -39,7 +39,7 @@ function displayInfoJobs (data){
   city.classList.add('city')
   
   jobsContainer.addEventListener('click', () => {
-    location.href = `jobs/${data.id}`
+    location.href = `/home/jobs/${data.id}`
   })
 
   jobsPostedAt.textContent = timeToNow(data.postedAt)

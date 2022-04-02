@@ -17,6 +17,10 @@ button{
     border-radius: 100%;
 }
 
+.left{
+left:  calc(100% - var(--switch-pos))
+}
+
 .switch__input, .switch__label {
     position: absolute;
     left: 0;

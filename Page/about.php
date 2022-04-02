@@ -6,12 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ECF-Front-End</title>
     <meta name="description" content="Contrôle de conaissance et d'application des méthodes apprise au CEFIM">
-
     <link rel="icon" href="../favicon-32x32.png" sizes="any">
     <link rel="icon" href="../favicon-32x32.png" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="manifest" href="/manifest.webmanifest">
-
 
     <link rel="stylesheet" href="../css/main.css">
 </head>
@@ -67,7 +65,7 @@
       </div>
     </footer>
 
-    <script src="/js/api/aboutRequest.js"></script>
-    <script src="/js/components/switch.js"></script>
+    <script src="../js/api/aboutRequest.js"></script>
+    <script src="../js/components/switch.js"></script>
   </body>
 </html>
