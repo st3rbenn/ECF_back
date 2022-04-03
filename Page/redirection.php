@@ -54,7 +54,7 @@ if(end($url) == 'login'){
         $_SESSION['firstName'] = $name;
         $_SESSION['role'] = $role;
         $_SESSION['company'] = $enterprise;
-        $_SESSION['Offers'] = 'AllOffers';
+
         if(isset($_POST['remember'])){
             setcookie('mail', $mail, time() + 365*24*3600);
             setcookie('password', $password, time() + 365*24*3600);

@@ -2,7 +2,7 @@
 
 namespace Class;
 
-class Espace_Membre
+class Espace_Recruteur
 {
 
     private $connexion;
@@ -11,15 +11,6 @@ class Espace_Membre
     public function __construct($db)
     {
         $this->connexion = $db;
-    }
-
-    public function selectLogo()
-    {
-        $this->sql = "SELECT logo FROM job WHERE company = :company";
-        $query = $this->connexion->prepare($this->sql);
-        $query->bindValue(':company', $_SESSION['company']);
-        $query->execute();
-        return $query->fetch();
     }
 
     public function getAllJobs()
@@ -35,11 +26,11 @@ class Espace_Membre
         return $query;
     }
 
-    public function deleteJobs($id)
+    public function deleteJobs()
     {
-        $this->sql = "DELETE FROM job WHERE id = :id";
+        $this->sql = 'DELETE FROM job WHERE id = :id';
         $query = $this->connexion->prepare($this->sql);
-        $query->bindValue(':id', $id);
+        $query->bindValue(':id', $_GET['id']);
         $query->execute();
     }
 }

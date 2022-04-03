@@ -1,21 +1,58 @@
+const XHR_URL = "http://localhost";
+
 const btnTouteMesOffres = document.querySelector('#touteMesOffres')
 const btnAjouterUneOffre = document.querySelector('#ajouterUneOffre')
 const loader = document.querySelector('#loader')
 const article = document.querySelector('#article')
 const sideBar = document.querySelector('#sideBar')
-const form = document.querySelector('#form')
+const xhr = new XMLHttpRequest()
 
 
-btnTouteMesOffres.addEventListener('click', (ev) => {
 
+const getAllJobs = () => {
+    xhr.onload = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                loader.style.display = 'none'
+                article.innerHTML = xhr.responseText
+            } else {
+                article.innerHTML = 'Une erreur est survenue'
+            }
+        }
+    }
+    xhr.open('GET', XHR_URL + "/Page/Components/AllOffers_espaceRecrutement.php", true)
+    xhr.send()
+}
+getAllJobs()
+
+
+
+btnTouteMesOffres.addEventListener('click', () => {
+    btnTouteMesOffres.classList.add('active')
+    btnAjouterUneOffre.classList.remove('active')
+    loader.style.display = 'block'
+    getAllJobs();
 })
 
+btnAjouterUneOffre.addEventListener('click', (ev) => {
+    btnTouteMesOffres.classList.remove('active')
+    btnAjouterUneOffre.classList.add('active')
+    loader.style.display = 'block'
 
-setTimeout(() => {
-    article.style.display = 'grid'
-    form.style.display = 'grid'
-    loader.style.display = 'none'
-}, 2000)
+    xhr.onload = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                loader.style.display = 'none'
+                article.innerHTML = xhr.responseText
+            } else {
+                article.innerHTML = 'Une erreur est survenue'
+            }
+        }
+    }
+    xhr.open('GET', 'http://localhost/Page/Components/AddOffer_espaceRecrutement.php', true)
+    xhr.send()
+})
+
 
 
 function deleteAll(){
@@ -25,17 +62,6 @@ function deleteAll(){
 }
 
 
-btnAjouterUneOffre.addEventListener('click', () => {
-    deleteAll();
-})
-
-btnTouteMesOffres.addEventListener('click', () => {
-    btnTouteMesOffres.classList.add('active')
-    btnAjouterUneOffre.classList.remove('active')
-})
-
-
-function displayForm(){
 
 
 
@@ -43,4 +69,4 @@ function displayForm(){
 
 
 
-}
+

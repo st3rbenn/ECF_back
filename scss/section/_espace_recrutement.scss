@@ -41,9 +41,25 @@ body{
   }
 
 }
+.btnJobs{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--violet);
+  border-radius: 1rem;
+  color: var(--white);
+  padding: .2rem;
+  &:nth-child(1){
+    margin-right: 2rem;
+  }
+  &:nth-child(2){
+    margin-left: 2rem;
+  }
+}
+
 
 .article{
-    display: none;
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 3rem;
     max-width: 111rem;
