@@ -14,8 +14,8 @@ class Database
             try {
                 static::$connection = new PDO(
                     'mysql:host=localhost;dbname=api_ecf;charset=utf8',
-                    'root',
-                    '30122001',
+                    '',
+                    '',
                     [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
                 );
             } catch (Exception $exception) {
