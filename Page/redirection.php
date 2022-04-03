@@ -1,17 +1,35 @@
 <?php
-$isSend = new Class\Form;
+$isSend = new Class\SendInfoToBDD;
 $database = new Database\Database;
 $db = $database->getConnection();
 $inscription = new Class\Inscription($db);
 $url = $_SERVER['HTTP_REFERER'];
-$url = substr($url, -8);
+$url = explode('/', $url);
 $redirect = '';
-//<meta http-equiv="Refresh" content="5; URL=/home"/>
-if ($url == 'register') {
+
+$name = '';
+$pass = '';
+$email = '';
+$roles = '';
+$enterprise = '';
+if(isset($_POST['mail'])){
+
+    $test = $inscription->getUserInfoFromDB(htmlspecialchars(htmlentities($_POST['mail'])));
+    while($row = $test->fetch(PDO::FETCH_ASSOC)){
+        extract($row);
+        $name = $firstname;
+        $email = $mail;
+        $pass = $password;
+        $enterprise = $company;
+        $roles = $role;
+    }
+}
+
+if (end($url) == 'register') {
     if($isSend->sendInscription()){
         $redirect = '<meta http-equiv="Refresh" content="5; URL=/login"/>
                 <div class="form_inscription form__inscription">
-                    <h1 class="title">Bienvenue sur DevJobs<p class="name"> ' . $inscription->getFirstName() . ' !</p></h1>
+                    <h1 class="title">Bienvenue sur DevJobs<p class="name"> ' . $name . ' !</p></h1>
                     <blockquote class="blockquote textForm redirect">Redirection en cours...</blockquote>
                     <blockquote class="blockquote textForm noRedirect">Appuye <a href="/home">ici</a> si tu n\'a pas était redirigé</blockquote>
                 </div>
@@ -20,29 +38,17 @@ if ($url == 'register') {
         $redirect = '<meta http-equiv="Refresh" content="5; URL=/register"/>
                 <div class="form_inscription form__inscription">
                     <h1 class="title">Une Erreur est survenue...</h1>
-                    <p style="color:Blue;"> l\'email ' . $inscription->getMail() .' est déjà pris</p>
+                    <p style="color:Blue;"> l\'email ' . $email .' est déjà pris</p>
                 </div>';
     }
-}else {
-    $url = substr($url, -5);
 }
 
-if($url == 'login'){
+if(end($url) == 'login'){
     if($isSend->sendLogIn()){
-        $name = '';
-        $password = '';
-        $mail = '';
-        $role = '';
-        $test = $inscription->getUserInfoFromDB(htmlspecialchars(htmlentities($_POST['mail'])));
-        while($row = $test->fetch(PDO::FETCH_ASSOC)){
-            $name = $row['firstname'];
-            $mail = $row['mail'];
-            $password = $row['password'];
-            $role = $row['role'];
-        }
         session_start();
         $_SESSION['firstName'] = $name;
         $_SESSION['role'] = $role;
+        $_SESSION['company'] = $enterprise;
 
         if(isset($_POST['remember'])){
             setcookie('mail', $mail, time() + 365*24*3600);
@@ -58,29 +64,24 @@ if($url == 'login'){
                     <blockquote class="blockquote textForm noRedirect">Appuye <a href="/home">ici</a> si tu n\'a pas était redirigé</blockquote>
                 </div>
                 <script type="module" src="../js/components/redirection.js"></script>';
-    }else {
+    }
+    else {
         $redirect = '<meta http-equiv="Refresh" content="5; URL=/login"/>
                 <div class="form_inscription form__inscription">
                     <h1>Erreur</h1>
                     <p style="color:Blue;">Email ou mot de passe incorrecte</p>
                 </div>';
     }
-}else {
-    $url = substr($url, -5);
 }
 
-if($url == '/home'){
+if(end($url) == 'home' || end($url) == 'Mon_Espace_Recrutement'){
     $redirect = '<meta http-equiv="Refresh" content="5; URL=/home"/>
-
                 <div class="form_inscription form__inscription">
                     <h1 class="title">On espère te revoir bientôt 😉</h1>
                     <blockquote class="blockquote textForm redirect">Redirection en cours...</blockquote>
-                    <blockquote class="blockquote textForm noRedirect">Appuye <a href="/home">ici</a> si tu n\'a pas était redirigé</blockquote>
+                    <blockquote class="blockquote textForm noRedirect">Appuie <a href="/home">ici</a> si tu n\'a pas était redirigé</blockquote>
                 </div>';
 }
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">

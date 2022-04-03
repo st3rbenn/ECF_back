@@ -1,5 +1,8 @@
 <?php
-$connexion = new Class\Form();
+session_start();
+if(isset($_SESSION['role'])){
+    header('Location: /home');
+}
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +27,7 @@ $connexion = new Class\Form();
     <div class="container">
         <div class="header__item">
             <figure class="logo">
-                <a href="/home"><img src="/assets/img/logo.svg" alt="Logo de devjobs"></a>
+                <a href="/home"><img src="/assets/img/logo.svg" alt="Logo de DevJobs"></a>
             </figure>
             <div class="header__switchmode">
                 <div class="header__buttonLog">
@@ -54,7 +57,22 @@ $connexion = new Class\Form();
 </div>
 
 <main class="container form">
-    <?= $connexion->getFormLogIn();?>
+    <form action="/redirect" method="POST" class="form_inscription form__inscription" id="connexion" style="display: none">
+        <h1 class="title connexion__title">Connexion</h1>
+        <div class="mail connexion__mail">
+            <label for="mail" class="textForm">Mail</label>
+            <input type="text" id="mail" name="mail">
+        </div>
+        <div class="mdp connexion__mdp">
+            <label for="MDP" class="textForm">Mot de Passe</label>
+            <input type="password" id="MDP" name="mdp">
+        </div>
+        <div class="saveInfo">
+            <input type="checkbox" id="saveInfo" name="remember">
+            <label for="saveInfo" class="textForm">Se souvenir de moi</label>
+        </div>
+        <input type="submit" id="submitForm" class="submitForm connexion__submitForm" value="se connecter">
+    </form>
 </main>
 
 <script src="../js/components/switch.js"></script>

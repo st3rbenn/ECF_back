@@ -47,14 +47,6 @@ class Inscription
         $query->execute();
     }
 
-    public function getFirstName(): string
-    {
-            if(isset($_POST['firstName'])){
-                return $this->firstName = htmlspecialchars(html_entity_decode($_POST['firstName']));
-            }
-            return false;
-    }
-
     public function checkIfAccountExist()
     {
         $this->mail = htmlspecialchars(html_entity_decode($_POST['mail']));
@@ -74,7 +66,7 @@ class Inscription
 
     public function getUserInfoFromDB($mail)
     {
-        $this->sql = "SELECT firstname, role, mail, password FROM user WHERE mail = :mail";
+        $this->sql = "SELECT firstname, role, mail, password, company FROM user WHERE mail = :mail";
         $query = $this->connexion->prepare($this->sql);
         $query->bindParam(':mail', $mail);
         $query->fetch(\PDO::FETCH_ASSOC);

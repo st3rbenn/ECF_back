@@ -1,4 +1,8 @@
-<?php session_start();?>
+<?php session_start();
+if(isset($_SESSION['role'])){
+    $role = $_SESSION['role'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +10,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ECF-Front-End</title>
-    <meta name="description" content="Contrôle de conaissance et d'application des méthodes apprise au CEFIM">
+    <meta name="description" content="Contrôle de connaissance et d'application des méthodes apprise au CEFIM">
     <link rel="icon" href="../favicon-32x32.png" sizes="any">
     <link rel="icon" href="../favicon-32x32.png" type="image/svg+xml">
     <link rel="apple-touch-icon" href="../apple-touch-icon.png">
@@ -20,7 +24,7 @@
     <div class="container">
         <div class="header__item">
             <figure class="logo">
-                <a href="/home"><img src="assets/img/logo.svg" alt="Logo de devjobs"></a>
+                <a href="/home"><img src="assets/img/logo.svg" alt="Logo de DevJobs"></a>
             </figure>
             <div class="header__switchmode">
                 <div class="header__buttonLog">
@@ -28,11 +32,14 @@
                         <a class="header__inscription" href="/register">Inscription</a>
                         <a class="header__connexion" href="/login">Connexion</a>
                     <?php else:?>
-                    <?php if($_SESSION['role'] === 'admin'): ?>
-                    <a class="header__inscription">Dashboard</a>
-                    <?php endif;?>
-                    <a class="header__connexion">Mon Profile</a>
-                    <a class="header__inscription" href="/disconnect">Déconnexion</a>
+                        <?php if($role === 'admin'): ?>
+                                <a class="header__inscription">Dashboard</a>
+                        <?php endif;?>
+                        <?php if($role === 'recruteur'):?>
+                                <a class="header__inscription" href="/home/Mon_Espace_Recrutement">Mon Espace Recruteur</a>
+                        <?php endif;?>
+                                <a class="header__connexion">Mon Profile</a>
+                                <a class="header__inscription" href="/disconnect">Déconnexion</a>
                     <?php endif;?>
                 </div>
                 <figure class="logo-switchmode">

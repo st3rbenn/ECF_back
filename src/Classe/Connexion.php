@@ -14,7 +14,6 @@ class Connexion
         $this->connexion = $db;
     }
 
-
     public function sendInfoForConnection()
     {
         $this->mail = htmlspecialchars(html_entity_decode($_POST['mail']));

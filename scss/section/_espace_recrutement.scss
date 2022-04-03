@@ -1,0 +1,83 @@
+body{
+    position: relative;
+}
+
+.title__recruteur{
+  color: var(--white);
+}
+
+.header-item{
+    padding-bottom: 3.4rem;
+}
+
+.container{
+    &__recrutement{
+      display: flex;
+    }
+}
+
+.buttons_container{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  & > button{
+    color: var(--d-blue);
+    border: none;
+    border-radius: 1rem;
+    &:nth-child(1){
+      margin-right: 2rem;
+      &:hover{
+        transition: ease-in-out .2s;
+        background-color: orange;
+      }
+    }
+    &:nth-child(2){
+      margin-left: 2rem;
+      &:hover{
+        transition: ease-in-out .2s;
+        background-color: red;
+      }
+    }
+  }
+
+}
+
+.article{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    max-width: 111rem;
+    padding: 0 0 6.2rem;
+    margin-left: 10rem;
+}
+
+.sideBar{
+    position: sticky;
+    top: 20rem;
+    max-width: 20rem;
+    height: 20rem;
+
+  & > li{
+    border-radius: 1rem;
+    cursor: pointer;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    &:hover{
+      background-color: var(--violet);
+      transition: 500ms linear;
+    }
+    & > a{
+      text-decoration: none;
+      color: var(--name);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+  }
+ }
+
+.active{
+  background-color: var(--violet);
+}
+
+
+

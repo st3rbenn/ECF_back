@@ -10,6 +10,7 @@ const lastName = document.querySelector('#lastName')
 const email = document.querySelector('#mail')
 const mdp = document.querySelector('#MDP')
 const mdpSecond = document.querySelector('#mdpSecond')
+const btn = document.querySelector('#submitForm')
 
 
 form.addEventListener('submit', (ev ) => {
@@ -73,9 +74,12 @@ setInterval(() => {
             tableau[i].style.border = '';
         }
     }
+
     if (mdpSecond.value === mdp.value && mdpSecond.value !== ''){
+        btn.removeAttribute('disabled')
         mdpSecond.style.border = '';
     }else {
+        btn.setAttribute('disabled', 'true')
         mdpSecond.style.border = 'red solid .2rem';
     }
 
