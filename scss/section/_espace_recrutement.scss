@@ -43,30 +43,42 @@ body{
 }
 
 .article{
-    display: grid;
+    display: none;
     grid-template-columns: repeat(2, 1fr);
     gap: 3rem;
     max-width: 111rem;
     padding: 0 0 6.2rem;
     margin-left: 10rem;
 }
-
+.load__recruit{
+  top: 15rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
 .sideBar{
     position: sticky;
     top: 20rem;
     max-width: 20rem;
-    height: 20rem;
+    height: fit-content;
+    background-color: var(--color-container);
+    border-radius: 1rem;
 
   & > li{
     border-radius: 1rem;
     cursor: pointer;
-    padding: 1rem;
     margin-bottom: 1rem;
-    &:hover{
+    &:hover {
       background-color: var(--violet);
       transition: 500ms linear;
     }
-    & > a{
+    &:last-child{
+      margin-bottom: 0;
+    }
+    & > button{
+      padding: 1rem;
+      border: none;
+      background-color: transparent;
+      text-align: center;
       text-decoration: none;
       color: var(--name);
       font-weight: 700;
@@ -79,5 +91,18 @@ body{
   background-color: var(--violet);
 }
 
+
+.form__add__jobs{
+  background-color: var(--color-container);
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  padding: 3rem;
+  gap: 1.2rem;
+  border-radius: 5rem;
+  margin-top: 0;
+}
 
 

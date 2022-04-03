@@ -7,7 +7,7 @@ const logoBg = document.querySelector('#logoBg')
 const headerTitle = document.querySelector('#headerTitle')
 const headerWebsite= document.querySelector('#headerWebsite')
 
-const URL = window.location.pathname.split('/')[3]
+const URL = window.location.pathname.split('/')[1]
 console.log(URL)
 
 function aboutJobsInfoData(data) {
@@ -52,9 +52,6 @@ function aboutJobsInfoData(data) {
     const whatYWillDoTitle = document.createElement('h3')
     const whatYWillDoP = document.createElement('p')
     const whatYWillDoList = document.createElement('ol')
-    
-
-   
 
 
     btnApplyNowTop.textContent = 'Apply Now'

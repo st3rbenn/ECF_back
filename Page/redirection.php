@@ -1,4 +1,10 @@
 <?php
+session_start();
+if(empty($_SERVER['HTTP_REFERER'])){
+    header('Location: /home');
+    exit();
+}
+
 $isSend = new Class\SendInfoToBDD;
 $database = new Database\Database;
 $db = $database->getConnection();
@@ -6,7 +12,6 @@ $inscription = new Class\Inscription($db);
 $url = $_SERVER['HTTP_REFERER'];
 $url = explode('/', $url);
 $redirect = '';
-
 $name = '';
 $pass = '';
 $email = '';
@@ -25,11 +30,12 @@ if(isset($_POST['mail'])){
     }
 }
 
+
 if (end($url) == 'register') {
     if($isSend->sendInscription()){
         $redirect = '<meta http-equiv="Refresh" content="5; URL=/login"/>
                 <div class="form_inscription form__inscription">
-                    <h1 class="title">Bienvenue sur DevJobs<p class="name"> ' . $name . ' !</p></h1>
+                    <h1 class="title">Bienvenue sur DevJobs<p class="name"> ' . htmlspecialchars(htmlentities($_POST['firstName'])) . ' !</p></h1>
                     <blockquote class="blockquote textForm redirect">Redirection en cours...</blockquote>
                     <blockquote class="blockquote textForm noRedirect">Appuye <a href="/home">ici</a> si tu n\'a pas était redirigé</blockquote>
                 </div>
@@ -45,19 +51,17 @@ if (end($url) == 'register') {
 
 if(end($url) == 'login'){
     if($isSend->sendLogIn()){
-        session_start();
         $_SESSION['firstName'] = $name;
         $_SESSION['role'] = $role;
         $_SESSION['company'] = $enterprise;
-
+        $_SESSION['Offers'] = 'AllOffers';
         if(isset($_POST['remember'])){
             setcookie('mail', $mail, time() + 365*24*3600);
             setcookie('password', $password, time() + 365*24*3600);
         }
 
-
-        $redirect = '<meta http-equiv="Refresh" content="5; URL=/home"/>
-                        
+//<meta http-equiv="Refresh" content="5; URL=/home"/>
+        $redirect = '<meta http-equiv="Refresh" content="5; URL=/home"/>   
                 <div class="form_inscription form__inscription">
                     <h1 class="title">Bonjour <p class="name"> ' . $name . '  😄</p></h1>
                     <blockquote class="blockquote textForm redirect">Redirection en cours...</blockquote>
