@@ -42,9 +42,11 @@ class SendInfoToBDD
             $db = $database->getConnection();
             $checkAccount = new Inscription($db);
             $connexion = new Connexion($db);
+
             $stmt = $checkAccount->checkIfAccountExist();
-            $eMail = html_entity_decode(htmlspecialchars(password_hash($_POST['mail'], PASSWORD_BCRYPT)));
-            $mdp = html_entity_decode(htmlspecialchars(password_hash($_POST['mdp'], PASSWORD_BCRYPT)));
+            $Email = htmlspecialchars(html_entity_decode($_POST['mail']));
+            $mdp = html_entity_decode(htmlspecialchars($_POST['mdp']));
+
 
             $motDePasseDataBase = '';
             $eMailDataBase = '';
@@ -53,12 +55,12 @@ class SendInfoToBDD
                 $eMailDataBase = $mail;
                 $motDePasseDataBase = $password;
             }
-            if (password_verify($eMail, $eMailDataBase)){
-                if (password_verify($mdp, $motDePasseDataBase)){
-                    $connexion->sendInfoForConnection();
-                }else return false;
+
+            if ($eMailDataBase == $Email && password_verify($mdp, $motDePasseDataBase)){
+                $connexion->sendInfoForConnection();
+                return true;
             }
         }
-        return true;
+        return false;
     }
 }

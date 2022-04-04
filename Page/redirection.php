@@ -11,12 +11,7 @@ $db = $database->getConnection();
 $inscription = new Class\Inscription($db);
 $url = $_SERVER['HTTP_REFERER'];
 $url = explode('/', $url);
-$redirect = '';
-$name = '';
-$pass = '';
-$email = '';
-$roles = '';
-$enterprise = '';
+
 if(isset($_POST['mail'])){
 
     $test = $inscription->getUserInfoFromDB(htmlspecialchars(htmlentities($_POST['mail'])));
@@ -41,10 +36,11 @@ if (end($url) == 'register') {
                 </div>
                 <script type="module" src="../js/components/redirection.js"></script>';
     }else {
-        $redirect = '<meta http-equiv="Refresh" content="5; URL=/register"/>
-                <div class="form_inscription form__inscription">
-                    <h1 class="title">Une Erreur est survenue...</h1>
-                    <p style="color:Blue;"> l\'email ' . $email .' est déjà pris</p>
+        $redirect = '
+                <div class="form_inscription form__inscription ">
+                    <h1 class="title">Une Erreur est survenue</h1>
+                    <p class="TextWrong override"> l\'email <span style="color: red">' . $email .'</span> est déjà pris</p>
+                    <blockquote class="blockquote textForm noRedirect">Redirection en cours...</blockquote>
                 </div>';
     }
 }
@@ -60,7 +56,6 @@ if(end($url) == 'login'){
             setcookie('password', $password, time() + 365*24*3600);
         }
 
-//<meta http-equiv="Refresh" content="5; URL=/home"/>
         $redirect = '<meta http-equiv="Refresh" content="5; URL=/home"/>   
                 <div class="form_inscription form__inscription">
                     <h1 class="title">Bonjour <p class="name"> ' . $name . '  😄</p></h1>
@@ -72,8 +67,9 @@ if(end($url) == 'login'){
     else {
         $redirect = '<meta http-equiv="Refresh" content="5; URL=/login"/>
                 <div class="form_inscription form__inscription">
-                    <h1>Erreur</h1>
-                    <p style="color:Blue;">Email ou mot de passe incorrecte</p>
+                    <h1 class="title">Une Erreur est survenue</h1>
+                    <p class="textForm">Email ou mot de passe incorrecte</p>
+                    <blockquote class="blockquote textForm redirect">Redirection en cours...</blockquote>
                 </div>';
     }
 }
@@ -111,19 +107,6 @@ if(end($url) == 'home' || end($url) == 'Mon_Espace_Recrutement'){
             <figure class="logo">
                 <a href="/home"><img src="/assets/img/logo.svg" alt="Logo de devjobs"></a>
             </figure>
-            <div class="header__switchmode">
-                <figure class="logo-switchmode">
-                    <img src="/assets/img/icon-sun.svg" alt="">
-                </figure>
-                <div class="switch">
-                    <input type="checkbox" class="switch__input" id="theme-switch">
-                    <label for="theme-switch" class="switch__label" aria-hidden="true" id="label__switch"></label>
-                    <div class="switch__marker" aria-hidden="true" id="switch__button"></div>
-                </div>
-                <figure class="logo-switchmodelune">
-                    <img src="/assets/img/icon-moon.svg" alt="">
-                </figure>
-            </div>
         </div>
     </div>
 </header>
@@ -132,7 +115,6 @@ if(end($url) == 'home' || end($url) == 'Mon_Espace_Recrutement'){
         <?= $redirect?>
     </section>
 </main>
-<script src="../js/components/bootstrap.bundle.min.js"></script>
-<script src="../js/components/switch.js"></script>
+<script src="/js/components/switch.js"></script>
 </body>
 </html>

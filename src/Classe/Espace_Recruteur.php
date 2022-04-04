@@ -16,7 +16,7 @@ class Espace_Recruteur
     public function getAllJobs()
     {
         $this->sql = "SELECT a.company, contract, position, logo, logo_background, position, location, postedAt, a.id
-                      FROM job a 
+                      FROM job a
                       INNER JOIN entreprise b
                       WHERE b.company = :company AND A.company = :company;";
 

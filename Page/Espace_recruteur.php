@@ -9,7 +9,7 @@ if(isset($_SESSION['role'])){
 }
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -69,8 +69,8 @@ if(isset($_SESSION['role'])){
     </div>
     <section class="jobs container__recrutement">
             <ul class="sideBar">
-                    <li class="sideBar__items active" id="touteMesOffres"><button >Voir Toutes Mes Offres</button></li>
-                    <li class="sideBar__items" id="ajouterUneOffre"><button >Ajouter Une Offre</button></li>
+                    <li class="sideBar__items active" id="touteMesOffres"><button id="btnTouteMesOffres">Voir Toutes Mes Offres</button></li>
+                    <li class="sideBar__items" id="ajouterUneOffre"><button id="btnAjouterUneOffre">Ajouter Une Offre</button></li>
             </ul>
         <div class="article" id="article">
 

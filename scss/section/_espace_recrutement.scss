@@ -48,15 +48,44 @@ body{
   background-color: var(--violet);
   border-radius: 1rem;
   color: var(--white);
-  padding: .2rem;
+  padding: .6rem;
   &:nth-child(1){
     margin-right: 2rem;
+    &:hover{
+      transition: .4s ease-out;
+      background-color: #D74221;
+  }
   }
   &:nth-child(2){
     margin-left: 2rem;
+    &:hover{
+      transition: .4s ease-out;
+      background-color: #BA2320;
+    }
   }
 }
+.jobs__container{
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.2);
+}
 
+.formAddOfferBtn{
+  grid-area: 2/2/2/5;
+  margin-bottom: 2.5rem;
+  margin-top: 1.5rem;
+  border-radius: 1rem;
+  border: none;
+  color: var(--white);
+  background-color: var(--violet);
+  padding-left: inherit;
+  padding-right: inherit;
+}
+
+.submitFormAddOfferTitle{
+  color: var(--name);
+  text-align: center;
+  grid-area: 1/1/2/6;
+
+}
 
 .article{
     display: grid;
@@ -109,6 +138,7 @@ body{
 
 
 .form__add__jobs{
+  position: relative;
   background-color: var(--color-container);
   display: grid;
   align-items: center;
@@ -119,6 +149,7 @@ body{
   gap: 1.2rem;
   border-radius: 5rem;
   margin-top: 0;
+
 }
 
 

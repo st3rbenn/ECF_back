@@ -1,36 +1,54 @@
-<form action="/redirect" method="POST" class="form__add__jobs" id="form">
+<?php
+session_start();
+include('../../src/Database/Database.php');
+include('../../src/Classe/Espace_Recruteur.php');
+use \Class\Espace_Recruteur;
+use \Database\Database;
 
-    <h1 class="title">Inscription</h1>
+$database = new Database;
+$db = $database->getConnection();
 
-    <div class="firstName">
-        <label for="firstName" class="textForm">Prénom <span style="color:red;">&#8203 &#8203 *</span></label>
-        <input type="text" id="firstName" name="firstName">
-    </div>
-    <div class="lastName">
-        <label for="lastName" class="textForm">Nom de Famille <span style="color:red;">&#8203 &#8203 *</span></label>
-        <input type="text" id="lastName" name="lastName">
-    </div>
-    <div class="radiobtn" id="appened">
-        <p>êtes-vous recruteur ?</p>
+$getJobs = new Espace_Recruteur($db);
+$jobs = $getJobs->getAllJobs();
 
-        <input type="radio" id="isEntreprise" name="contact">
-        <label for="isEntreprise" class="textForm">oui</label>
+if(isset($_GET['id'])){
+    $getJobs->deleteJobs();
+}
+//action="/AddOffer_Step-2" method="POST"
+$onlyOne = true;
+?>
 
-        <input type="radio" id="isNotEntreprise" name="contact" checked>
-        <label for="isNotEntreprise" class="textForm">non</label>
+
+<?php while($row = $jobs->fetch(PDO::FETCH_ASSOC)):?>
+    <?php if($onlyOne):?>
+        <form class="jobs__container" data-id="<?=$row['id']?>" method="POST" action="">
+            <img class="jobs__container__logo" alt="entreprise" src='https://www.apiecf.colas.cefim.o2switch.site<?= $row['logo']?>' style="background-color: <?= $row['logo_background'] ?>">
+            <div class="jobs__container__items">
+                <div class="time">
+                    <p><?= explode(' ', $row['postedAt'])[0]?></p>
+                    <span class="dot"></span>
+                    <p><?=$row['contract']?></p>
+                </div>
+                <div class="jobs__container__info">
+                    <h3 class="jobs__container__info__name"><?=$row['position']?></h3>
+                    <p><?=$row['company']?></p>
+                </div>
+                <p class="city"><?=$row['location']?></p>
+            </div>
+        </form>
+        <?php $onlyOne = false;?>
+    <?php endif;?>
+<?php endwhile;?>
+
+
+<div  class="form__add__jobs" id="form">
+
+    <h1 class="submitFormAddOfferTitle">Première Étapes:</h1>
+    <div>
+        <p class="form-label">Voici, une reproduction de ce qui apparaitra sur la page principale du site.</p>
     </div>
-    <div class="mail">
-        <label for="mail" class="textForm">Mail <span style="color:red;">&#8203 &#8203 *</span></label>
-        <input type="email" id="mail" name="mail">
-    </div>
-    <div class="mdp">
-        <label for="MDP" class="textForm">Mot de Passe <span style="color:red;">&#8203 &#8203 *</span></label>
-        <input type="password" id="MDP" name="mdp">
-    </div>
-    <div class="mdpSecond">
-        <label for="mdpSecond" class="textForm">Retaper le Mot de Passe <span style="color:red;">&#8203 &#8203 *</span></label>
-        <input type="password" id="mdpSecond" name="mdpSecond">
-    </div>
-    <blockquote class="blockquote textForm">obligatoire <span style="color:red;">&#8203 &#8203 &#8203*</span></blockquote>
-    <input type="submit" id="submitForm" class="submitForm" value="valider">
-</form>
+
+
+
+    <input type="submit" id="submitFormAddOffer" class="formAddOfferBtn" value="Passer a l'étape suivante">
+</div>
