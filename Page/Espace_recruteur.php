@@ -30,7 +30,6 @@ if(isset($_SESSION['role'])){
             <figure class="logo">
                 <a href="/home"><img src="/assets/img/logo.svg" alt="Logo de DevJobs"></a>
             </figure>
-            <h2 class="title__recruteur">Mon Espace Recruteur</h2>
             <div class="header__switchmode">
 
                 <div class="header__buttonLog">
@@ -62,16 +61,14 @@ if(isset($_SESSION['role'])){
 </header>
 
 <main class="container" id="blurred">
-    <div class="loader load__recruit" id="loader" style="display: flex">
-        <span class="circle"></span>
-        <span class="circle"></span>
-        <span class="circle"></span>
+    <div class="div__title">
+        <h2 class="title" style="text-align: center;/*! margin-bottom: 1.2rem; *//*! box-sizing: unset; */padding: 1rem;">Mon Espace Recruteur</h2>
     </div>
     <section class="jobs container__recrutement">
-            <ul class="sideBar">
-                    <li class="sideBar__items active" id="touteMesOffres"><button id="btnTouteMesOffres">Voir Toutes Mes Offres</button></li>
-                    <li class="sideBar__items" id="ajouterUneOffre"><button id="btnAjouterUneOffre">Ajouter Une Offre</button></li>
-            </ul>
+        <ul class="sideBar">
+                <li class="sideBar__items active" id="touteMesOffres"><button id="btnTouteMesOffres">Voir Toutes Mes Offres</button></li>
+                <li class="sideBar__items" id="ajouterUneOffre"><button id="btnAjouterUneOffre">Ajouter Une Offre</button></li>
+        </ul>
         <div class="article" id="article">
 
         </div>

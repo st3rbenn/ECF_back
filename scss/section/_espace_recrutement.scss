@@ -2,8 +2,18 @@ body{
     position: relative;
 }
 
-.title__recruteur{
-  color: var(--white);
+.div__title{
+  width: fit-content;
+  margin-bottom: 9.2rem;
+  border: .1rem var(--name) solid;
+}
+
+.header__main{
+  margin-bottom: 10rem;
+}
+
+.title{
+  color: var(--name);
 }
 
 .header-item{
@@ -13,6 +23,7 @@ body{
 .container{
     &__recrutement{
       display: flex;
+      flex-direction: row;
     }
 }
 
@@ -65,7 +76,14 @@ body{
   }
 }
 .jobs__container{
-  box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.2);
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,.6);
+}
+.jobsTemplate{
+  margin: 1rem;
+  border-radius: 4rem;
+  background-color: var(--color-container);
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,.6);
+  padding: 1rem;
 }
 
 .formAddOfferBtn{
@@ -90,10 +108,18 @@ body{
 .article{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 3rem;
     max-width: 111rem;
-    padding: 0 0 6.2rem;
-    margin-left: 10rem;
+    margin-left: 5rem;
+    gap: 3rem;
+
+}
+
+#form{
+  & > .jobs__container{
+    margin-left: 3rem;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+  }
 }
 .load__recruit{
   top: 15rem;
@@ -103,7 +129,6 @@ body{
 .sideBar{
     position: sticky;
     top: 20rem;
-    max-width: 20rem;
     height: fit-content;
     background-color: var(--color-container);
     border-radius: 1rem;
@@ -131,25 +156,51 @@ body{
     }
   }
  }
-
 .active{
   background-color: var(--violet);
 }
 
-
-.form__add__jobs{
-  position: relative;
-  background-color: var(--color-container);
-  display: grid;
-  align-items: center;
-  justify-items: center;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  padding: 3rem;
-  gap: 1.2rem;
-  border-radius: 5rem;
-  margin-top: 0;
-
+.smallText{
+  font-size: 1.1rem;
 }
 
+.blockquote__addOffer{
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 700;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.add__jobs{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12rem;
+  background-color: rgba(25, 32, 45, .5);
+  padding: 3rem;
+  border-radius: 5rem;
+  margin-top: 0;
+}
+.add__jobs__item {
+  text-align: center;
+  padding-left: 1rem;
+  padding-right: 2rem;
+  & > p{
+    color: var(--name);
+    font-weight: 600;
+  }
+}
+
+.add__jobs__title{
+  text-align: center;
+  grid-area: 1/1/2/2;
+}
+.first__step{
+  margin-bottom: 1rem;
+}
+.lineStep{
+  width: 34.5rem;
+  height: .1rem;
+  background-color: var(--l-grey);
+}
 

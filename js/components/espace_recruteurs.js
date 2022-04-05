@@ -4,7 +4,6 @@ const TouteMesOffres = document.querySelector('#touteMesOffres')
 const AjouterUneOffre = document.querySelector('#ajouterUneOffre')
 const btnAjouterUneOffre = document.querySelector('#btnAjouterUneOffre')
 const btnTouteMesOffres = document.querySelector('#btnTouteMesOffres')
-const loader = document.querySelector('#loader')
 const article = document.querySelector('#article')
 const xhr = new XMLHttpRequest()
 
@@ -14,7 +13,6 @@ const AddJobs = () => {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 btnTouteMesOffres.removeAttribute('disabled')
-                loader.style.display = 'none'
                 article.innerHTML = xhr.responseText
             } else {
                 article.innerHTML = 'Une erreur est survenue'
@@ -31,18 +29,16 @@ AjouterUneOffre.addEventListener('click', (ev) => {
     btnTouteMesOffres.setAttribute('disabled', 'disabled')
     TouteMesOffres.classList.remove('active')
     AjouterUneOffre.classList.add('active')
-    loader.style.display = 'block'
-    setTimeout(AddJobs, 1500)
+    AddJobs()
 })
 
 
-
+btnAjouterUneOffre.setAttribute('disabled', 'disabled')
 const getAllJobs = () => {
     xhr.onload = function () {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 btnAjouterUneOffre.removeAttribute('disabled')
-                loader.style.display = 'none'
                 article.innerHTML = xhr.responseText
             } else {
                 article.innerHTML = 'Une erreur est survenue'
@@ -52,7 +48,8 @@ const getAllJobs = () => {
     xhr.open('GET', XHR_URL + "/Page/Components/AllOffers_espaceRecrutement.php", true)
     xhr.send()
 }
-setTimeout(getAllJobs, 1500)
+getAllJobs()
+
 
 
 function deleteAll(){
@@ -66,8 +63,7 @@ TouteMesOffres.addEventListener('click', () => {
     btnAjouterUneOffre.setAttribute('disabled', 'disabled')
     TouteMesOffres.classList.add('active')
     AjouterUneOffre.classList.remove('active')
-    loader.style.display = 'block'
-    setTimeout(getAllJobs, 1500)
+    getAllJobs()
 })
 
 
