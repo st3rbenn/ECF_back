@@ -1,20 +1,28 @@
 <?php
 
 require 'vendor/autoload.php';
+$router = new Router\Router($_SERVER['REQUEST_URI']);
 
-$router = new Router\Router($_GET['url']);
-
-if ($_GET['url'] == 'home/') {
+if ($_SERVER['REQUEST_URI'] === 'home/' || $_SERVER['REQUEST_URI'] === '/') {
     header('Location: /home');
 }
-$router->get('/home', function (){return require 'Page/home.php';});
-$router->get('/home/jobs:id', function (){return require 'Page/about.php';});
-$router->get('/home/Mon_Espace_Recrutement', function (){return require 'Page/Espace_recruteur.php';});
+
+$router->get('/home', function (){return require 'src/view/home.php';});
+$router->get('/home/jobs:id', function ($id){return require 'src/view/about.php';});
+$router->get('/home/mon-espace-recruteur', function (){return require 'src/view/Espace_recruteur.php';});
+
 
 //Parcours utilisateur
-$router->get('/register', function (){return require 'Page/Inscription.php';});
-$router->get('/login', function (){return require 'Page/Connexion.php';});
-$router->get('/disconnect', function (){return require 'Page/disconnect.php';});
-$router->get('/redirect', function (){return require 'Page/redirection.php';});
+$router->get('/home/register', function (){return require 'src/view/Inscription.php';});
+$router->get('/home/login', function (){return require 'src/view/Connexion.php';});
+$router->get('/home/disconnect', function (){return require 'src/view/disconnect.php';});
+$router->get('/home/redirect', function (){return require 'src/view/redirection.php';});
+
+//job manipulation
+$router->get('/mon-espace-recruteur/job/add', function (){return require 'src/functions/add_job.php';});
+$router->get('/mon-espace-recruteur/job/edit/:id', function ($id){return require 'src/functions/edit_job.php';});
+$router->get('/mon-espace-recruteur/job/delete/:id', function ($id){return require 'src/functions/delete_job.php';});
+
+
 
 $router->run();

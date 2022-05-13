@@ -79,7 +79,6 @@ body{
   box-shadow: 0 0.5rem 1rem rgba(0,0,0,.6);
 }
 .jobsTemplate{
-  margin: 1rem;
   border-radius: 4rem;
   background-color: var(--color-container);
   box-shadow: 0 0.5rem 1rem rgba(0,0,0,.6);
@@ -177,7 +176,6 @@ body{
   grid-template-columns: repeat(2, 1fr);
   gap: 12rem;
   background-color: rgba(25, 32, 45, .5);
-  padding: 3rem;
   border-radius: 5rem;
   margin-top: 0;
 }
@@ -202,5 +200,9 @@ body{
   width: 34.5rem;
   height: .1rem;
   background-color: var(--l-grey);
+}
+
+.jobs__container:hover{
+  transform: none;
 }
 

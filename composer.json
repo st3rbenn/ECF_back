@@ -9,7 +9,7 @@
     "autoload": {
         "psr-4": {
             "Database\\": "src/Database/",
-            "Class\\":  "src/Classe/",
+            "Controller\\": "src/Controller/",
             "Router\\": "src/Router/"
         }
     },
