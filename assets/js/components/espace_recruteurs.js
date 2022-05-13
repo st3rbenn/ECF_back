@@ -9,6 +9,30 @@ const article = document.querySelector('#article')
 const xhr = new XMLHttpRequest()
 
 
+if(document.querySelector('#alert') != null){
+    setTimeout(() => {
+        document.querySelector('#alert').remove()
+    }, 3000);
+}
+
+/*if(document.querySelector('#modify') != null){
+    document.querySelector('#modify').addEventListener('click', () => {
+        const id = document.querySelector('#modify').dataset.id
+        xhr.onload = () => {
+            if(xhr.status === 200){
+                article.innerHTML = xhr.responseText
+            }else {
+                article.innerHTML = 'Une erreur est survenue' + xhr.status + xhr.statusText + xhr.responseText + xhr.responseURL
+            }
+
+        }
+        xhr.open('GET', `/src/Functions/edit_job_.php`)
+        xhr.send()
+    }
+    )
+}*/
+
+
 const AddJobs = () => {
     xhr.onload = function () {
         if (xhr.readyState === 4) {

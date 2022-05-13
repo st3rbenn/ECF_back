@@ -1,3 +1,5 @@
 /node_modules/
 /js/api/.linkAPI.js
 /vendor/
+
+.idea/

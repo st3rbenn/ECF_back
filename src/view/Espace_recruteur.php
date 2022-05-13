@@ -6,6 +6,9 @@ if(isset($_SESSION['role']) && $_SESSION['role'] === 'ROLE_RECRUTEUR' || $_SESSI
     header('Location: /home');
     exit();
 }
+$url = Array_slice(explode('/', $_SERVER['REQUEST_URI']), -2)[0];
+var_dump($_SESSION);
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -19,13 +22,14 @@ if(isset($_SESSION['role']) && $_SESSION['role'] === 'ROLE_RECRUTEUR' || $_SESSI
     <link rel="icon" href="../../favicon-32x32.png" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <script src="https://kit.fontawesome.com/6b95777d07.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="manifest" href="../../index.php">
 
-    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../assets/css/main.css">
 </head>
 <body>
 
-<header class="header__main" id="blurred">
+<header class="header__main" id="blurred" style="margin-bottom: 0 !important">
     <div class="container">
         <div class="header__item header-item">
 
@@ -62,9 +66,14 @@ if(isset($_SESSION['role']) && $_SESSION['role'] === 'ROLE_RECRUTEUR' || $_SESSI
     </div>
 </header>
 
-<main class="container" id="blurred">
-    <div class="div__title">
-        <h2 class="title" style="text-align: center;/*! margin-bottom: 1.2rem; *//*! box-sizing: unset; */padding: 1rem;">Mon Espace Recruteur</h2>
+<main class="container position-relative" id="blurred">
+            <?php if(isset($_SESSION['message'])):?>
+                <div class="alert alert-success position-absolute" style="left: 45rem" role="alert" id="alert">
+                    <?= $_SESSION['message'] ?>
+                </div>
+            <?php endif;?>
+    <div class="div__title" style="margin-top: 3rem">
+        <h2 class="title" style="text-align: center; padding: 1rem;">Mon Espace Recruteur</h2>
     </div>
     <section class="jobs container__recrutement">
         <ul class="sideBar">

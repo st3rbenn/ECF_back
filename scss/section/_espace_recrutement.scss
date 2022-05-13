@@ -206,3 +206,27 @@ body{
   transform: none;
 }
 
+.form_edit{
+  background-color: var(--color-container);
+  @include padding(3rem, 3rem, 3rem, 3rem);
+  gap: 1.2rem;
+  border-radius: 5rem;
+}
+
+.btn_return{
+  background-color: var(--l-violet);
+  font-weight: 600;
+  font-size: 1.3rem;
+  border-radius: 1rem;
+  border: none;
+  padding: .5rem 1rem;
+  color: var(--name);
+  cursor: pointer;
+  text-decoration: none;
+  width: fit-content;
+}
+
+.modifyTitle{
+  color: var(--name);
+}
+

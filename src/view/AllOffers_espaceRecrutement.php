@@ -8,8 +8,12 @@ $db = $database::getConnection();
 
 $getJobs = new Controller\Espace_Recruteur($db);
 $jobs = $getJobs->getAllJobs();
+
+
+
 ?>
 <?php while($row = $jobs->fetch(PDO::FETCH_ASSOC)):?>
+    <?php $_SESSION['Logo'] = $row['logo']; $_SESSION['LogoBackground'] = $row['logo_background']; ?>
     <form class="jobs__container" data-id="<?=$row['id']?>" method="POST" action="">
         <img class="jobs__container__logo" alt="entreprise" src='https://www.apiecf.colas.cefim.o2switch.site<?= $row['logo']?>' style="background-color: <?= $row['logo_background'] ?>">
         <div class="jobs__container__items">
@@ -24,7 +28,7 @@ $jobs = $getJobs->getAllJobs();
             </div>
             <p class="city"><?=$row['location']?></p>
             <div class="buttons_container">
-                <a class="btnJobs"><i class="fa-solid fa-pen-to-square"></i></a>
+                <a class="btnJobs" href="/mon-espace-recruteur/job/edit"><i class="fa-solid fa-pen-to-square"></i></a>
                 <a class="btnJobs" href="/mon-espace-recruteur/job/delete/<?= $row['id'] ?>"><i class="fa-solid fa-trash"></i></a>
             </div>
         </div>

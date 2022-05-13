@@ -7,19 +7,16 @@ $db = $database::getConnection();
 
 $getJobs = new Controller\Espace_Recruteur($db);
 
-?>
 
 
-<?php if ($getJobs->deleteJobs($id)): ?>
-    <script>
-        alert("Votre offre a bien été supprimée");
-        window.location.href = "/home/mon-espace-recruteur";
-    </script>
-<?php else: ?>
-    <script>
-        alert("Une erreur est survenue");
-        window.location.href = "/home/mon-espace-recruteur";
-    </script>
-<?php endif; ?>
+
+if($getJobs->deleteJobs($id)){
+    $_SESSION['message'] = "Votre offre a bien été supprimée";
+    header("Location: /home/mon-espace-recruteur");
+}
+else{
+    $_SESSION['message'] = "Une erreur est survenue";
+    header("Location: /home/mon-espace-recruteur");
+}
 
 

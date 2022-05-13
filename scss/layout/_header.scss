@@ -51,11 +51,11 @@
   &__main{
     margin-bottom: 9.7rem;
     display: block;
-    background-image: url("../assets/img/Triangle.svg");
+    background-image: url("../../assets/img/Triangle.svg");
     background-repeat: no-repeat;
     background-size: cover;
     @include tablet {
-      background-image: url("../assets/img/background.svg");
+      background-image: url("../../assets/img/background.svg");
       background-repeat: no-repeat;
     }
     @include pc{
@@ -227,7 +227,7 @@
     filter: var(--color-svg);
   }
   &__input{
-    background-image: url("../ECF/assets/img/icon-filter.svg");
+    background-image: url("../../assets/img/icon-filter.svg");
     width: 2rem;
     height: 2rem;
   }
