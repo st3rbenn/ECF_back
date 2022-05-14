@@ -15,8 +15,6 @@ if(isset($_POST['id'])){
     $jobs = $getJobs->editJobs($_POST['id']);
     unset($_POST['id']);
 }
-
-var_dump($_POST);
 ?>
 <!DOCTYPE html>
 <html lang="fr">

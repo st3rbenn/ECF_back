@@ -12,11 +12,10 @@ $getJobs = new Controller\Espace_Recruteur($db);
 
 if($getJobs->deleteJobs($id)){
     $_SESSION['message'] = "Votre offre a bien été supprimée";
-    header("Location: /home/mon-espace-recruteur");
 }
 else{
     $_SESSION['message'] = "Une erreur est survenue";
-    header("Location: /home/mon-espace-recruteur");
 }
+header("Location: /home/mon-espace-recruteur");
 
 

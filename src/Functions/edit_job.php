@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 $id = substr($_SERVER['REQUEST_URI'], strrpos($_SERVER['REQUEST_URI'], '/') + 1);
 $database = new Database\DB();
@@ -8,8 +7,6 @@ $getJobs = new Controller\Espace_Recruteur($db);
 $jobs = $getJobs->getJobById($id);
 $reqList = $getJobs->getReqList($id);
 $roleList = $getJobs->getRoleList($id);
-
-
 
 
 
@@ -64,18 +61,22 @@ $roleList = $getJobs->getRoleList($id);
         <?php while($row = $jobs->fetch(PDO::FETCH_ASSOC)):?>
             <form action="/home/mon-espace-recruteur" method="POST" class="d-grid gap-3" id="connexion">
                 <input type="text" name="id" value="<?= $id ?>" hidden>
+
                 <div class="input-group">
                     <label for="Title" class="input-group-text fs-4 fw-bold">Titre de l'offre</label>
                     <input type="text" id="Title" aria-label="TitleOffer" name="position" class="form-control fs-4" value="<?= $row['position'] ?>">
                 </div>
+
                 <div class="input-group">
                     <label class="input-group-text fs-4 fw-bold" for="Date">Date d'ajout</label>
                     <input type="text" id="Date" aria-label="TitleOffer" class="form-control fs-4" disabled value="<?php if(!empty($row['postedAt'])): ?><?= explode(' ', $row['postedAt'])[0] ?><?php else:?><?= date('d/m/Y')?><?php endif; ?>">
                 </div>
+
                 <div class="input-group">
                     <label class="input-group-text fs-4 fw-bold" for="Description">Description de l'offre</label>
                     <textarea aria-label="TitleOffer" id="Description" name="description" class="form-control fs-4"><?php if(!empty($row['description'])): ?><?= $row['description'] ?><?php endif; ?></textarea>
                 </div>
+
                 <div class="input-group">
                     <label class="input-group-text fs-4 fw-bold" for="inputGroupSelect01">Type de contract</label>
                     <select class="form-select" name="contract" id="inputGroupSelect01">
@@ -90,26 +91,37 @@ $roleList = $getJobs->getRoleList($id);
                     <label class="input-group-text fs-4 fw-bold" for="Requirement">exigence</label>
                     <textarea type="text" aria-label="TitleOffer" name="req_content" id="Requirement" class="form-control fs-4"><?= $row['req_content']?></textarea>
                 </div>
+
                 <div class="flex flex-column gap-2">
-                    <label class="input-group-text fs-4 fw-bold" for="req_List">List exigence</label>
+                    <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete" id="Add">Ajouter <i class="fa fa-add"></i></button>
+                    <label class="input-group-text fs-4 fw-bold" for="req_List">Les exigences</label>
                     <?php while($row2 = $reqList->fetch(PDO::FETCH_ASSOC)): ?>
-                        <input type="text" id="req_List" name="<?= 'req_item_'.$row2['id'] ?>" aria-label="TitleOffer" class="form-control fs-4" value="<?= $row2['item'] ?>">
+                        <div id="Delete">
+                            <input type="text" id="req_List" name="<?= 'req_item_'.$row2['id'] ?>" aria-label="TitleOffer" class="form-control fs-4" value="<?= $row2['item'] ?>">
+                            <button class="btn btn-danger btn-sm rounded-0 mb-4" type="button">Retirer <i class="fa fa-trash"></i></button>
+                        </div>
                     <?php endwhile; ?>
                 </div>
+
                 <div class="input-group">
                     <label class="input-group-text fs-4 fw-bold" for="Role">Le post</label>
                     <textarea type="text" name="role_content" id="Role" class="form-control fs-4"><?= $row['role_content'] ?></textarea>
                 </div>
+
                 <div class="flex flex-column gap-2">
+                    <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete" id="Add">Ajouter <i class="fa fa-add"></i></button>
                     <label class="input-group-text fs-4 fw-bold" for="role_List">les prérequis</label>
                     <?php while($row3 = $roleList->fetch(PDO::FETCH_ASSOC)): ?>
                         <input type="text" id="role_List" name="<?= 'role_item_'.$row3['id'] ?>" class="form-control fs-4" value="<?= $row3['item'] ?>">
+                        <button class="btn btn-danger btn-sm rounded-0 mb-4" type="button">Retirer <i class="fa fa-trash"></i></button>
                     <?php endwhile; ?>
                 </div>
+
                 <div class="d-flex justify-content-between">
-                    <input type="submit" value="accepter les modifications" class="btn_modify">
                     <a href="/home/mon-espace-recruteur" class="btn_return" >Revenir a mon espace</a>
+                    <input type="submit" value="accepter les modifications" class="btn_modify btn_return">
                 </div>
+
             </form>
         <?php endwhile; ?>
     </section>

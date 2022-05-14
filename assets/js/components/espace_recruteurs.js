@@ -6,7 +6,24 @@ const AjouterUneOffre = document.querySelector('#ajouterUneOffre')
 const btnAjouterUneOffre = document.querySelector('#btnAjouterUneOffre')
 const btnTouteMesOffres = document.querySelector('#btnTouteMesOffres')
 const article = document.querySelector('#article')
+
 const xhr = new XMLHttpRequest()
+
+const addList = document.querySelectorAll('#Add')
+const DeleteList = document.querySelectorAll('#Delete')
+
+for(let i= 0; i < addList.length; i++) {
+    addList[i].addEventListener('click', () =>{
+        console.log('add')
+    })
+}
+for(let i = 0; i < DeleteList.length; i++) {
+    DeleteList[i].addEventListener('click', (ev) => {
+        let btn = ev.target
+        console.dir(btn)
+    })
+}
+
 
 
 if(document.querySelector('#alert') != null){
