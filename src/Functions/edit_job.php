@@ -6,6 +6,13 @@ $database = new Database\DB();
 $db = $database::getConnection();
 $getJobs = new Controller\Espace_Recruteur($db);
 $jobs = $getJobs->getJobById($id);
+$reqList = $getJobs->getReqList($id);
+$roleList = $getJobs->getRoleList($id);
+
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -13,7 +20,7 @@ $jobs = $getJobs->getJobById($id);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ECF-Front-End</title>
+    <title>DevJobs</title>
     <meta name="description" content="Contrôle de conaissance et d'application des méthodes apprise au CEFIM">
     <link rel="icon" href="/favicon-32x32.png" sizes="any">
     <link rel="icon" href="/favicon-32x32.png" type="image/svg+xml">
@@ -81,11 +88,23 @@ $jobs = $getJobs->getJobById($id);
 
                 <div class="input-group">
                     <label class="input-group-text fs-4 fw-bold" for="Requirement">exigence</label>
-                    <textarea type="text" aria-label="TitleOffer" id="Requirement" class="form-control fs-4"></textarea>
+                    <textarea type="text" aria-label="TitleOffer" name="req_content" id="Requirement" class="form-control fs-4"><?= $row['req_content']?></textarea>
+                </div>
+                <div class="flex flex-column gap-2">
+                    <label class="input-group-text fs-4 fw-bold" for="req_List">List exigence</label>
+                    <?php while($row2 = $reqList->fetch(PDO::FETCH_ASSOC)): ?>
+                        <input type="text" id="req_List" name="<?= 'req_item_'.$row2['id'] ?>" aria-label="TitleOffer" class="form-control fs-4" value="<?= $row2['item'] ?>">
+                    <?php endwhile; ?>
                 </div>
                 <div class="input-group">
                     <label class="input-group-text fs-4 fw-bold" for="Role">Le post</label>
-                    <textarea type="text" aria-label="TitleOffer" id="Role" class="form-control fs-4"></textarea>
+                    <textarea type="text" name="role_content" id="Role" class="form-control fs-4"><?= $row['role_content'] ?></textarea>
+                </div>
+                <div class="flex flex-column gap-2">
+                    <label class="input-group-text fs-4 fw-bold" for="role_List">les prérequis</label>
+                    <?php while($row3 = $roleList->fetch(PDO::FETCH_ASSOC)): ?>
+                        <input type="text" id="role_List" name="<?= 'role_item_'.$row3['id'] ?>" class="form-control fs-4" value="<?= $row3['item'] ?>">
+                    <?php endwhile; ?>
                 </div>
                 <div class="d-flex justify-content-between">
                     <input type="submit" value="accepter les modifications" class="btn_modify">

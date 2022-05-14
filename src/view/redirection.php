@@ -57,7 +57,7 @@ if(end($url) == 'login'){
 
         if(isset($_POST['remember'])){
             setcookie('mail', $mail, time() + 365*24*3600);
-            unset($_POST['remember'])
+            unset($_POST['remember']);
         }
 
         $redirect = '<meta http-equiv="Refresh" content="5; URL=/home"/>   
