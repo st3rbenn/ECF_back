@@ -1,7 +1,11 @@
 <?php
 
 session_start();
-
+$id = substr($_SERVER['REQUEST_URI'], strrpos($_SERVER['REQUEST_URI'], '/') + 1);
+$database = new Database\DB();
+$db = $database::getConnection();
+$getJobs = new Controller\Espace_Recruteur($db);
+$jobs = $getJobs->getJobById($id);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -11,14 +15,14 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ECF-Front-End</title>
     <meta name="description" content="Contrôle de conaissance et d'application des méthodes apprise au CEFIM">
-    <link rel="icon" href="../../favicon-32x32.png" sizes="any">
-    <link rel="icon" href="../../favicon-32x32.png" type="image/svg+xml">
+    <link rel="icon" href="/favicon-32x32.png" sizes="any">
+    <link rel="icon" href="/favicon-32x32.png" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <script src="https://kit.fontawesome.com/6b95777d07.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="manifest" href="../../index.php">
+    <link rel="manifest" href="/index.php">
 
-    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 <body>
 
@@ -27,12 +31,12 @@ session_start();
         <div class="header__item header-item">
 
             <figure class="logo">
-                <a href="/home"><img src="../../assets/img/logo.svg" alt="Logo de DevJobs"></a>
+                <img src="/assets/img/logo.svg" alt="Logo de DevJobs">
             </figure>
             <div class="header__switchmode">
 
                 <figure class="logo-switchmode">
-                    <img src="../../assets/img/icon-sun.svg" alt="">
+                    <img src="/assets/img/icon-sun.svg" alt="">
                 </figure>
                 <div class="switch">
                     <input type="checkbox" class="switch__input" id="theme-switch">
@@ -40,7 +44,7 @@ session_start();
                     <div class="switch__marker" aria-hidden="true" id="switch__button"></div>
                 </div>
                 <figure class="logo-switchmodelune">
-                    <img src="../../assets/img/icon-moon.svg" alt="">
+                    <img src="/assets/img/icon-moon.svg" alt="">
                 </figure>
             </div>
         </div>
@@ -48,47 +52,51 @@ session_start();
 </header>
 
 <main class="position-relative" id="blurred">
-    <section class="form_edit d-flex flex-column container">
-        <div class="d-flex justify-content-between">
-            <h1 class="modifyTitle">Modifier</h1>
-            <a class="btn_return" href="/home/mon-espace-recruteur align">Revenir a mon espace</a>
-        </div>
+    <section class="form_edit d-flex flex-column container-xl">
+        <h1 class="modifyTitle">Modifier</h1>
+        <?php while($row = $jobs->fetch(PDO::FETCH_ASSOC)):?>
             <form action="/home/mon-espace-recruteur" method="POST" class="d-grid gap-3" id="connexion">
+                <input type="text" name="id" value="<?= $id ?>" hidden>
                 <div class="input-group">
-                    <span class="input-group-text">Titre de l'offre</span>
-                    <input type="text" aria-label="TitleOffer" class="form-control">
+                    <label for="Title" class="input-group-text fs-4 fw-bold">Titre de l'offre</label>
+                    <input type="text" id="Title" aria-label="TitleOffer" name="position" class="form-control fs-4" value="<?= $row['position'] ?>">
                 </div>
                 <div class="input-group">
-                    <label class="input-group-text" for="inputGroupSelect01">Type de contract</label>
-                    <select class="form-select" id="inputGroupSelect01">
-                        <option selected>Choose...</option>
-                        <option value="Part Time">Part Time</option>
-                        <option value="Full Time">Full Time</option>
-                        <option value="Freelance">Freelance</option>
+                    <label class="input-group-text fs-4 fw-bold" for="Date">Date d'ajout</label>
+                    <input type="text" id="Date" aria-label="TitleOffer" class="form-control fs-4" disabled value="<?php if(!empty($row['postedAt'])): ?><?= explode(' ', $row['postedAt'])[0] ?><?php else:?><?= date('d/m/Y')?><?php endif; ?>">
+                </div>
+                <div class="input-group">
+                    <label class="input-group-text fs-4 fw-bold" for="Description">Description de l'offre</label>
+                    <textarea aria-label="TitleOffer" id="Description" name="description" class="form-control fs-4"><?php if(!empty($row['description'])): ?><?= $row['description'] ?><?php endif; ?></textarea>
+                </div>
+                <div class="input-group">
+                    <label class="input-group-text fs-4 fw-bold" for="inputGroupSelect01">Type de contract</label>
+                    <select class="form-select" name="contract" id="inputGroupSelect01">
+                        <option selected class="fs-4">Choose...</option>
+                        <option value="Part Time" class="fs-4" <?php if($row['contract'] === 'Part Time'): ?> selected <?php endif;?>>Part Time</option>
+                        <option value="Full Time" class="fs-4" <?php if($row['contract'] === 'Full Time'): ?> selected <?php endif;?>>Full Time</option>
+                        <option value="Freelance" class="fs-4" <?php if($row['contract'] === 'Freelance'): ?> selected <?php endif;?>>Freelance</option>
                     </select>
                 </div>
+
                 <div class="input-group">
-                    <span class="input-group-text">Date d'ajout</span>
-                    <input type="text" aria-label="TitleOffer" class="form-control" disabled value="<?= date('d/m/Y') ?>">
+                    <label class="input-group-text fs-4 fw-bold" for="Requirement">exigence</label>
+                    <textarea type="text" aria-label="TitleOffer" id="Requirement" class="form-control fs-4"></textarea>
                 </div>
                 <div class="input-group">
-                    <span class="input-group-text">Titre de l'offre</span>
-                    <input type="text" aria-label="TitleOffer" class="form-control">
+                    <label class="input-group-text fs-4 fw-bold" for="Role">Le post</label>
+                    <textarea type="text" aria-label="TitleOffer" id="Role" class="form-control fs-4"></textarea>
                 </div>
-                <div class="input-group">
-                    <span class="input-group-text">Titre de l'offre</span>
-                    <input type="text" aria-label="TitleOffer" class="form-control">
+                <div class="d-flex justify-content-between">
+                    <input type="submit" value="accepter les modifications" class="btn_modify">
+                    <a href="/home/mon-espace-recruteur" class="btn_return" >Revenir a mon espace</a>
                 </div>
-                <div class="input-group">
-                    <span class="input-group-text">Titre de l'offre</span>
-                    <input type="text" aria-label="TitleOffer" class="form-control">
-                </div>
-                <input type="submit" value="accepter les modifications" class="btn_modify">
             </form>
+        <?php endwhile; ?>
     </section>
 </main>
 
-<script src="../../assets/js/components/espace_recruteurs.js"></script>
-<script src="../../assets/js/components/switch.js"></script>
+<script src="/assets/js/components/espace_recruteurs.js"></script>
+<script src="/assets/js/components/switch.js"></script>
 </body>
 </html>

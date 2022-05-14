@@ -19,9 +19,9 @@ $router->get('/home/disconnect', function (){return require 'src/view/disconnect
 $router->get('/home/redirect', function (){return require 'src/view/redirection.php';});
 
 //job manipulation
-$router->get('/mon-espace-recruteur/job/add', function (){return require 'src/functions/add_job.php';});
-$router->get('/mon-espace-recruteur/job/edit', function (){return require 'src/functions/edit_job.php';});
-$router->get('/mon-espace-recruteur/job/delete/:id', function ($id){return require 'src/functions/delete_job.php';});
+$router->get('/home/mon-espace-recruteur/job/add', function (){return require 'src/functions/add_job.php';});
+$router->get('/home/mon-espace-recruteur/job/edit/:id', function ($id){return require 'src/functions/edit_job.php';});
+$router->get('/home/mon-espace-recruteur/job/delete/:id', function ($id){return require 'src/functions/delete_job.php';});
 
 
 
