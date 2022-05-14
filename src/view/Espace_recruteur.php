@@ -7,7 +7,14 @@ if(isset($_SESSION['role']) && $_SESSION['role'] === 'ROLE_RECRUTEUR' || $_SESSI
     exit();
 }
 $url = Array_slice(explode('/', $_SERVER['REQUEST_URI']), -2)[0];
-var_dump($_SESSION);
+if(isset($_POST['id'])){
+    $database = new Database\DB();
+    $db = $database::getConnection();
+
+    $getJobs = new Controller\Espace_Recruteur($db);
+    $jobs = $getJobs->editJobs($_POST['id']);
+    unset($_POST['id']);
+}
 
 ?>
 <!DOCTYPE html>
@@ -40,14 +47,14 @@ var_dump($_SESSION);
 
                 <div class="header__buttonLog">
                     <?php if(!isset($role)):?>
-                        <a class="header__inscription" href="/register">Inscription</a>
-                        <a class="header__connexion" href="/login">Connexion</a>
+                        <a class="header__inscription" href="/home/register">Inscription</a>
+                        <a class="header__connexion" href="/home/login">Connexion</a>
                     <?php else:?>
                         <?php if($role === 'ROLE_ADMIN'): ?>
                             <a class="header__inscription">Dashboard</a>
                         <?php endif;?>
                         <a class="header__connexion">Mon Profile</a>
-                        <a class="header__inscription" href="/disconnect">Déconnexion</a>
+                        <a class="header__inscription" href="/home/disconnect">Déconnexion</a>
                     <?php endif;?>
                 </div>
                 <figure class="logo-switchmode">
