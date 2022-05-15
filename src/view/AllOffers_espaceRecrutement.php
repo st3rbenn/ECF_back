@@ -27,6 +27,8 @@ $jobs = $getJobs->getAllJobs();
             </div>
             <p class="city"><?=$row['location']?></p>
             <div class="buttons_container">
+                <a class="btnJobs" href="/home/mon-espace-recruteur/job/info/<?= $row['id'] ?>"><i class="fa-solid fa-info"></i></a>
+                <a class="btnJobs" href="/home/jobs?id=<?= $row['id'] ?>"><i class="fa-solid fa-eye"></i></a>
                 <a class="btnJobs" href="mon-espace-recruteur/job/edit/<?= $row['id'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
                 <a class="btnJobs" href="mon-espace-recruteur/job/delete/<?= $row['id'] ?>"><i class="fa-solid fa-trash"></i></a>
             </div>

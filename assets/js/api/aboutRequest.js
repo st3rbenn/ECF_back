@@ -1,4 +1,4 @@
-const URL_API = 'https://www.apiecf.colas.cefim.o2switch.site/'
+const URL_API = 'https://www.apiecf.colas.cefim.o2switch.site'
 const container = document.querySelector('#aboutJobs')
 const footer = document.querySelector('#about__footer')
 const linkBtn = document.querySelectorAll('#linkBtn')

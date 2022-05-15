@@ -93,13 +93,11 @@ $roleList = $getJobs->getRoleList($id);
                 </div>
 
                 <div class="flex flex-column gap-2">
-                    <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete" id="Add">Ajouter <i class="fa fa-add"></i></button>
+                    <a class="btn btn-success btn-sm rounded-0" href="/home/mon-espace-recruteur/job/reqlist/add">Ajouter <i class="fa fa-add"></i></a>
                     <label class="input-group-text fs-4 fw-bold" for="req_List">Les exigences</label>
                     <?php while($row2 = $reqList->fetch(PDO::FETCH_ASSOC)): ?>
-                        <div id="Delete">
-                            <input type="text" id="req_List" name="<?= 'req_item_'.$row2['id'] ?>" aria-label="TitleOffer" class="form-control fs-4" value="<?= $row2['item'] ?>">
-                            <button class="btn btn-danger btn-sm rounded-0 mb-4" type="button">Retirer <i class="fa fa-trash"></i></button>
-                        </div>
+                        <input type="text" id="req_List" name="<?= 'req_item_'.$row2['id'] ?>" aria-label="TitleOffer" class="form-control fs-4" value="<?= $row2['item'] ?>">
+                        <a href="/home/mon-espace-recruteur/job/reqlist/delete/<?= $row2['id'] ?>" class="btn btn-danger btn-sm rounded-0 mb-4">Retirer <i class="fa fa-trash"></i></a>
                     <?php endwhile; ?>
                 </div>
 
@@ -109,11 +107,11 @@ $roleList = $getJobs->getRoleList($id);
                 </div>
 
                 <div class="flex flex-column gap-2">
-                    <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete" id="Add">Ajouter <i class="fa fa-add"></i></button>
+                    <a class="btn btn-success btn-sm rounded-0" href="/home/mon-espace-recruteur/job/rolist/add">Ajouter <i class="fa fa-add"></i></a>
                     <label class="input-group-text fs-4 fw-bold" for="role_List">les prérequis</label>
                     <?php while($row3 = $roleList->fetch(PDO::FETCH_ASSOC)): ?>
                         <input type="text" id="role_List" name="<?= 'role_item_'.$row3['id'] ?>" class="form-control fs-4" value="<?= $row3['item'] ?>">
-                        <button class="btn btn-danger btn-sm rounded-0 mb-4" type="button">Retirer <i class="fa fa-trash"></i></button>
+                        <a href="/home/mon-espace-recruteur/job/rolist/delete/<?= $row3['id'] ?>" class="btn btn-danger btn-sm rounded-0 mb-4">Retirer <i class="fa fa-trash"></i></a>
                     <?php endwhile; ?>
                 </div>
 

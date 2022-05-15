@@ -19,7 +19,7 @@ else {
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="manifest" href="../../index.php">
 
-    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../assets/css/main.css">
 </head>
 
 <body>
