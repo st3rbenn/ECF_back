@@ -173,10 +173,7 @@ function deleteAll(){
 // ===============================================
 // ===========================================================================================================================
 // je gère chaque cas un a un CAD, imaginons checkbox checked mais input vide ça renvoie des resultats et ceux pour chaque cas 
-// // ===========================================================================================================================
-// let firstFilterByAsValue = inputAPIText[0] && inputAPIText[0].value
-// let secondFilterByAsValue = inputAPIText[1] && inputAPIText[1].value
-// let locationFilterAsValue = locationFilter && locationFilter.value
+// ===========================================================================================================================
 
 
 
@@ -190,7 +187,6 @@ searchForm.addEventListener('submit', (ev) =>{
   btnLoadMore[0].value = 'Load More'
   if (inputAPIText[0] && inputAPIText[0].value && locationFilter && locationFilter.value)
   {
-    console.log(inputAPIText[0] && inputAPIText[0].value, locationFilter && locationFilter.value)
       if (checkBox.checked){
         deleteAll()
         loader.classList.remove('hidden')
@@ -203,7 +199,6 @@ searchForm.addEventListener('submit', (ev) =>{
   }
   else if(inputAPIText[1] && inputAPIText[1].value && locationFilter && locationFilter.value)
   {
-    console.log(inputAPIText[1] && inputAPIText[1].value, locationFilter && locationFilter.value)
     if (checkBox.checked){
       deleteAll()
        loader.classList.remove('hidden')
@@ -217,7 +212,6 @@ searchForm.addEventListener('submit', (ev) =>{
   }
   else if (inputAPIText[0] && inputAPIText[0].value)
   {
-    console.log(inputAPIText[0] && inputAPIText[0].value)
     if (checkBox.checked){
       deleteAll()
       loader.classList.remove('hidden')
@@ -231,7 +225,6 @@ searchForm.addEventListener('submit', (ev) =>{
   }
   else if(inputAPIText[1] && inputAPIText[1].value)
   {
-    console.log(inputAPIText[1] && inputAPIText[1].value)
     if (checkBox.checked){
       deleteAll()
       loader.classList.remove('hidden')
@@ -245,7 +238,6 @@ searchForm.addEventListener('submit', (ev) =>{
   }
   else if(locationFilter && locationFilter.value)
   {
-    console.log(locationFilter && locationFilter.value)
     if (checkBox.checked){
       deleteAll()
       loader.classList.remove('hidden')

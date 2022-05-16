@@ -28,6 +28,7 @@ body{
 }
 
 .buttons_container{
+  positio: relative;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 
@@ -60,18 +61,38 @@ body{
   border-radius: 1rem;
   color: var(--white);
   padding: .6rem;
+  text-decoration: none;
   &:nth-child(1){
-    margin-right: 2rem;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    &:hover{
+      transition: .4s ease-out;
+    }
+  }
+  &:nth-child(2){
+    position: absolute;
+    top: 15px;
+    right: 60px;
+    &:hover{
+      transition: .4s ease-out;
+    }
+  }
+
+  &:nth-child(3){
+    margin-right: 1rem;
     &:hover{
       transition: .4s ease-out;
       background-color: #D74221;
+      margin-right: 2rem;
+    }
   }
-  }
-  &:nth-child(2){
-    margin-left: 2rem;
+  &:nth-child(4){
+    margin-left: 1rem;
     &:hover{
       transition: .4s ease-out;
       background-color: #BA2320;
+      margin-left: 2rem;
     }
   }
 }
@@ -172,9 +193,9 @@ body{
   margin-bottom: auto;
 }
 .add__jobs{
+  width: max-content;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 12rem;
   background-color: rgba(25, 32, 45, .5);
   border-radius: 5rem;
   margin-top: 0;

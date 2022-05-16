@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_URI'] === 'home/' || $_SERVER['REQUEST_URI'] === '/') {
 }
 
 $router->get('/home', function (){return require 'src/view/home.php';});
-$router->get('/home/jobs:id', function ($id){return require 'src/view/about.php';});
+$router->get('/home/jobs:id', function (){return require 'src/view/about.php';});
 $router->get('/home/mon-espace-recruteur', function (){return require 'src/view/Espace_recruteur.php';});
 
 
@@ -22,6 +22,11 @@ $router->get('/home/redirect', function (){return require 'src/view/redirection.
 $router->get('/home/mon-espace-recruteur/job/add', function (){return require 'src/functions/add_job.php';});
 $router->get('/home/mon-espace-recruteur/job/edit/:id', function ($id){return require 'src/functions/edit_job.php';});
 $router->get('/home/mon-espace-recruteur/job/delete/:id', function ($id){return require 'src/functions/delete_job.php';});
+$router->get('/home/mon-espace-recruteur/job/info/:id', function ($id){return require 'src/functions/info_job.php';});
+$router->get('/home/mon-espace-recruteur/job/reqlist/delete/:id', function ($id){return require 'src/functions/delete_list.php';});
+$router->get('/home/mon-espace-recruteur/job/rolist/delete/:id', function ($id){return require 'src/functions/delete_list.php';});
+$router->get('/home/mon-espace-recruteur/job/reqlist/add', function (){return require 'src/functions/add_list.php';});
+$router->get('/home/mon-espace-recruteur/job/rolist/add', function (){return require 'src/functions/add_list.php';});
 
 
 

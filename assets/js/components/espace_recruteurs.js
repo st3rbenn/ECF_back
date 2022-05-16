@@ -1,29 +1,11 @@
-const XHR_URL = `${window.location.origin}/src/view/`;
-console.log(window.location.origin)
-
 const TouteMesOffres = document.querySelector('#touteMesOffres')
 const AjouterUneOffre = document.querySelector('#ajouterUneOffre')
+const candidat = document.querySelector('#candidat')
 const btnAjouterUneOffre = document.querySelector('#btnAjouterUneOffre')
 const btnTouteMesOffres = document.querySelector('#btnTouteMesOffres')
 const article = document.querySelector('#article')
 
 const xhr = new XMLHttpRequest()
-
-const addList = document.querySelectorAll('#Add')
-const DeleteList = document.querySelectorAll('#Delete')
-
-for(let i= 0; i < addList.length; i++) {
-    addList[i].addEventListener('click', () =>{
-        console.log('add')
-    })
-}
-for(let i = 0; i < DeleteList.length; i++) {
-    DeleteList[i].addEventListener('click', (ev) => {
-        let btn = ev.target
-        console.dir(btn)
-    })
-}
-
 
 
 if(document.querySelector('#alert') != null){
@@ -32,22 +14,22 @@ if(document.querySelector('#alert') != null){
     }, 3000);
 }
 
-/*if(document.querySelector('#modify') != null){
-    document.querySelector('#modify').addEventListener('click', () => {
-        const id = document.querySelector('#modify').dataset.id
-        xhr.onload = () => {
-            if(xhr.status === 200){
-                article.innerHTML = xhr.responseText
-            }else {
-                article.innerHTML = 'Une erreur est survenue' + xhr.status + xhr.statusText + xhr.responseText + xhr.responseURL
-            }
-
+const CandidateSection = () => {
+    xhr.onload = () => {
+        if(xhr.status === 200){
+            btnAjouterUneOffre.removeAttribute('disabled')
+            btnTouteMesOffres.removeAttribute('disabled')
+            article.innerHTML = xhr.responseText
+        }else {
+            article.innerHTML = `<div class="alert alert-danger" role="alert">
+            ${xhr.status} ${xhr.statusText}
+            </div>`
         }
-        xhr.open('GET', `/src/Functions/edit_job_.php`)
-        xhr.send()
     }
-    )
-}*/
+    xhr.open('GET', `/src/view/candidat_espaceRecrutement.php`)
+    xhr.send()
+}
+
 
 
 const AddJobs = () => {
@@ -65,13 +47,32 @@ const AddJobs = () => {
     xhr.send()
 }
 
+candidat.addEventListener('click', () => {
+    deleteAll()
+    btnTouteMesOffres.setAttribute('disabled', 'disabled')
+    btnAjouterUneOffre.setAttribute('disabled', 'disabled')
+    TouteMesOffres.classList.remove('active')
+    AjouterUneOffre.classList.remove('active')
+    candidat.classList.add('active')
+    CandidateSection()
+})
 
 AjouterUneOffre.addEventListener('click', (ev) => {
     deleteAll()
     btnTouteMesOffres.setAttribute('disabled', 'disabled')
     TouteMesOffres.classList.remove('active')
+    candidat.classList.remove('active')
     AjouterUneOffre.classList.add('active')
     AddJobs()
+})
+
+TouteMesOffres.addEventListener('click', () => {
+    deleteAll()
+    btnAjouterUneOffre.setAttribute('disabled', 'disabled')
+    TouteMesOffres.classList.add('active')
+    candidat.classList.remove('active')
+    AjouterUneOffre.classList.remove('active')
+    getAllJobs()
 })
 
 
@@ -100,13 +101,6 @@ function deleteAll(){
     }
 }
 
-TouteMesOffres.addEventListener('click', () => {
-    deleteAll()
-    btnAjouterUneOffre.setAttribute('disabled', 'disabled')
-    TouteMesOffres.classList.add('active')
-    AjouterUneOffre.classList.remove('active')
-    getAllJobs()
-})
 
 
 
