@@ -237,6 +237,7 @@ class Espace_Recruteur
     }
 
 
+
     public function getAllCandidat($id)
     {
         $this->sql = "SELECT * FROM candidat WHERE job_id = :job_id";
@@ -245,5 +246,27 @@ class Espace_Recruteur
         $query->execute();
         return $query;
     }
+
+    public function getEnterpriseProfile()
+    {
+        $this->sql = "SELECT * FROM entreprise WHERE company = :company";
+        $query = $this->connexion->prepare($this->sql);
+        $query->bindValue(':company', $_SESSION['company']);
+        $query->execute();
+        return $query;
+    }
+
+    /*public function edit_profile(): bool
+    {
+        $this->sql = "UPDATE entreprise set location = :location, logo_background = :color, logo = :logo";
+        $query = $this->connexion->prepare($this->sql);
+        $query->bindValue(':location', htmlspecialchars(html_entity_decode($_POST['location'])));
+        $query->bindValue(':color', htmlspecialchars(html_entity_decode($_POST['color'])));
+        $query->bindValue(':logo', htmlspecialchars(html_entity_decode($_POST['logo'])));
+        $query->bindValue(':company', $_SESSION['company']);
+        $query->execute();
+        return true;
+    }*/
+
 
 }

@@ -1,16 +1,11 @@
 <?php
 session_start();
-
 require '../../vendor/autoload.php';
 $database = new Database\DB;
 $db = $database::getConnection();
 
 $getJobs = new Controller\Espace_Recruteur($db);
 $jobs = $getJobs->getAllJobs();
-
-if(isset($_GET['id'])){
-    $getJobs->deleteJobs();
-}
 
 $onlyOne = true;
 ?>

@@ -1,6 +1,6 @@
 const TouteMesOffres = document.querySelector('#touteMesOffres')
 const AjouterUneOffre = document.querySelector('#ajouterUneOffre')
-const candidat = document.querySelector('#candidat')
+const Profile = document.querySelector('#Profile')
 const btnAjouterUneOffre = document.querySelector('#btnAjouterUneOffre')
 const btnTouteMesOffres = document.querySelector('#btnTouteMesOffres')
 const article = document.querySelector('#article')
@@ -14,7 +14,7 @@ if(document.querySelector('#alert') != null){
     }, 3000);
 }
 
-const CandidateSection = () => {
+const profileSection = () => {
     xhr.onload = () => {
         if(xhr.status === 200){
             btnAjouterUneOffre.removeAttribute('disabled')
@@ -26,7 +26,7 @@ const CandidateSection = () => {
             </div>`
         }
     }
-    xhr.open('GET', `/src/view/candidat_espaceRecrutement.php`)
+    xhr.open('GET', `/src/view/profile-entreprise.php`)
     xhr.send()
 }
 
@@ -47,21 +47,21 @@ const AddJobs = () => {
     xhr.send()
 }
 
-candidat.addEventListener('click', () => {
+Profile.addEventListener('click', () => {
     deleteAll()
     btnTouteMesOffres.setAttribute('disabled', 'disabled')
     btnAjouterUneOffre.setAttribute('disabled', 'disabled')
     TouteMesOffres.classList.remove('active')
     AjouterUneOffre.classList.remove('active')
-    candidat.classList.add('active')
-    CandidateSection()
+    Profile.classList.add('active')
+    profileSection()
 })
 
 AjouterUneOffre.addEventListener('click', (ev) => {
     deleteAll()
     btnTouteMesOffres.setAttribute('disabled', 'disabled')
     TouteMesOffres.classList.remove('active')
-    candidat.classList.remove('active')
+    Profile.classList.remove('active')
     AjouterUneOffre.classList.add('active')
     AddJobs()
 })
@@ -70,7 +70,7 @@ TouteMesOffres.addEventListener('click', () => {
     deleteAll()
     btnAjouterUneOffre.setAttribute('disabled', 'disabled')
     TouteMesOffres.classList.add('active')
-    candidat.classList.remove('active')
+    Profile.classList.remove('active')
     AjouterUneOffre.classList.remove('active')
     getAllJobs()
 })

@@ -43,7 +43,7 @@ if (end($url) == 'register') {
         $redirect = '
                 <div class="form_inscription form__inscription ">
                     <h1 class="title">Une Erreur est survenue</h1>
-                    <p class="TextWrong override"> l\'email <span style="color: red">' . htmlspecialchars(htmlentities($email)) .'</span> est déjà pris</p>
+                    <p class="TextWrong override"> l\'email <span style="color: red">' . $email .'</span> est déjà pris</p>
                     <blockquote class="blockquote textForm noRedirect">Redirection en cours...</blockquote>
                 </div>';
     }

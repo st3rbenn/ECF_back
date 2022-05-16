@@ -23,10 +23,13 @@ $router->get('/home/mon-espace-recruteur/job/add', function (){return require 's
 $router->get('/home/mon-espace-recruteur/job/edit/:id', function ($id){return require 'src/functions/edit_job.php';});
 $router->get('/home/mon-espace-recruteur/job/delete/:id', function ($id){return require 'src/functions/delete_job.php';});
 $router->get('/home/mon-espace-recruteur/job/info/:id', function ($id){return require 'src/functions/info_job.php';});
+
 $router->get('/home/mon-espace-recruteur/job/reqlist/delete/:id', function ($id){return require 'src/functions/delete_list.php';});
 $router->get('/home/mon-espace-recruteur/job/rolist/delete/:id', function ($id){return require 'src/functions/delete_list.php';});
 $router->get('/home/mon-espace-recruteur/job/reqlist/add', function (){return require 'src/functions/add_list.php';});
 $router->get('/home/mon-espace-recruteur/job/rolist/add', function (){return require 'src/functions/add_list.php';});
+
+$router->get('/home/mon-espace-recruteur/profil/edit', function (){return require 'src/functions/edit_profil_company.php';});
 
 
 

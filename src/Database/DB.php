@@ -19,7 +19,7 @@ class DB
                     [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
                 );
             } catch (Exception $exception) {
-                echo 'Une erreur est survenue lors de la connexion a la BDD' . $exception;
+                echo 'Une erreur est survenue lors de la connexion a la BDD' . ': ' . $exception;
                 die;
             }
         }

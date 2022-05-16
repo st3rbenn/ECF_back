@@ -83,9 +83,15 @@ if(isset($_POST['id'])){
     </div>
     <section class="jobs container__recrutement">
         <ul class="sideBar">
-                <li class="sideBar__items active" id="touteMesOffres"><button id="btnTouteMesOffres">Voir Toutes Mes Offres</button></li>
-                <li class="sideBar__items" id="ajouterUneOffre"><button id="btnAjouterUneOffre">Ajouter Une Offre</button></li>
-                <li class="sideBar__items" id="candidat"><button id="btnCandidat">voir les candidats</button></li>
+                <li class="sideBar__items active" id="touteMesOffres">
+                    <button id="btnTouteMesOffres">Voir Toutes Mes Offres</button>
+                </li>
+                <li class="sideBar__items" id="ajouterUneOffre">
+                    <button id="btnAjouterUneOffre">Ajouter Une Offre</button>
+                </li>
+                <li class="sideBar__items" id="Profile">
+                    <button id="btnCandidat">Profile de l'entreprise</button>
+                </li>
         </ul>
         <div class="article" id="article">
 
