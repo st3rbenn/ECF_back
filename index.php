@@ -10,6 +10,7 @@ if ($_SERVER['REQUEST_URI'] === 'home/' || $_SERVER['REQUEST_URI'] === '/') {
 $router->get('/home', function (){return require 'src/view/home.php';});
 $router->get('/home/jobs:id', function (){return require 'src/view/about.php';});
 $router->get('/home/mon-espace-recruteur', function (){return require 'src/view/Espace_recruteur.php';});
+$router->get('/home/admin/dashboard', function (){return require 'src/view/admin.php';});
 
 
 //Parcours utilisateur

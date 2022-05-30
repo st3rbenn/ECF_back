@@ -34,7 +34,7 @@ if(isset($_SESSION['role'])){
                         <a class="header__connexion" href="/home/login">Connexion</a>
                     <?php else:?>
                         <?php if($role === 'ROLE_ADMIN'): ?>
-                                <a class="header__inscription">Dashboard</a>
+                                <a class="header__inscription" href="home/admin/dashboard">Dashboard</a>
                         <?php endif;?>
                         <?php if($role === 'ROLE_RECRUTEUR' || $role === 'ROLE_ADMIN'):?>
                                 <a class="header__inscription" href="/home/mon-espace-recruteur">Mon Espace Recruteur</a>
@@ -120,6 +120,7 @@ if(isset($_SESSION['role'])){
         <input type="submit" class="filter__modal__searchbtn" value="Search">
     </div>
 </form>
+
 <script type="module" src="../../assets/js/api/homeRequest.js"></script>
 <script type="module" src="../../assets/js/components/modal.js"></script>
 <script type="module" src="../../assets/js/components/switch.js"></script>

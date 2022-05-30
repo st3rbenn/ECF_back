@@ -256,17 +256,23 @@ class Espace_Recruteur
         return $query;
     }
 
-    /*public function edit_profile(): bool
+    public function edit_profile(): bool
     {
         $this->sql = "UPDATE entreprise set location = :location, logo_background = :color, logo = :logo";
         $query = $this->connexion->prepare($this->sql);
-        $query->bindValue(':location', htmlspecialchars(html_entity_decode($_POST['location'])));
-        $query->bindValue(':color', htmlspecialchars(html_entity_decode($_POST['color'])));
-        $query->bindValue(':logo', htmlspecialchars(html_entity_decode($_POST['logo'])));
+        if(isset($_POST['location'])){
+            $query->bindValue(':location', htmlspecialchars(html_entity_decode($_POST['location'])));
+        }
+        if(isset($_POST['color'])){
+            $query->bindValue(':color', htmlspecialchars(html_entity_decode($_POST['color'])));
+        }
+        if(isset($_POST['logo'])){
+            $query->bindValue(':logo', $_POST['logo']);
+        }
         $query->bindValue(':company', $_SESSION['company']);
         $query->execute();
         return true;
-    }*/
+    }
 
 
 }
