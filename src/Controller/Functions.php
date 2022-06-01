@@ -34,4 +34,12 @@ class Functions
         return $result;
     }
 
+    public function getAllCandidate()
+    {
+        $query = "SELECT * FROM candidat";
+        $result = $this->connexion->prepare($query);
+        $result->execute();
+        return $result;
+    }
+
 }

@@ -32,6 +32,11 @@ $router->get('/home/mon-espace-recruteur/job/rolist/add', function (){return req
 
 $router->get('/home/mon-espace-recruteur/profil/edit', function (){return require 'src/functions/edit_profil_company.php';});
 
+//admin section
+$router->get('/home/admin/dashboard/job/edit/:id', function ($id){return require 'src/functions/edit_job.php';});
+$router->get('/home/admin/dashboard/job/delete/:id', function ($id){return require 'src/functions/delete_job.php';});
+$router->get('/home/admin/dashboard/job/info/:id', function ($id){return require 'src/functions/info_job.php';});
+
 
 
 $router->run();

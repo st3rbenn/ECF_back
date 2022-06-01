@@ -9,11 +9,10 @@ $allJobs = $allJobs->getAllJobs();
 ?>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="/home/admin/dashboard">Home</a></li>
         <li class="breadcrumb-item active" aria-current="page">Jobs</li>
     </ol>
 </nav>
-<h1 class="h2">Jobs</h1>
 <div class="row">
     <div class="col-7 col-xl-12 mb-4 mb-lg-0">
         <div class="card">
@@ -27,6 +26,7 @@ $allJobs = $allJobs->getAllJobs();
                         <th>contract</th>
                         <th>position</th>
                         <th>postedAt</th>
+                        <th>Do Stuff</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -37,11 +37,16 @@ $allJobs = $allJobs->getAllJobs();
                             <td><?= $job->contract ?></td>
                             <td><?= $job->position ?></td>
                             <td><?= $job->postedAt ?></td>
+                            <td>
+                                <a class="btnJobs" href="/home/admin/dashboard/job/info/<?= $job->id ?>"><i class="fa-solid fa-info"></i></a>
+                                <a class="btnJobs"><i class="fa-solid fa-eye"></i></a>
+                                <a class="btnJobs" id="edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a class="btnJobs" href="/home/admin/dashboard/job/delete/<?= $job->id ?>"><i class="fa-solid fa-trash"></i></a>
+                            </td>
                         </tr>
                     <?php endwhile; ?>
                     </tbody>
                 </table>
-                <a href="#" class="btn btn-block btn-light">View all</a>
             </div>
         </div>
     </div>

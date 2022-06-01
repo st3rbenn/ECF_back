@@ -5,6 +5,7 @@ if(isset($_SESSION['role'])){
 } else if ($_SESSION['role'] !== 'admin') {
     header('Location: /');
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -22,11 +23,6 @@ if(isset($_SESSION['role'])){
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('#example').DataTable();
-        });
-    </script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
 </head>
 
@@ -61,25 +57,25 @@ if(isset($_SESSION['role'])){
         <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
             <div class="position-sticky">
                 <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="Jobs" aria-current="page" href="#">
+                    <li class="nav-item" id="Jobs">
+                        <a class="nav-link active" aria-current="page" href="#">
                             <i class="fa-solid fa-briefcase"></i>
-                            <span class="ml-2">Jobs</span>
+                            <span class="ml-2" id="jobs">Jobs</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" id="enterprise">
                         <a class="nav-link" href="#">
                             <i class="fa-solid fa-building"></i>
                             <span class="ml-2">entreprise</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" id="candidate">
                         <a class="nav-link" href="#">
                             <i class="fa-solid fa-book-open"></i>
                             <span class="ml-2">candidature</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" id="user">
                         <a class="nav-link" href="#">
                             <i class="fa-solid fa-user-shield"></i>
                             <span class="ml-2">User</span>
@@ -112,7 +108,7 @@ if(isset($_SESSION['role'])){
         </main>
     </div>
 </div>
-<script src="../../assets/js/components/admin.js"></script>
+<script src="../../assets/js/components/admin/admin.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 </body>
