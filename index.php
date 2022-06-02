@@ -34,8 +34,10 @@ $router->get('/home/mon-espace-recruteur/profil/edit', function (){return requir
 
 //admin section
 $router->get('/home/admin/dashboard/job/edit/:id', function ($id){return require 'src/functions/edit_job.php';});
-$router->get('/home/admin/dashboard/job/delete/:id', function ($id){return require 'src/functions/delete_job.php';});
+$router->get('/home/admin/dashboard/job/delete:id', function ($id){return require 'src/functions/delete_job.php';});
 $router->get('/home/admin/dashboard/job/info/:id', function ($id){return require 'src/functions/info_job.php';});
+$router->get('/home/admin/dashboard/candidate/delete:id', function ($id){return require 'src/functions/delete_candidate.php';});
+$router->get('/home/admin/dashboard/user/delete:id', function ($id){return require 'src/functions/delete_user.php';});
 
 
 

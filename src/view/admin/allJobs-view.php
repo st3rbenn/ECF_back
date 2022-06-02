@@ -18,7 +18,10 @@ $allJobs = $allJobs->getAllJobs();
         <div class="card">
             <h5 class="card-header">Tout les jobs</h5>
             <div class="card-body">
-                <table id="example" class="table table-striped" style="width:100%">
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-primary">Ajouter une offre</button>
+                </div>
+                <table id="dataTable" class="table table-striped" style="width:100%">
                     <thead>
                     <tr>
                         <th>id</th>
@@ -39,7 +42,7 @@ $allJobs = $allJobs->getAllJobs();
                             <td><?= $job->postedAt ?></td>
                             <td>
                                 <a class="btnJobs" href="/home/admin/dashboard/job/info/<?= $job->id ?>"><i class="fa-solid fa-info"></i></a>
-                                <a class="btnJobs"><i class="fa-solid fa-eye"></i></a>
+                                <a class="btnJobs" href="/home/jobs?id=<?= $job->id ?>"><i class="fa-solid fa-eye"></i></a>
                                 <a class="btnJobs" id="edit"><i class="fa-solid fa-pen-to-square"></i></a>
                                 <a class="btnJobs" href="/home/admin/dashboard/job/delete/<?= $job->id ?>"><i class="fa-solid fa-trash"></i></a>
                             </td>

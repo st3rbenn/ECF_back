@@ -18,7 +18,7 @@ $allCandidate = $allCandidate->getAllCandidate();
         <div class="card">
             <h5 class="card-header">Tout les candidats</h5>
             <div class="card-body">
-                <table id="example" class="table table-striped" style="width:100%">
+                <table id="dataTable" class="table table-striped" style="width:100%">
                     <thead>
                     <tr>
                         <th>id</th>
@@ -39,11 +39,7 @@ $allCandidate = $allCandidate->getAllCandidate();
                             <td><?= $candidate->telephone ?></td>
                             <td><?= $candidate->mail ?></td>
                             <td><a href="<?= $candidate->cv ?>">link</a></td>
-                            <td>
-                                <a class="btnJobs" style="margin-left: 1rem" href="/home/admin/dashboard"><i class="fa-solid fa-info"></i></a>
-                                <a class="btnJobs" style="margin-left: 1rem" id="edit"><i class="fa-solid fa-pen-to-square"></i></a>
-                                <a class="btnJobs" style="margin-left: 1rem" href="/home/admin/dashboard"><i class="fa-solid fa-trash"></i></a>
-                            </td>
+                            <td><a class="btnJobs" style="margin-left: 1rem" href="/home/admin/dashboard/candidate/delete?id=<?= $candidate->id ?>"><i class="fa-solid fa-trash"></i></a></td>
                         </tr>
                     <?php endwhile; ?>
                     </tbody>

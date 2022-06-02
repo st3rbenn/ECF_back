@@ -42,4 +42,30 @@ class Functions
         return $result;
     }
 
+    public function deleteCandidate(): bool
+    {
+        if(isset($_GET['id'])){
+            $id = $_GET['id'];
+            $query = "DELETE FROM candidat WHERE id = :id";
+            $result = $this->connexion->prepare($query);
+            $result->bindParam(':id', $id);
+            $result->execute();
+            return true;
+        }
+        return false;
+    }
+
+    public function deleteUser(): bool
+    {
+        if(isset($_GET['id'])){
+            $id = $_GET['id'];
+            $query = "DELETE FROM user WHERE id = :id";
+            $result = $this->connexion->prepare($query);
+            $result->bindParam(':id', $id);
+            $result->execute();
+            return true;
+        }
+        return false;
+    }
+
 }

@@ -26,7 +26,6 @@ switch ($url):
     case $url === 'mon-espace-recruteur':
         header("Location: /home/mon-espace-recruteur");
         break;
-
 endswitch;
 
 

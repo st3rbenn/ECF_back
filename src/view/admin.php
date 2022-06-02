@@ -5,7 +5,6 @@ if(isset($_SESSION['role'])){
 } else if ($_SESSION['role'] !== 'admin') {
     header('Location: /');
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -36,13 +35,10 @@ if(isset($_SESSION['role'])){
             <span class="navbar-toggler-icon"></span>
         </button>
     </div>
-    <div class="col-12 col-md-4 col-lg-2">
-        <input class="form-control form-control-dark" type="text" placeholder="Search" aria-label="Search">
-    </div>
     <div class="col-12 col-md-5 col-lg-8 d-flex align-items-center justify-content-md-end mt-3 mt-md-0">
         <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-                Bienvenue, Anthonin
+                Bienvenue, <?= $_SESSION['firstName'] ?>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <li><a class="dropdown-item" href="#">Settings</a></li>
@@ -53,9 +49,8 @@ if(isset($_SESSION['role'])){
     </div>
 </nav>
 <div class="container-fluid">
-    <div class="row">
-        <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-            <div class="position-sticky">
+    <div class="row  position-relative">
+        <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse position-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item" id="Jobs">
                         <a class="nav-link active" aria-current="page" href="#">
@@ -88,7 +83,6 @@ if(isset($_SESSION['role'])){
                         </a>
                     </li>
                 </ul>
-            </div>
         </nav>
         <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
             <div id="root"></div>
@@ -108,7 +102,7 @@ if(isset($_SESSION['role'])){
         </main>
     </div>
 </div>
-<script src="../../assets/js/components/admin/admin.js" defer></script>
+<script src="../../assets/js/components/admin/admin.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 </body>

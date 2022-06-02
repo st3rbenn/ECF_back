@@ -7,7 +7,7 @@ $db = $database::getConnection();
 $allEnterprise = new Controller\Functions($db);
 $allEnterprise = $allEnterprise->getAllEntreprise();
 ?>
-<nav aria-label="breadcrumb">
+<nav aria-label="breadcrumb" id="nav">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/home/admin/dashboard">Home</a></li>
         <li class="breadcrumb-item active" aria-current="page">entreprise</li>
@@ -17,8 +17,11 @@ $allEnterprise = $allEnterprise->getAllEntreprise();
     <div class="col-7 col-xl-12 mb-4 mb-lg-0">
         <div class="card">
             <h5 class="card-header">Toute les entreprises</h5>
-            <div class="card-body">
-                <table id="example" class="table table-striped" style="width:100%">
+            <div class="card-body" id="bodyAppend">
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-primary" id="addEnterprise">Ajouter une entreprise</button>
+                </div>
+                <table id="dataTable" class="table table-striped" style="width:100%">
                     <thead>
                     <tr>
                         <th>id</th>
@@ -35,11 +38,7 @@ $allEnterprise = $allEnterprise->getAllEntreprise();
                             <td><?= $enteprise->company ?></td>
                             <td><?= $enteprise->location ?></td>
                             <td style="background-color: <?= $enteprise->logo_background ?>"><img class="logo" src="https://www.apiecf.colas.cefim.o2switch.site<?= $enteprise->logo ?>"></td>
-                            <td>
-                                <a class="btnJobs" style="margin-left: 1rem" href="/home/admin/dashboard"><i class="fa-solid fa-info"></i></a>
-                                <a class="btnJobs" style="margin-left: 1rem" href="/home/admin/dashboard"><i class="fa-solid fa-pen-to-square"></i></a>
-                                <a class="btnJobs" style="margin-left: 1rem" href="/home/admin/dashboard"><i class="fa-solid fa-trash"></i></a>
-                            </td>
+                            <td><a class="btnJobs" style="margin-left: 1rem" id="editEnterprise"><i class="fa-solid fa-pen-to-square"></i></a><a class="btnJobs" style="margin-left: 1rem" href="/home/admin/dashboard"><i class="fa-solid fa-trash"></i></a></td>
                         </tr>
                     <?php endwhile; ?>
                     </tbody>
@@ -48,3 +47,5 @@ $allEnterprise = $allEnterprise->getAllEntreprise();
         </div>
     </div>
 </div>
+<script src="/assets/js/components/admin/enterprise.js">
+</script>

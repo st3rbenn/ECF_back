@@ -3,7 +3,6 @@ const jobsBtn = document.querySelector('#Jobs');
 const enterpriseBtn = document.querySelector('#enterprise');
 const userBtn = document.querySelector('#user');
 const candidateBtn = document.querySelector('#candidate')
-const editBtn = document.querySelector('#edit')
 const xhr = new XMLHttpRequest();
 
 const request = (url) => {
@@ -11,7 +10,7 @@ const request = (url) => {
         if(xhr.status === 200) {
             container.innerHTML = xhr.responseText
             return $(document).ready(function () {
-                $('#example').DataTable({
+                $('#dataTable').DataTable({
                     columnDefs: [
                         {
                             targets: [0],
@@ -37,40 +36,33 @@ const request = (url) => {
     xhr.open('GET', `${url}`);
     xhr.send();
 };
+request('/src/view/admin/allJobs-view.php');
 
 jobsBtn.addEventListener('click', () => {
-    deleteAll();
+    deleteAll(container);
     request('/src/view/admin/allJobs-view.php');
 });
 
 enterpriseBtn.addEventListener('click', () => {
-    deleteAll();
+    deleteAll(container);
     request('/src/view/admin/allEnterprise-view.php');
+    const script = document.createElement('script');
+    script.src = '/assets/js/components/admin/enterprise.js';
+    enterpriseBtn.appendChild(script);
 });
 
 candidateBtn.addEventListener('click', () => {
-    deleteAll();
+    deleteAll(container);
     request('/src/view/admin/allCandidate-view.php');
 })
 
 userBtn.addEventListener('click', () => {
-    deleteAll();
+    deleteAll(container);
     request('/src/view/admin/allUser-view.php');
 });
 
-function deleteAll(){
-    while (container.firstChild) {
-        container.removeChild(container.lastChild);
+function deleteAll(contain){
+    while (contain.firstChild) {
+        contain.removeChild(container.lastChild);
     };
 };
-
-
-window.onload = request('/src/view/admin/allJobs-view.php');
-
-/*
-if (editBtn !== undefined) {
-    editBtn.addEventListener('click', () => {
-        deleteAll();
-        request('/src/view/admin/component/editJobs.php');
-    });
-}*/
