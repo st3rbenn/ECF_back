@@ -14,7 +14,7 @@ $allEnterprise = $allEnterprise->getAllEntreprise();
     </ol>
 </nav>
 <div class="row">
-    <div class="col-7 col-xl-12 mb-4 mb-lg-0">
+    <div class="col-12 mb-4 mb-lg-0">
         <div class="card">
             <h5 class="card-header">Toute les entreprises</h5>
             <div class="card-body" id="bodyAppend">
@@ -47,5 +47,4 @@ $allEnterprise = $allEnterprise->getAllEntreprise();
         </div>
     </div>
 </div>
-<script src="/assets/js/components/admin/enterprise.js">
-</script>
+<script src="/assets/js/components/admin/enterprise.js"></script>

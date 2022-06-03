@@ -14,7 +14,7 @@ $allJobs = $allJobs->getAllJobs();
     </ol>
 </nav>
 <div class="row">
-    <div class="col-7 col-xl-12 mb-4 mb-lg-0">
+    <div class="col-12 mb-4 mb-lg-0">
         <div class="card">
             <h5 class="card-header">Tout les jobs</h5>
             <div class="card-body">
