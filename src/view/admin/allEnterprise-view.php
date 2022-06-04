@@ -35,6 +35,8 @@ $allEnterprise = $allEnterprise->getAllEntreprise();
                     <?php while($enteprise = $allEnterprise->fetch(PDO::FETCH_OBJ)): ?>
                         <tr>
                             <td><?= $enteprise->id ?></td>
+                            <form action="" method="POST" id="editForm">
+                            </form>
                             <td><?= $enteprise->company ?></td>
                             <td><?= $enteprise->location ?></td>
                             <td style="background-color: <?= $enteprise->logo_background ?>"><img class="logo" src="https://www.apiecf.colas.cefim.o2switch.site<?= $enteprise->logo ?>"></td>

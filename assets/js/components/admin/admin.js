@@ -151,29 +151,26 @@ setInterval(() => {
             document.querySelector('#bodyAppend').appendChild(form);
         })
     };
-        const edit = document.querySelectorAll('#editEnterprise');
-        edit.forEach(function (editEnterprise) {
-            editEnterprise.addEventListener('click', function (e) {
-                if(e.currentTarget.parentNode !== null){
-                    if(e.currentTarget.parentNode.parentNode.children[1].innerHTML !== null){
-                        e.currentTarget.parentNode.parentNode.children[1].innerHTML = '<input type="text" class="form-control" name="companyName" placeholder="Company Name" value="' + e.currentTarget.parentNode.parentNode.children[1].innerHTML + '">';
-                    }
-                    if(e.currentTarget.parentNode.parentNode.children[2].innerHTML !== null){
-                        e.currentTarget.parentNode.parentNode.children[2].innerHTML = '<input type="text" class="form-control" name="companyLocation" placeholder="Company location" value="' + e.currentTarget.parentNode.parentNode.children[2].innerHTML + '">';
-                    }
-                    e.currentTarget.parentNode.innerHTML = '<button class="btn btn-danger">Cancel</button><button class="btn btn-primary">Submit</button>';
-                }
-                const cancel = document.querySelectorAll('.btn-danger');
-                cancel.forEach(function (cancel) {
-                    cancel.addEventListener('click', function (e) {
-                        if(e.currentTarget.parentNode !== null){
-                        e.currentTarget.parentNode.parentNode.children[1].innerHTML = e.currentTarget.parentNode.parentNode.children[1].children[0].value;
-                        e.currentTarget.parentNode.parentNode.children[2].innerHTML = e.currentTarget.parentNode.parentNode.children[2].children[0].value;
-                        e.currentTarget.parentNode.innerHTML = '<td><a class="btnJobs" style="margin-left: 1rem" id="editEnterprise"><i class="fa-solid fa-pen-to-square"></i></a><a class="btnJobs" style="margin-left: 1rem" href="/home/admin/dashboard"><i class="fa-solid fa-trash"></i></a></td>\n';
-                        }
-                    })
-                })
+    const edit = document.querySelectorAll('#editEnterprise');
+    edit.forEach(function (editEnterprise) {
+        editEnterprise.addEventListener('click', function (e) {
+            if(e.currentTarget.parentNode !== null){
+                e.currentTarget.parentNode.parentNode.children[1].innerHTML = '<input type="text" class="form-control" name="companyName" placeholder="Company Name" value="' + e.currentTarget.parentNode.parentNode.children[1].innerHTML + '">';
+                e.currentTarget.parentNode.parentNode.children[2].innerHTML = '<input type="text" class="form-control" name="companyLocation" placeholder="Company location" value="' + e.currentTarget.parentNode.parentNode.children[2].innerHTML + '">';
+                e.currentTarget.parentNode.innerHTML = '<button class="btn btn-danger">Cancel</button><button class="btn btn-primary">Submit</button>';
+            }
 
-            });
-        })
+            const cancel = document.querySelectorAll('.btn-danger');
+            cancel.forEach(function (cancel) {
+                cancel.addEventListener('click', function (e) {
+                    if(e.currentTarget.parentNode !== null){
+                    e.currentTarget.parentNode.parentNode.children[1].innerHTML = e.currentTarget.parentNode.parentNode.children[1].children[0].value;
+                    e.currentTarget.parentNode.parentNode.children[2].innerHTML = e.currentTarget.parentNode.parentNode.children[2].children[0].value;
+                    e.currentTarget.parentNode.innerHTML = '<td><a class="btnJobs" style="margin-left: 1rem" id="editEnterprise"><i class="fa-solid fa-pen-to-square"></i></a><a class="btnJobs" style="margin-left: 1rem" href="/home/admin/dashboard"><i class="fa-solid fa-trash"></i></a></td>\n';
+                    }
+                })
+            })
+
+        });
+    })
 }, 1000)

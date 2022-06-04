@@ -29,6 +29,7 @@ function displayInfoJobs (data){
   
   jobsContainer.classList.add('jobs__container')
   jobsContainer.setAttribute('data-id', `${data.id}`)
+  jobsContainer.setAttribute('style', `box-shadow: 0 .5rem .1rem ${data.logoBackground}`);
   imgJobs.classList.add('jobs__container__logo')
   imgJobs.setAttribute('alt', `entreprise ${data.name}`)
   jobsItem.classList.add('jobs__container__items')
