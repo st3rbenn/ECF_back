@@ -50,7 +50,7 @@ if(isset($_POST['id'])){
                         <a class="header__connexion" href="/home/login">Connexion</a>
                     <?php else:?>
                         <?php if($role === 'ROLE_ADMIN'): ?>
-                            <a class="header__inscription">Dashboard</a>
+                            <a class="header__inscription" href="/home/admin/dashboard">Dashboard</a>
                         <?php endif;?>
                         <a class="header__connexion">Mon Profile</a>
                         <a class="header__inscription" href="/home/disconnect">Déconnexion</a>
