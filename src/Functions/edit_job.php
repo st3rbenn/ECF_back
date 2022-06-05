@@ -8,6 +8,13 @@ $jobs = $getJobs->getJobById($id);
 $reqList = $getJobs->getReqList($id);
 $roleList = $getJobs->getRoleList($id);
 
+$url = $_SERVER['REQUEST_URI'];
+$url = array_slice(explode('/', $url), 3);
+if($url[0] == 'mon-espace-recruteur'){
+    $url = '/home/mon-espace-recruteur';
+}else if ($url[0] == 'dashboard'){
+    $url = '/home/admin/dashboard';
+}
 
 
 ?>
@@ -116,7 +123,7 @@ $roleList = $getJobs->getRoleList($id);
                 </div>
 
                 <div class="d-flex justify-content-between">
-                    <a href="/home/mon-espace-recruteur" class="btn_return" >Revenir a mon espace</a>
+                    <a href="<?= $url?>" class="btn_return" >Revenir a mon espace</a>
                     <input type="submit" value="accepter les modifications" class="btn_modify btn_return">
                 </div>
 

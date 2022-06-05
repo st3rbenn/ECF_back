@@ -1,10 +1,6 @@
 <?php
 
 session_start();
-$url = explode('/', $_SERVER['REQUEST_URI'])[3];
-var_dump($_POST);
-
-
 $database = new Database\DB;
 $db = $database::getConnection();
 

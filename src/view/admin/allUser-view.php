@@ -17,9 +17,9 @@ $allUser = $allUser->getAllUser();
     <div class="col-12 mb-4 mb-lg-0">
         <div class="card">
             <h5 class="card-header">Tout les utilisateurs</h5>
-            <div class="card-body">
+            <div class="card-body" id="bodyAppend">
                 <div class="d-flex justify-content-end">
-                    <button type="button" class="btn btn-primary">Ajouter un utilisateur</button>
+                    <button type="button" class="btn btn-primary" id="addUser">Ajouter un utilisateur</button>
                 </div>
                 <table id="dataTable" class="table table-striped" style="width:100%">
                     <thead>
@@ -43,8 +43,7 @@ $allUser = $allUser->getAllUser();
                             <td><?= $user->company ?></td>
                             <td><?= $user->role ?></td>
                             <td>
-                                <a class="btnJobs" style="margin-left: 1rem" href="/home/admin/dashboard"><i class="fa-solid fa-info"></i></a>
-                                <a class="btnJobs" style="margin-left: 1rem" href="/home/admin/dashboard"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a class="btnJobs" style="margin-left: 1rem" id="editUser"><i class="fa-solid fa-pen-to-square"></i></a>
                                 <a class="btnJobs" style="margin-left: 1rem" href="/home/admin/dashboard/user/delete?id=<?= $user->id ?>"><i class="fa-solid fa-trash"></i></a>
                             </td>
                         </tr>

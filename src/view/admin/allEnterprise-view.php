@@ -35,12 +35,10 @@ $allEnterprise = $allEnterprise->getAllEntreprise();
                     <?php while($enteprise = $allEnterprise->fetch(PDO::FETCH_OBJ)): ?>
                         <tr>
                             <td><?= $enteprise->id ?></td>
-                            <form action="" method="POST" id="editForm">
-                            </form>
                             <td><?= $enteprise->company ?></td>
                             <td><?= $enteprise->location ?></td>
-                            <td style="background-color: <?= $enteprise->logo_background ?>"><img class="logo" src="https://www.apiecf.colas.cefim.o2switch.site<?= $enteprise->logo ?>"></td>
-                            <td><a class="btnJobs" style="margin-left: 1rem" id="editEnterprise"><i class="fa-solid fa-pen-to-square"></i></a><a class="btnJobs" style="margin-left: 1rem" href="/home/admin/dashboard"><i class="fa-solid fa-trash"></i></a></td>
+                            <td style="background-color: <?= $enteprise->logo_background ?>"><img class="logo" src="https://www.apiecf.colas.cefim.o2switch.site<?= $enteprise->logo ?>" alt="logo de l'entreprise <?= $enteprise->company ?>"></td>
+                            <td><a class="btnJobs" style="margin-left: 1rem" id="editEnterprise"><i class="fa-solid fa-pen-to-square"></i></a><a class="btnJobs" style="margin-left: 1rem" href="/home/admin/dashboard/enterprise/delete/<?= $enteprise->id ?>"><i class="fa-solid fa-trash"></i></a></td>
                         </tr>
                     <?php endwhile; ?>
                     </tbody>

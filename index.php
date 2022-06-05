@@ -36,7 +36,12 @@ $router->get('/home/mon-espace-recruteur/profil/edit', function (){return requir
 $router->get('/home/admin/dashboard/job/edit/:id', function ($id){return require 'src/functions/edit_job.php';});
 $router->get('/home/admin/dashboard/job/delete:id', function ($id){return require 'src/functions/delete_job.php';});
 $router->get('/home/admin/dashboard/job/info/:id', function ($id){return require 'src/functions/info_job.php';});
+$router->get('/home/admin/dashboard/enterprise/add', function (){return require 'src/functions/add_enterprise.php';});
+$router->get('/home/admin/dashboard/enterprise/edit/:id', function ($id){return require 'src/functions/edit_enterprise.php';});
+$router->get('/home/admin/dashboard/enterprise/delete/:id', function ($id){return require 'src/functions/delete_enterprise.php';});
 $router->get('/home/admin/dashboard/candidate/delete:id', function ($id){return require 'src/functions/delete_candidate.php';});
+$router->get('/home/admin/dashboard/user/add', function (){return require 'src/functions/add_user.php';});
+$router->get('/home/admin/dashboard/user/edit/:id', function ($id){return require 'src/functions/edit_user.php';});
 $router->get('/home/admin/dashboard/user/delete:id', function ($id){return require 'src/functions/delete_user.php';});
 
 

@@ -43,7 +43,7 @@ $allJobs = $allJobs->getAllJobs();
                             <td>
                                 <a class="btnJobs" href="/home/admin/dashboard/job/info/<?= $job->id ?>"><i class="fa-solid fa-info"></i></a>
                                 <a class="btnJobs" href="/home/jobs?id=<?= $job->id ?>"><i class="fa-solid fa-eye"></i></a>
-                                <a class="btnJobs" id="edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                                <a class="btnJobs" id="edit" href="/home/admin/dashboard/job/edit/<?= $job->id ?>"><i class="fa-solid fa-pen-to-square"></i></a>
                                 <a class="btnJobs" href="/home/admin/dashboard/job/delete/<?= $job->id ?>"><i class="fa-solid fa-trash"></i></a>
                             </td>
                         </tr>
