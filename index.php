@@ -20,29 +20,30 @@ $router->get('/home/disconnect', function (){return require 'src/view/disconnect
 $router->get('/home/redirect', function (){return require 'src/view/redirection.php';});
 
 //job manipulation
-$router->get('/home/mon-espace-recruteur/job/add', function (){return require 'src/functions/add_job.php';});
-$router->get('/home/mon-espace-recruteur/job/edit/:id', function ($id){return require 'src/functions/edit_job.php';});
-$router->get('/home/mon-espace-recruteur/job/delete/:id', function ($id){return require 'src/functions/delete_job.php';});
+$router->get('/home/mon-espace-recruteur/job/add', function (){return require 'src/functions/add/add_job.php';});
+$router->get('/home/mon-espace-recruteur/job/edit/:id', function ($id){return require 'src/functions/edit/edit_job.php';});
+$router->get('/home/mon-espace-recruteur/job/delete/:id', function ($id){return require 'src/functions/delete/delete_job.php';});
 $router->get('/home/mon-espace-recruteur/job/info/:id', function ($id){return require 'src/functions/info_job.php';});
 
-$router->get('/home/mon-espace-recruteur/job/reqlist/delete/:id', function ($id){return require 'src/functions/delete_list.php';});
-$router->get('/home/mon-espace-recruteur/job/rolist/delete/:id', function ($id){return require 'src/functions/delete_list.php';});
-$router->get('/home/mon-espace-recruteur/job/reqlist/add', function (){return require 'src/functions/add_list.php';});
-$router->get('/home/mon-espace-recruteur/job/rolist/add', function (){return require 'src/functions/add_list.php';});
+$router->get('/home/mon-espace-recruteur/job/reqlist/delete/:id', function ($id){return require 'src/functions/delete/delete_list.php';});
+$router->get('/home/mon-espace-recruteur/job/rolist/delete/:id', function ($id){return require 'src/functions/delete/delete_list.php';});
+$router->get('/home/mon-espace-recruteur/job/reqlist/add', function (){return require 'src/functions/add/add_list.php';});
+$router->get('/home/mon-espace-recruteur/job/rolist/add', function (){return require 'src/functions/add/add_list.php';});
 
-$router->get('/home/mon-espace-recruteur/profil/edit', function (){return require 'src/functions/edit_profil_company.php';});
+$router->get('/home/mon-espace-recruteur/profil/edit', function (){return require 'src/functions/edit/edit_profil_company.php';});
 
 //admin section
-$router->get('/home/admin/dashboard/job/edit/:id', function ($id){return require 'src/functions/edit_job.php';});
-$router->get('/home/admin/dashboard/job/delete:id', function ($id){return require 'src/functions/delete_job.php';});
+$router->get('/home/admin/dashboard/job/edit/:id', function ($id){return require 'src/functions/edit/edit_job.php';});
+$router->get('/home/admin/dashboard/job/add', function (){return require 'src/functions/add/add_job.php';});
+$router->get('/home/admin/dashboard/job/delete/:id', function ($id){return require 'src/functions/delete/delete_job.php';});
 $router->get('/home/admin/dashboard/job/info/:id', function ($id){return require 'src/functions/info_job.php';});
-$router->get('/home/admin/dashboard/enterprise/add', function (){return require 'src/functions/add_enterprise.php';});
-$router->get('/home/admin/dashboard/enterprise/edit/:id', function ($id){return require 'src/functions/edit_enterprise.php';});
-$router->get('/home/admin/dashboard/enterprise/delete/:id', function ($id){return require 'src/functions/delete_enterprise.php';});
-$router->get('/home/admin/dashboard/candidate/delete:id', function ($id){return require 'src/functions/delete_candidate.php';});
-$router->get('/home/admin/dashboard/user/add', function (){return require 'src/functions/add_user.php';});
-$router->get('/home/admin/dashboard/user/edit/:id', function ($id){return require 'src/functions/edit_user.php';});
-$router->get('/home/admin/dashboard/user/delete:id', function ($id){return require 'src/functions/delete_user.php';});
+$router->get('/home/admin/dashboard/enterprise/add', function (){return require 'src/functions/add/add_enterprise.php';});
+$router->get('/home/admin/dashboard/enterprise/edit/:id', function ($id){return require 'src/functions/edit/edit_enterprise.php';});
+$router->get('/home/admin/dashboard/enterprise/delete/:id', function ($id){return require 'src/functions/delete/delete_enterprise.php';});
+$router->get('/home/admin/dashboard/candidate/delete:id', function ($id){return require 'src/functions/delete/delete_candidate.php';});
+$router->get('/home/admin/dashboard/user/add', function (){return require 'src/functions/add/add_user.php';});
+$router->get('/home/admin/dashboard/user/edit/:id', function ($id){return require 'src/functions/edit/edit_user.php';});
+$router->get('/home/admin/dashboard/user/delete:id', function ($id){return require 'src/functions/delete/delete_user.php';});
 
 
 

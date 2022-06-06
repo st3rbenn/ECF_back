@@ -47,4 +47,3 @@ $allEnterprise = $allEnterprise->getAllEntreprise();
         </div>
     </div>
 </div>
-<script src="/assets/js/components/admin/enterprise.js"></script>
