@@ -81,7 +81,7 @@ if(isset($_SESSION['role'])){
         </div>
         <div class="mdp">
             <label for="MDP" class="textForm">Mot de Passe <span style="color:red;">&#8203 &#8203 *</span></label>
-            <input type="password" id="MDP" name="mdp">
+            <input type="password" id="MDP" name="mdp" minlength="8">
         </div>
         <div class="mdpSecond">
             <label for="mdpSecond" class="textForm">Retaper le Mot de Passe <span style="color:red;">&#8203 &#8203 *</span></label>

@@ -286,17 +286,14 @@ class Espace_Recruteur
 
     public function edit_profile(): bool
     {
-        $this->sql = "UPDATE entreprise set location = :location, logo_background = :color, logo = :logo";
+        $this->sql = "UPDATE entreprise set company = :company, location = :location, logo_background = :color, logo = :logo WHERE company = :company";
         $query = $this->connexion->prepare($this->sql);
         if(isset($_POST['location'])){
             $query->bindValue(':location', htmlspecialchars(html_entity_decode($_POST['location'])));
         }
-        if(isset($_POST['color'])){
-            $query->bindValue(':color', htmlspecialchars(html_entity_decode($_POST['color'])));
-        }
-        if(isset($_POST['logo'])){
-            $query->bindValue(':logo', $_POST['logo']);
-        }
+        $query->bindValue(':company', htmlspecialchars(html_entity_decode($_POST['company'])));
+        $query->bindValue(':color', 'hsl(12, 79%, 52%)');
+        $query->bindValue(':logo', '/static/img/default.svg');
         $query->bindValue(':company', $_SESSION['company']);
         $query->execute();
         return true;

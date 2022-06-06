@@ -70,11 +70,11 @@ class Functions
 
     public function editEntreprise($id): bool
     {
-        $this->sql = "UPDATE entreprise a SET
+        $query = "UPDATE entreprise a SET
                           a.company = :company,
                           a.location = :location
                           WHERE a.id = :id";
-        $query = $this->connexion->prepare($this->sql);
+        $query = $this->connexion->prepare($query);
         $cookie = $_COOKIE['data'];
         $cookie = json_decode($cookie, true);
         $query->bindParam(':company', $cookie['companyName']);

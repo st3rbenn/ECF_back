@@ -3,6 +3,8 @@
 namespace Controller;
 
 
+use PDO;
+
 class Inscription
 {
     private string $firstName;
@@ -18,6 +20,30 @@ class Inscription
     public function __construct($db)
     {
         $this->connexion = $db;
+    }
+
+    public function createEnterpriseProfilOnNewAccount(): bool
+    {
+        $this->sql = "INSERT INTO entreprise (company, location, logo, logo_background)
+                      VALUES (:company, :location, :logo, :logoBackground)";
+        $query = $this->connexion->prepare($this->sql);
+        $query->bindValue(':company', $this->entreprise);
+        $query->bindValue(':location', 'Write your location');
+        $query->bindValue(':logo', '/static/img/default.svg');
+        $query->bindValue(':logoBackground', 'hsl(12, 79%, 52%)');
+        $query->execute();
+        return true;
+    }
+
+
+    public function checkIfEnterpriseExist()
+    {
+        $this->sql = "SELECT * FROM entreprise WHERE company = :company";
+        $query = $this->connexion->prepare($this->sql);
+        $query->bindParam(':company', $this->entreprise);
+        $query->fetch(\PDO::FETCH_ASSOC);
+        $query->execute();
+        return $query;
     }
 
     public function sendForm()
@@ -45,6 +71,11 @@ class Inscription
         $query->bindParam(':mail', $this->mail);
         $query->bindParam(':mdp', $this->mdp);
         $query->execute();
+
+        $stmt = $this->checkIfEnterpriseExist();
+            if(!$stmt->fetch(PDO::FETCH_ASSOC)){
+                $this->createEnterpriseProfilOnNewAccount();
+            }
     }
 
     public function checkIfAccountExist()
