@@ -79,7 +79,7 @@ if(end($url) == 'login'){
     }
 }
 
-if(end($url) == 'home' || end($url) == 'Mon_Espace_Recrutement'){
+if(end($url) == 'home' || end($url) == 'mon-espace-recruteur'){
     $redirect = '<meta http-equiv="Refresh" content="5; URL=/home"/>
                 <div class="form_inscription form__inscription">
                     <h1 class="title">On espère te revoir bientôt 😉</h1>

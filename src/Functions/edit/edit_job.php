@@ -8,12 +8,11 @@ $jobs = $getJobs->getJobById($id);
 $reqList = $getJobs->getReqList($id);
 $roleList = $getJobs->getRoleList($id);
 
-$url = $_SERVER['REQUEST_URI'];
-$url = array_slice(explode('/', $url), 3);
-if($url[0] == 'mon-espace-recruteur'){
-    $url = '/home/mon-espace-recruteur';
-}else if ($url[0] == 'dashboard'){
-    $url = '/home/admin/dashboard';
+$url = explode('/', $_SERVER['REQUEST_URI'])[2];
+if($url === 'mon-espace-recruteur'){
+    header('Location: /home/mon-espace-recruteur');
+}else if($url === 'admin'){
+    header('Location: /home/admin/dashboard');
 }
 
 

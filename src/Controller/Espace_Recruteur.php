@@ -2,6 +2,7 @@
 
 namespace Controller;
 
+use Cassandra\Date;
 use PDO;
 
 class Espace_Recruteur
@@ -189,48 +190,75 @@ class Espace_Recruteur
 
     public function addJob(): bool
     {
+
+
         $this->sql = "INSERT INTO job (company, contract, position, postedAt)
-                        VALUES (:company, :contract, :position, :postedAt)";
+                    VALUES (:company, :contract, :position, :postedAt)";
+
         $query = $this->connexion->prepare($this->sql);
         $query->bindValue(':contract', htmlspecialchars(html_entity_decode($_POST['contract'])));
         $query->bindValue(':position', htmlspecialchars(html_entity_decode($_POST['position'])));
-        $query->bindValue(':postedAt', htmlspecialchars(html_entity_decode($_POST['postedAt'])));
-        $query->bindValue(':company', $_SESSION['company']);
+        $query->bindValue(':postedAt', date(false,true));
+        if(isset($_POST['company'])){
+            $query->bindValue(':company', htmlspecialchars(html_entity_decode($_POST['company'])));
+        }else {
+            $query->bindValue(':company', $_SESSION['company']);
+        }
         $query->execute();
 
         $this->sql = "INSERT INTO job_detail (job_id, description)
                         VALUES ((SELECT id FROM job WHERE company = :company ORDER BY id DESC LIMIT 1), :description)";
         $query = $this->connexion->prepare($this->sql);
         $query->bindValue(':description', htmlspecialchars(html_entity_decode($_POST['description'])));
-        $query->bindValue(':company', $_SESSION['company']);
+        if(isset($_POST['company'])){
+            $query->bindValue(':company', htmlspecialchars(html_entity_decode($_POST['company'])));
+        }else {
+            $query->bindValue(':company', $_SESSION['company']);
+        }
         $query->execute();
 
         $this->sql = "INSERT INTO requirement_content (job_id, content)
                         VALUES ((SELECT id FROM job WHERE company = :company ORDER BY id DESC LIMIT 1), :requirement)";
         $query = $this->connexion->prepare($this->sql);
         $query->bindValue(':requirement', htmlspecialchars(html_entity_decode($_POST['req_content'])));
-        $query->bindValue(':company', $_SESSION['company']);
+        if(isset($_POST['company'])){
+            $query->bindValue(':company', htmlspecialchars(html_entity_decode($_POST['company'])));
+        }else {
+            $query->bindValue(':company', $_SESSION['company']);
+        }
         $query->execute();
 
         $this->sql = "INSERT INTO role_content (job_id, content)
                         VALUES ((SELECT id FROM job WHERE company = :company ORDER BY id DESC LIMIT 1), :role)";
         $query = $this->connexion->prepare($this->sql);
         $query->bindValue(':role', htmlspecialchars(html_entity_decode($_POST['role_content'])));
-        $query->bindValue(':company', $_SESSION['company']);
+        if(isset($_POST['company'])){
+            $query->bindValue(':company', htmlspecialchars(html_entity_decode($_POST['company'])));
+        }else {
+            $query->bindValue(':company', $_SESSION['company']);
+        }
         $query->execute();
 
         $this->sql = "INSERT INTO requirement_items (job_id, item)
                         VALUES ((SELECT id FROM job WHERE company = :company ORDER BY id DESC LIMIT 1), :item)";
         $query = $this->connexion->prepare($this->sql);
         $query->bindValue(':item', htmlspecialchars(html_entity_decode($_POST['req_item'])));
-        $query->bindValue(':company', $_SESSION['company']);
+        if(isset($_POST['company'])){
+            $query->bindValue(':company', htmlspecialchars(html_entity_decode($_POST['company'])));
+        }else {
+            $query->bindValue(':company', $_SESSION['company']);
+        }
         $query->execute();
 
         $this->sql = "INSERT INTO role_item (job_id, item)
                         VALUES ((SELECT id FROM job WHERE company = :company ORDER BY id DESC LIMIT 1), :item)";
         $query = $this->connexion->prepare($this->sql);
         $query->bindValue(':item', htmlspecialchars(html_entity_decode($_POST['role_item'])));
-        $query->bindValue(':company', $_SESSION['company']);
+        if(isset($_POST['company'])){
+            $query->bindValue(':company', htmlspecialchars(html_entity_decode($_POST['company'])));
+        }else {
+            $query->bindValue(':company', $_SESSION['company']);
+        }
         $query->execute();
 
         return true;

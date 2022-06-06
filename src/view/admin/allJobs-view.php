@@ -17,9 +17,9 @@ $allJobs = $allJobs->getAllJobs();
     <div class="col-12 mb-4 mb-lg-0">
         <div class="card">
             <h5 class="card-header">Tout les jobs</h5>
-            <div class="card-body">
+            <div class="card-body" id="bodyAppend">
                 <div class="d-flex justify-content-end">
-                    <button type="button" class="btn btn-primary">Ajouter une offre</button>
+                    <button type="button" class="btn btn-primary" id="addJobs">Ajouter une offre</button>
                 </div>
                 <table id="dataTable" class="table table-striped" style="width:100%">
                     <thead>
