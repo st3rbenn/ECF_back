@@ -3,12 +3,14 @@
 require 'vendor/autoload.php';
 $router = new Router\Router($_SERVER['REQUEST_URI']);
 
-if ($_SERVER['REQUEST_URI'] === 'home/' || $_SERVER['REQUEST_URI'] === '/') {
+if ($_SERVER['REQUEST_URI'] === 'home/' || $_SERVER['REQUEST_URI'] === '/' || $_SERVER['REQUEST_URI'] === '/home/') {
     header('Location: /home');
 }
 
 $router->get('/home', function (){return require 'src/view/home.php';});
-$router->get('/home/jobs:id', function (){return require 'src/view/about.php';});
+$router->get('/home/job:id', function (){return require 'src/view/about.php';});
+$router->get('/home/job/apply/:id', function ($id){return require 'src/view/job-apply.php';});
+$router->get('/home/job/sendApply/:id', function ($id){return require 'src/functions/add/job-apply.php';});
 $router->get('/home/mon-espace-recruteur', function (){return require 'src/view/Espace_recruteur.php';});
 $router->get('/home/admin/dashboard', function (){return require 'src/view/admin.php';});
 

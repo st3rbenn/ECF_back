@@ -7,6 +7,26 @@ const article = document.querySelector('#article')
 
 const xhr = new XMLHttpRequest()
 
+/*setInterval(() => {
+    if(document.querySelector('#sendForm') !== null){
+        document.querySelector('#sendForm').addEventListener('click', (ev) => {
+            ev.preventDefault()
+            const form = document.querySelector('#add_jobs')
+            const formData = new FormData(form)
+            const settings = {
+                method: 'POST',
+                body: formData
+            }
+            fetch('https://www.apiecf.colas.cefim.o2switch.site/api/jobs/upload', settings)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(error => console.error(error));
+        })
+    }
+}, 10000000000)*/
+
 
 if(document.querySelector('#alert') != null){
     setTimeout(() => {
@@ -100,8 +120,6 @@ function deleteAll(){
         article.removeChild(article.lastChild)
     }
 }
-
-
 
 
 

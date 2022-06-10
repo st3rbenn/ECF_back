@@ -7,8 +7,8 @@ const logoBg = document.querySelector('#logoBg')
 const headerTitle = document.querySelector('#headerTitle')
 const headerWebsite= document.querySelector('#headerWebsite')
 
-const URL = window.location.search.split('=')[1]
-console.log(URL)
+const JobsId = window.location.search.split('=')[1]
+console.log(JobsId)
 
 function aboutJobsInfoData(data) {
     const jobsItem = document.createElement('div')
@@ -36,7 +36,7 @@ function aboutJobsInfoData(data) {
     const btnApplyNowTop = document.createElement('a')
     btnApplyNowTop.classList.add('about__btn__applynow')
     btnApplyNowTop.setAttribute('id', 'linkBtn')
-    btnApplyNowTop.setAttribute('href', '#')
+    btnApplyNowTop.setAttribute('href', `/home/job/apply/${JobsId}`)
     const description = document.createElement('p')
     description.classList.add('about__description')
 
@@ -103,7 +103,7 @@ function aboutJobsInfoData(data) {
 
 
 async function getJobsInfo(){
-  const response = await fetch(`${URL_API}/api/job/${URL}`)
+  const response = await fetch(`${URL_API}/api/job/${JobsId}`)
   try{
     const data = await response.json()
     aboutJobsInfoData(data)

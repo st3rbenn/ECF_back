@@ -147,4 +147,17 @@ class Functions
         return true;
     }
 
+    public function applyJobs($id): bool
+    {
+        $this->sql = "INSERT INTO candidat (job_id, nom, prenom, mail, telephone) VALUES (:id_job, :firstname, :lastname, :email, :phone)";
+        $query = $this->connexion->prepare($this->sql);
+        $query->bindParam(':id_job', $id);
+        $query->bindParam(':firstname', $_POST['firstname']);
+        $query->bindParam(':lastname', $_POST['name']);
+        $query->bindParam(':email', $_POST['email']);
+        $query->bindParam(':phone', $_POST['phone']);
+        $query->execute();
+        return true;
+    }
+
 }

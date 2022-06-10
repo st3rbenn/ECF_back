@@ -29,7 +29,7 @@ class Inscription
         $query = $this->connexion->prepare($this->sql);
         $query->bindValue(':company', $this->entreprise);
         $query->bindValue(':location', 'Write your location');
-        $query->bindValue(':logo', '/static/img/default.svg');
+        $query->bindValue(':logo', '/static/logo/default.svg');
         $query->bindValue(':logoBackground', 'hsl(12, 79%, 52%)');
         $query->execute();
         return true;

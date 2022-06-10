@@ -48,7 +48,7 @@ class Espace_Recruteur
 
     public function getReqList($id)
     {
-        $this->sql = "SELECT id, item FROM requirement_items WHERE job_id = :id";
+        $this->sql = "SELECT id, item FROM requirement_item WHERE job_id = :id";
 
         $query =  $this->connexion->prepare($this->sql);
         $query->bindValue(':id', $id);
@@ -118,7 +118,7 @@ class Espace_Recruteur
             $reqList = $this->getReqList($id);
             while($row = $reqList->fetch(PDO::FETCH_ASSOC))
             {
-                $this->sql = 'UPDATE requirement_items a SET
+                $this->sql = 'UPDATE requirement_item a SET
                               a.item = :item
                               WHERE a.id = :id AND a.job_id = :id_jobs';
                 $query = $this->connexion->prepare($this->sql);
@@ -154,7 +154,7 @@ class Espace_Recruteur
 
     public function deleteRequirementItemFromList($id): bool
     {
-        $this->sql = 'DELETE FROM requirement_items WHERE id = :id';
+        $this->sql = 'DELETE FROM requirement_item WHERE id = :id';
         $query = $this->connexion->prepare($this->sql);
         $query->bindValue(':id', $id);
         $query->execute();
@@ -172,7 +172,7 @@ class Espace_Recruteur
 
     public function addRequirementItemToList($id): bool
     {
-        $this->sql = 'INSERT INTO requirement_items (job_id) VALUES (:job_id)';
+        $this->sql = 'INSERT INTO requirement_item (job_id) VALUES (:job_id)';
         $query = $this->connexion->prepare($this->sql);
         $query->bindValue(':job_id', $id);
         $query->execute();
@@ -239,7 +239,7 @@ class Espace_Recruteur
         }
         $query->execute();
 
-        $this->sql = "INSERT INTO requirement_items (job_id, item)
+        $this->sql = "INSERT INTO requirement_item (job_id, item)
                         VALUES ((SELECT id FROM job WHERE company = :company ORDER BY id DESC LIMIT 1), :item)";
         $query = $this->connexion->prepare($this->sql);
         $query->bindValue(':item', htmlspecialchars(html_entity_decode($_POST['req_item'])));
@@ -292,8 +292,8 @@ class Espace_Recruteur
             $query->bindValue(':location', htmlspecialchars(html_entity_decode($_POST['location'])));
         }
         $query->bindValue(':company', htmlspecialchars(html_entity_decode($_POST['company'])));
+        $query->bindValue(':logo', '/static/logo/' . htmlspecialchars(html_entity_decode($_POST['Logo'])));
         $query->bindValue(':color', 'hsl(12, 79%, 52%)');
-        $query->bindValue(':logo', '/static/img/default.svg');
         $query->bindValue(':company', $_SESSION['company']);
         $query->execute();
         return true;

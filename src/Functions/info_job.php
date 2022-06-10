@@ -23,6 +23,9 @@ $candidats = $getJobs->getAllCandidat($id);
     <link rel="icon" href="/favicon-32x32.png" sizes="any">
     <link rel="icon" href="/favicon-32x32.png" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://kit.fontawesome.com/6b95777d07.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="manifest" href="/index.php">
@@ -36,7 +39,7 @@ $candidats = $getJobs->getAllCandidat($id);
         <div class="header__item header-item">
 
             <figure class="logo">
-                <img src="/assets/img/logo.svg" alt="Logo de DevJobs">
+                <a href="/home"><img src="/assets/img/logo.svg" alt="Logo de DevJobs"></a>
             </figure>
             <div class="header__switchmode">
 
@@ -58,7 +61,7 @@ $candidats = $getJobs->getAllCandidat($id);
 
 <main class="position-relative" id="blurred">
     <section class="form_edit d-flex flex-column container-xl">
-        <h1 class="modifyTitle">info sur l'offre</h1>
+        <h1 class="modifyTitle text-center">info sur l'offre</h1>
 
         <div class="container mt-4" id="datatables">
             <table id="candidateTable" class="table text-white">
@@ -95,5 +98,25 @@ $candidats = $getJobs->getAllCandidat($id);
 
 <script src="/assets/js/components/espace_recruteurs.js"></script>
 <script src="/assets/js/components/switch.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#dataTable').DataTable({
+            columnDefs: [
+                {
+                    targets: [0],
+                    orderData: [0, 1],
+                },
+                {
+                    targets: [1],
+                    orderData: [1, 0],
+                },
+                {
+                    targets: [4],
+                    orderData: [4, 0],
+                },
+            ],
+        });
+    });
+</script>
 </body>
 </html>
