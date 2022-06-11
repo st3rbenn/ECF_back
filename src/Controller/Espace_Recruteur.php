@@ -198,6 +198,7 @@ class Espace_Recruteur
         $query = $this->connexion->prepare($this->sql);
         $query->bindValue(':contract', htmlspecialchars(html_entity_decode($_POST['contract'])));
         $query->bindValue(':position', htmlspecialchars(html_entity_decode($_POST['position'])));
+
         $query->bindValue(':postedAt', date(false,true));
         if(isset($_POST['company'])){
             $query->bindValue(':company', htmlspecialchars(html_entity_decode($_POST['company'])));
@@ -210,6 +211,7 @@ class Espace_Recruteur
                         VALUES ((SELECT id FROM job WHERE company = :company ORDER BY id DESC LIMIT 1), :description)";
         $query = $this->connexion->prepare($this->sql);
         $query->bindValue(':description', htmlspecialchars(html_entity_decode($_POST['description'])));
+
         if(isset($_POST['company'])){
             $query->bindValue(':company', htmlspecialchars(html_entity_decode($_POST['company'])));
         }else {
@@ -221,6 +223,7 @@ class Espace_Recruteur
                         VALUES ((SELECT id FROM job WHERE company = :company ORDER BY id DESC LIMIT 1), :requirement)";
         $query = $this->connexion->prepare($this->sql);
         $query->bindValue(':requirement', htmlspecialchars(html_entity_decode($_POST['req_content'])));
+
         if(isset($_POST['company'])){
             $query->bindValue(':company', htmlspecialchars(html_entity_decode($_POST['company'])));
         }else {
@@ -232,6 +235,7 @@ class Espace_Recruteur
                         VALUES ((SELECT id FROM job WHERE company = :company ORDER BY id DESC LIMIT 1), :role)";
         $query = $this->connexion->prepare($this->sql);
         $query->bindValue(':role', htmlspecialchars(html_entity_decode($_POST['role_content'])));
+
         if(isset($_POST['company'])){
             $query->bindValue(':company', htmlspecialchars(html_entity_decode($_POST['company'])));
         }else {
@@ -243,6 +247,7 @@ class Espace_Recruteur
                         VALUES ((SELECT id FROM job WHERE company = :company ORDER BY id DESC LIMIT 1), :item)";
         $query = $this->connexion->prepare($this->sql);
         $query->bindValue(':item', htmlspecialchars(html_entity_decode($_POST['req_item'])));
+
         if(isset($_POST['company'])){
             $query->bindValue(':company', htmlspecialchars(html_entity_decode($_POST['company'])));
         }else {
@@ -254,6 +259,7 @@ class Espace_Recruteur
                         VALUES ((SELECT id FROM job WHERE company = :company ORDER BY id DESC LIMIT 1), :item)";
         $query = $this->connexion->prepare($this->sql);
         $query->bindValue(':item', htmlspecialchars(html_entity_decode($_POST['role_item'])));
+
         if(isset($_POST['company'])){
             $query->bindValue(':company', htmlspecialchars(html_entity_decode($_POST['company'])));
         }else {

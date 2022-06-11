@@ -182,7 +182,13 @@ function deleteAll(){
 
 checkBox.checked = false
 
-
+checkBox.addEventListener('change', () => {
+  if (checkBox.checked === true){
+    locationFilter.setAttribute('required', 'true');
+  } else {
+    locationFilter.removeAttribute('required');
+  }
+})
 searchForm.addEventListener('submit', (ev) =>{
   ev.preventDefault();
   btnLoadMore[0].value = 'Load More'
@@ -252,6 +258,7 @@ searchForm.addEventListener('submit', (ev) =>{
   }
   else if (checkBox.checked)
   {
+      console.log(ev.currentTarget);
       deleteAll()
       loader.classList.remove('hidden')
       setTimeout(() => {getSearchResult('', '', '1')}, 2500)
@@ -262,7 +269,6 @@ searchForm.addEventListener('submit', (ev) =>{
     btnLoadMore[0].removeAttribute('disabled')
 
   }
-
 
 // =================================================
 // fonction pour récuperer les resultats des filtres
