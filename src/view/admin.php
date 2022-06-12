@@ -5,6 +5,14 @@ if(isset($_SESSION['role'])){
 } else if ($_SESSION['role'] !== 'admin') {
     header('Location: /');
 }
+if(isset($_POST['id'])){
+    require 'vendor/autoload.php';
+    $database = new Database\DB();
+    $db = $database::getConnection();
+    $getJobs = new Controller\Espace_Recruteur($db);
+    $jobs = $getJobs->editJobs($_POST['id']);
+    unset($_POST['id']);
+}
 ?>
 
 <!DOCTYPE html>

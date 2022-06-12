@@ -35,12 +35,12 @@ $profile = $getJobs->getEnterpriseProfile();
         </div>
     </form>
     <?php endwhile; ?>
-    <form action="https://www.apiecf.colas.cefim.o2switch.site/api/jobs/upload" method="post" enctype="multipart/form-data">
-        Select image to upload:
-        <input type="file" name="fileToUpload" id="fileToUpload">
-        <input type="submit" value="Upload Image" name="submit">
+    <form action="upload.php" method="post" id="uploadForm" enctype="multipart/form-data" >
+        <input type="file" name="file" id="fileToUpload"/>
+        <input type="button" value="Upload"/>
     </form>
+    <!--<form method="POST" id="uploadForm" enctype="multipart/form-data">
+        <input type="file" id="fileToUpload" name="files">
+    </form>-->
+    <script src="../../assets/js/components/uploadFile.js"></script>
 </div>
-
-<script>
-</script>

@@ -7,27 +7,6 @@ const article = document.querySelector('#article')
 
 const xhr = new XMLHttpRequest()
 
-/*setInterval(() => {
-    if(document.querySelector('#sendForm') !== null){
-        document.querySelector('#sendForm').addEventListener('click', (ev) => {
-            ev.preventDefault()
-            const form = document.querySelector('#add_jobs')
-            const formData = new FormData(form)
-            const settings = {
-                method: 'POST',
-                body: formData
-            }
-            fetch('https://www.apiecf.colas.cefim.o2switch.site/api/jobs/upload', settings)
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data);
-                })
-                .catch(error => console.error(error));
-        })
-    }
-}, 10000000000)*/
-
-
 if(document.querySelector('#alert') != null){
     setTimeout(() => {
         document.querySelector('#alert').remove()
@@ -40,6 +19,19 @@ const profileSection = () => {
             btnAjouterUneOffre.removeAttribute('disabled')
             btnTouteMesOffres.removeAttribute('disabled')
             article.innerHTML = xhr.responseText
+            if (document.querySelector('[name="avatar"]')) {
+                const uploadImage = document.querySelector('[name="avatar"]')
+                uploadImage.addEventListener('change', () => {
+                    const uploadForm = document.querySelector('#uploadForm')
+                    fetch('https://www.apiecf.colas.cefim.o2switch.site/api/upload', {
+                        method: 'POST',
+                        body: new FormData(uploadForm) // <-- this is the important part for the file upload to work properly (I think) I'm not sure if it's the best way to do it but it works for me :)
+                    }).then(res => res.json())
+                        .then(data => {
+                            console.log(data);
+                        })
+                })
+            }
         }else {
             article.innerHTML = `<div class="alert alert-danger" role="alert">
             ${xhr.status} ${xhr.statusText}

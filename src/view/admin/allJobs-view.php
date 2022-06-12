@@ -7,12 +7,6 @@ $db = $database::getConnection();
 $allJobs = new Controller\Functions($db);
 $allJobs = $allJobs->getAllJobs();
 
-if(isset($_POST['id'])){
-    echo 'bonjour';
-    $getJobs = new Controller\Espace_Recruteur($db);
-    $jobs = $getJobs->editJobs($_POST['id']);
-    unset($_POST['id']);
-}
 ?>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">

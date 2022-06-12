@@ -8,9 +8,6 @@ $jobs = $getJobs->getJobById($id);
 $reqList = $getJobs->getReqList($id);
 $roleList = $getJobs->getRoleList($id);
 $url = '/' . explode('/', $_SERVER['HTTP_REFERER'], '4')[3];
-var_dump($url);
-
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -36,7 +33,7 @@ var_dump($url);
         <div class="header__item header-item">
 
             <figure class="logo">
-                <img src="/assets/img/logo.svg" alt="Logo de DevJobs">
+                <a href="/home"><img src="/assets/img/logo.svg" alt="Logo de DevJobs"></a>
             </figure>
             <div class="header__switchmode">
 

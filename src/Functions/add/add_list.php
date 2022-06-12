@@ -2,19 +2,20 @@
 
 session_start();
 $url = explode('/', $_SERVER['REQUEST_URI'])[4];
-$jobId = explode('/', $_SERVER['HTTP_REFERER'])[7];
 $database = new Database\DB;
 $db = $database::getConnection();
 
 $getJobs = new Controller\Espace_Recruteur($db);
 
 if($url === 'reqlist'){
-    if($getJobs->addRequirementItemToList($jobId)){
-        header('Location: /home/mon-espace-recruteur/job/edit/'.$jobId);
+    $reqId = explode('/', $_SERVER['HTTP_REFERER'])[8];
+    if($getJobs->addRequirementItemToList($reqId)){
+        header('Location: /home/mon-espace-recruteur/job/edit/'.$reqId);
     }
 }
 else if($url === 'rolist'){
-    if($getJobs->addRoleItemToList($jobId)){
-        header('Location: /home/mon-espace-recruteur/job/edit/'.$jobId);
+    $roleId = explode('/', $_SERVER['HTTP_REFERER'])[7];
+    if($getJobs->addRoleItemToList($roleId)){
+        header('Location: /home/mon-espace-recruteur/job/edit/'.$roleId);
     }
 }
