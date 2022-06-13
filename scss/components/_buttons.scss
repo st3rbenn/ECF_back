@@ -62,7 +62,7 @@ left:  calc(100% - var(--switch-pos))
     will-change: left;
     border-radius: 1.2rem;
     &:focus {
-        box-shadow: 0px 0px 0px 1px var(--d-blue);
+        box-shadow: 0 0 0 1px var(--d-blue);
       }
     
 }
