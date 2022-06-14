@@ -39,8 +39,5 @@ $profile = $getJobs->getEnterpriseProfile();
         <input type="file" name="file" id="fileToUpload"/>
         <input type="button" value="Upload"/>
     </form>
-    <!--<form method="POST" id="uploadForm" enctype="multipart/form-data">
-        <input type="file" id="fileToUpload" name="files">
-    </form>-->
     <script src="../../assets/js/components/uploadFile.js"></script>
 </div>

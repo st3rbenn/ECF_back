@@ -1,12 +1,17 @@
 <?php
 session_start();
-if(isset($_SESSION['role']) && $_SESSION['role'] === 'ROLE_RECRUTEUR' || $_SESSION['role'] === 'ROLE_ADMIN'){
+if(isset($_SESSION['role']) && $_SESSION['role'] === 'ROLE_RECRUTEUR' || $_SESSION['role'] === 'ROLE_ADMIN' || $_SESSION['role'] === 'ROLE_USER'){
     $role = $_SESSION['role'];
 } else{
     header('Location: /home');
     exit;
 }
-$id = explode('/', $_SERVER['HTTP_REFERER'])[4];
+
+$database = new Database\DB();
+$db = $database::getConnection();
+$editAccount = new Controller\Functions($db);
+/*var_dump($editAccount->getAccount());*/
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -66,34 +71,29 @@ $id = explode('/', $_SERVER['HTTP_REFERER'])[4];
     </div>
 </header>
 
-<main class="position-relative mt-3" id="blurred">
-    <section class="form_edit d-flex flex-column container-xl">
-        <h1 class="modifyTitle text-center">Envoyer ma candidature</h1>
-        <form action="/home/job/sendApply/:<? $id ?>" method="post" class="form-group">
-            <div class="form-group">
-                <label for="">Nom</label>
-                <input type="text" name="name" class="form-control" placeholder="Nom">
+<?php /*while ($row = $editAccount)*/?><!--
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Mon Profile</h5>
+                    <p class="card-text">
+                        <form action="/home/edit-account" method="post">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="mail" value="<?php /*echo $row['mail']*/?>">
+                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
+                            </div>
+                    </form>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="">Prénom</label>
-                <input type="text" name="firstname" class="form-control" placeholder="Prénom">
-            </div>
-            <div class="form-group">
-                <label for="">Email</label>
-                <input type="email" name="email" class="form-control" placeholder="Email">
-            </div>
-            <div class="form-group">
-                <label for="">Téléphone</label>
-                <input type="text" name="phone" class="form-control" placeholder="Téléphone">
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Envoyer</button>
-            </div>
-        </form>
-    </section>
-</main>
-
-<script src="/./assets/js/components/switch.js"></script>
+        </div>
+    </div>
+</div>-->
 </body>
 </html>
-

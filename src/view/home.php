@@ -34,12 +34,12 @@ if(isset($_SESSION['role'])){
                         <a class="header__connexion" href="/home/login">Connexion</a>
                     <?php else:?>
                         <?php if($role === 'ROLE_ADMIN'): ?>
-                                <a class="header__inscription" href="home/admin/dashboard">Dashboard</a>
+                                <a class="header__inscription" href="/home/admin/dashboard">Dashboard</a>
                         <?php endif;?>
                         <?php if($role === 'ROLE_RECRUTEUR' || $role === 'ROLE_ADMIN'):?>
                                 <a class="header__inscription" href="/home/mon-espace-recruteur">Mon Espace Recruteur</a>
                         <?php endif;?>
-                                <a class="header__connexion">Mon Profile</a>
+                                <a class="header__connexion" href="/home/account">Mon Profile</a>
                                 <a class="header__inscription" href="/home/disconnect">Déconnexion</a>
                     <?php endif;?>
                 </div>

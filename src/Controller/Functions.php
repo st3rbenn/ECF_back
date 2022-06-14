@@ -160,4 +160,13 @@ class Functions
         return true;
     }
 
+    public function getAccount($mail)
+    {
+        $this->sql = "SELECT * FROM user where mail = :mail";
+        $query = $this->connexion->prepare($this->sql);
+        $query->bindParam(':mail', $mail);
+        $query->execute();
+        return $query;
+    }
+
 }
