@@ -1,8 +1,8 @@
 <?php
 session_start();
-if(isset($_SESSION['role'])){
+if(isset($_SESSION['role']) && $_SESSION['role'] == 'admin'){
     $role = $_SESSION['role'];
-} else if ($_SESSION['role'] !== 'admin') {
+} else {
     header('Location: /');
 }
 if(isset($_POST['id'])){
