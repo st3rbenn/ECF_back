@@ -39,7 +39,7 @@ if(isset($_SESSION['role'])){
                         <?php if($role === 'ROLE_RECRUTEUR' || $role === 'ROLE_ADMIN'):?>
                                 <a class="header__inscription" href="/home/mon-espace-recruteur">Mon Espace Recruteur</a>
                         <?php endif;?>
-                                <a class="header__connexion" href="/home/account">Mon Profile</a>
+                                <a class="header__connexion" href="/home/account">Mon Profil</a>
                                 <a class="header__inscription" href="/home/disconnect">Déconnexion</a>
                     <?php endif;?>
                 </div>

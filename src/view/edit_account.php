@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION['role']) && $_SESSION['role'] === 'ROLE_RECRUTEUR' || $_SESSION['role'] === 'ROLE_ADMIN' || $_SESSION['role'] === 'ROLE_USER'){
+if($_SESSION['role'] === 'ROLE_RECRUTEUR' || $_SESSION['role'] === 'ROLE_ADMIN' || $_SESSION['role'] === 'ROLE_USER'){
     $role = $_SESSION['role'];
 } else{
     header('Location: /home');
@@ -9,8 +9,9 @@ if(isset($_SESSION['role']) && $_SESSION['role'] === 'ROLE_RECRUTEUR' || $_SESSI
 
 $database = new Database\DB();
 $db = $database::getConnection();
-$editAccount = new Controller\Functions($db);
-/*var_dump($editAccount->getAccount());*/
+$controller = new Controller\Functions($db);
+$editAccount = $controller->getAccount()
+
 
 ?>
 <!DOCTYPE html>
@@ -71,29 +72,35 @@ $editAccount = new Controller\Functions($db);
     </div>
 </header>
 
-<?php /*while ($row = $editAccount)*/?><!--
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Mon Profile</h5>
-                    <p class="card-text">
-                        <form action="/home/edit-account" method="post">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="mail" value="<?php /*echo $row['mail']*/?>">
-                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
-                            </div>
-                    </form>
+<main>
+    <?php while ($row = $editAccount->fetch(PDO::FETCH_ASSOC)):?>
+        <div class="container form bg-white" style="border-radius: 3rem;">
+            <form action="/home/edit-account" method="POST" class="form__inscription d-flex flex-column justify-content-center align-items-center p-5" id="form">
+                <h1 class="title">Mon Profile</h1>
+                <div class="form-group">
+                    <label for="firstName">prénom</label>
+                    <input type="text" class="form-control" id="firstName" aria-describedby="firstNameHelp" placeholder="entre ton prénom" name="firstName" value="<?php echo $row['firstname']?>">
                 </div>
-            </div>
+                <div class="form-group">
+                    <label for="lastName">nom de famille</label>
+                    <input type="text" class="form-control" id="lastName" aria-describedby="lastNameHelp" placeholder="entre ton nom de famille" name="lastName" value="<?php echo $row['lastname']?>">
+                </div>
+                <div class="form-group">
+                    <label for="mail">address mail</label>
+                    <input type="email" class="form-control" id="mail" aria-describedby="emailHelp" placeholder="Enter email" name="mail" value="<?php echo $row['mail']?>">
+                </div>
+                <?php if($row['role'] === 'ROLE_RECRUTEUR' || $row['role'] === 'ROLE_ADMIN'):?>
+                <div class="form-group">
+                    <label for="entreprise">entreprise</label>
+                    <input type="text" class="form-control" id="entreprise" aria-describedby="companyHelp" name="company" value="<?php echo $row['company']?>">
+                </div>
+                <?php endif;?>
+                <div class="form-group mt-3">
+                    <button type="submit" class="btn btn-primary">Modifier mon profil</button>
+                </div>
+            </form>
         </div>
-    </div>
-</div>-->
+    <?php endwhile;?>
+</main>
 </body>
 </html>

@@ -9,6 +9,7 @@ if ($_SERVER['REQUEST_URI'] === 'home/' || $_SERVER['REQUEST_URI'] === '/' || $_
 
 $router->get('/home', function (){return require 'src/view/home.php';});
 $router->get('/home/account', function (){return require 'src/view/edit_account.php';});
+$router->get('/home/edit-account', function (){return require 'src/functions/edit/edit_account.php';});
 $router->get('/home/job:id', function (){return require 'src/view/about.php';});
 $router->get('/home/job/apply/:id', function ($id){return require 'src/view/job-apply.php';});
 $router->get('/home/job/sendApply/:id', function ($id){return require 'src/functions/add/job-apply.php';});
@@ -47,7 +48,6 @@ $router->get('/home/admin/dashboard/candidate/delete:id', function ($id){return 
 $router->get('/home/admin/dashboard/user/add', function (){return require 'src/functions/add/add_user.php';});
 $router->get('/home/admin/dashboard/user/edit/:id', function ($id){return require 'src/functions/edit/edit_user.php';});
 $router->get('/home/admin/dashboard/user/delete:id', function ($id){return require 'src/functions/delete/delete_user.php';});
-
 
 
 $router->run();

@@ -4,6 +4,9 @@ namespace Controller;
 
 class Functions
 {
+    private $connexion;
+    private $sql;
+
     public function __construct($db)
     {
         $this->connexion = $db;
@@ -160,13 +163,32 @@ class Functions
         return true;
     }
 
-    public function getAccount($mail)
+    public function getAccount()
     {
         $this->sql = "SELECT * FROM user where mail = :mail";
         $query = $this->connexion->prepare($this->sql);
-        $query->bindParam(':mail', $mail);
+        $query->bindParam(':mail', $_SESSION['mail']);
         $query->execute();
         return $query;
+    }
+
+    public function editAccount(): bool
+    {
+        $this->sql = "UPDATE user a SET
+                        a.firstname = :firstname,
+                        a.lastname = :lastname,
+                        a.mail = :email,
+                        a.company = :company
+                        where a.mail = :mail";
+        $query = $this->connexion->prepare($this->sql);
+        $query->bindParam(':firstname', $_POST['firstName']);
+        $query->bindParam(':lastname', $_POST['lastName']);
+        $query->bindParam(':email', $_POST['mail']);
+        $query->bindParam(':mail', $_SESSION['mail']);
+        $query->bindParam(':company', $_POST['company']);
+        $query->execute();
+        $_SESSION['mail'] = $_POST['mail'];
+        return true;
     }
 
 }
