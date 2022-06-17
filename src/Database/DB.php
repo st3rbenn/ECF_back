@@ -13,9 +13,9 @@ class DB
         if (!isset(static::$connection)) {
             try {
                 static::$connection = new PDO(
-                    'mysql:host=campus01.o2switch.net;dbname=colas_ecfback;charset=utf8',
-                    'colas',
-                    'i{S4&22bk!BD',
+                    'mysql:host=localhost:3306;dbname=ecf_back;charset=utf8',
+                    'root',
+                    'root',
                     [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
                 );
             } catch (Exception $exception) {

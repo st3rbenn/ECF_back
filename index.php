@@ -1,5 +1,7 @@
 <?php
 
+use Dotenv\Dotenv;
+
 require 'vendor/autoload.php';
 $router = new Router\Router($_SERVER['REQUEST_URI']);
 
@@ -7,6 +9,8 @@ if ($_SERVER['REQUEST_URI'] === 'home/' || $_SERVER['REQUEST_URI'] === '/' || $_
     header('Location: /home');
 }
 
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 $router->get('/home', function (){return require 'src/view/home.php';});
 $router->get('/home/account', function (){return require 'src/view/edit_account.php';});
 $router->get('/home/edit-account', function (){return require 'src/functions/edit/edit_account.php';});
