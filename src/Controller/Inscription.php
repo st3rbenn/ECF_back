@@ -36,7 +36,7 @@ class Inscription
     }
 
 
-    public function checkIfEnterpriseExist()
+    public function checkIfEnterpriseExist($company)
     {
         $this->sql = "SELECT * FROM entreprise WHERE company = :company";
         $query = $this->connexion->prepare($this->sql);
@@ -52,11 +52,10 @@ class Inscription
         $this->lastName = htmlspecialchars(html_entity_decode($_POST['lastName']));
         $this->mail = htmlspecialchars(html_entity_decode($_POST['mail']));
         $this->mdp = htmlspecialchars(html_entity_decode(password_hash($_POST['mdp'], PASSWORD_BCRYPT)));
-        if (empty($_POST['entreprise'])){
+        if (empty($_POST['entreprise'])) {
             $this->role = 'ROLE_USER';
             $this->entreprise = 'undefined';
-        }
-        else {
+        } else {
             $this->role = 'ROLE_RECRUTEUR';
             $this->entreprise = htmlspecialchars(html_entity_decode($_POST['entreprise']));
         }
@@ -73,9 +72,9 @@ class Inscription
         $query->execute();
 
         $stmt = $this->checkIfEnterpriseExist();
-            if(!$stmt->fetch(PDO::FETCH_ASSOC)){
-                $this->createEnterpriseProfilOnNewAccount();
-            }
+        if (!$stmt->fetch(PDO::FETCH_ASSOC)) {
+            $this->createEnterpriseProfilOnNewAccount();
+        }
     }
 
     public function checkIfAccountExist()
@@ -105,4 +104,35 @@ class Inscription
         return $query;
     }
 
+    //function for test
+
+    public function testForCheckIfAccountExistBeforeAddingAccount($email): bool
+    {
+        $this->sql = "SELECT * FROM user WHERE mail = :mail";
+        $query = $this->connexion->prepare($this->sql);
+        $query->bindParam(':mail', $email);
+        $query->fetch(\PDO::FETCH_ASSOC);
+        $query->execute();
+        while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+            if ($row['mail'] == $email) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function testForCheckIfEnterpriseExistBeforeAddingAccount($company): bool
+    {
+        $this->sql = "SELECT * FROM entreprise WHERE company = :company";
+        $query = $this->connexion->prepare($this->sql);
+        $query->bindParam(':company', $company);
+        $query->fetch(\PDO::FETCH_ASSOC);
+        $query->execute();
+        while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+            if ($row['company'] == $company) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

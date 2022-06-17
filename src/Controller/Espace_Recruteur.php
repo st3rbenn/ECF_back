@@ -72,7 +72,7 @@ class Espace_Recruteur
         $query = $this->connexion->prepare($this->sql);
         $query->bindValue(':id', $id);
         $query->execute();
-        return true;
+            return true;
     }
 
     public function editJobs($id): bool
@@ -304,6 +304,7 @@ class Espace_Recruteur
         $query->execute();
         return true;
     }
+
 
 
 }
