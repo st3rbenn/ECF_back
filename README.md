@@ -32,7 +32,7 @@ To run project, run the following command
 ```bash
   php -S localhost:8000
 ```
-
+## run PHPUnit Test
 To launch the tests, you just have to write in the terminal these 2 commands
 ```bash
   ./vendor/bin/phpunit src/Test/InscriptionTest.php
