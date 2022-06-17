@@ -63,24 +63,3 @@ $onlyOne = true;
     </div>
 
 </form>
-
-
-
-
-<!--<div class="jobsTemplate">
-    <div class="add__jobs__title">
-        <h1 class="submitFormAddOfferTitle">Première Étapes </h1>
-        <blockquote class="blockquote__addOffer textForm">Tu verras la deuxième est tout aussi simple ✨</blockquote>
-        <div class="lineStep"></div>
-    </div>
-    <div class="add__jobs__item">
-        <p class="first__step">Voici, une reproduction de ce qui apparaitra sur la page principale du site.</p>
-        <p class="smallText">( Nous avons pris l'initiative de remplir certaines infos 😇 )</p>
-        <p class="first__step">Il te suffit De nous indiquer </p>
-    </div>
-    <ul>
-        <li class="first__step">Le titre de ton offre</li>
-        <li class="first__step">Le type de contrat</li>
-    </ul>
-
-</div>-->

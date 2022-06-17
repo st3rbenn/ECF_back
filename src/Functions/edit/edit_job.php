@@ -7,7 +7,6 @@ $getJobs = new Controller\Espace_Recruteur($db);
 $jobs = $getJobs->getJobById($id);
 $reqList = $getJobs->getReqList($id);
 $roleList = $getJobs->getRoleList($id);
-$url = '/' . explode('/', $_SERVER['HTTP_REFERER'], '4')[3];
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -57,7 +56,7 @@ $url = '/' . explode('/', $_SERVER['HTTP_REFERER'], '4')[3];
     <section class="form_edit d-flex flex-column container-xl">
         <h1 class="modifyTitle text-center">Modifier</h1>
         <?php while($row = $jobs->fetch(PDO::FETCH_ASSOC)):?>
-            <form action="<?= $url ?>" method="POST" class="d-grid gap-3" id="connexion">
+            <form action="/home/mon-espace-recruteur" method="POST" class="d-grid gap-3" id="connexion">
                 <input type="text" name="id" value="<?= $id ?>" hidden>
 
                 <div class="input-group">
@@ -114,7 +113,7 @@ $url = '/' . explode('/', $_SERVER['HTTP_REFERER'], '4')[3];
                 </div>
 
                 <div class="d-flex justify-content-between">
-                    <a href="<?= $url?>" class="btn_return" >Revenir a mon espace</a>
+                    <a href="/home/mon-espace-recruteur" class="btn_return" >Revenir a mon espace</a>
                     <button type="submit" class="btn_modify btn_return">accepter les modifications</button>
                 </div>
 
