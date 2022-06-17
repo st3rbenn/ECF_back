@@ -21,7 +21,7 @@ https://www.youtube.com/watch?v=7h3rrY_n6fc
 
 after that you can use the `DB_ecfBack.sql` file to hydrate the database.
 
-Don't forget now to change your mysql account info in src/Database/DB.php (line 16 to 18);
+Don't forget now to change your mysql account info in `src/Database/DB.php` (line 16 to 18);
 
 and now you are ready to go!
 
