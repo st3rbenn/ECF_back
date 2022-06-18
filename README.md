@@ -1,7 +1,7 @@
 
 # In-training evaluation back-end
 
-Welcome on my project which is a control in the course of formations which has for goal to create a site of offer of employment
+Welcome to my project of a job site
 
 
 ## install project
