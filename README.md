@@ -1,7 +1,7 @@
 
-# Project Title
+# In-training evaluation back-end
 
-Welcome on my project which is a control in the course of formations which has for goal to create a site of offer of employment
+Welcome to my project of a job site
 
 
 ## install project
@@ -21,7 +21,7 @@ https://www.youtube.com/watch?v=7h3rrY_n6fc
 
 after that you can use the `DB_ecfBack.sql` file to hydrate the database.
 
-Don't forget now to change your mysql account info in src/Database/DB.php (line 16 to 18);
+Don't forget now to change your mysql account info in `src/Database/DB.php` (line 16 to 18);
 
 and now you are ready to go!
 
@@ -32,7 +32,7 @@ To run project, run the following command
 ```bash
   php -S localhost:8000
 ```
-
+## run PHPUnit Test
 To launch the tests, you just have to write in the terminal these 2 commands
 ```bash
   ./vendor/bin/phpunit src/Test/InscriptionTest.php
