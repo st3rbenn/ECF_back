@@ -14,8 +14,8 @@ class DB
             try {
                 static::$connection = new PDO(
                     'mysql:host=localhost:3306;dbname=ecf_back;charset=utf8',
-                    'root',
-                    'root',
+                    'root', // username
+                    'root', // password
                     [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
                 );
             } catch (Exception $exception) {
